@@ -1,0 +1,88 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Arcade.dev
+providerId: arcade-dev
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - FinOps
+  - Cost Management
+  - FOCUS
+  - AI Agents
+  - Tools
+description: FOCUS-aligned FinOps definition for the Arcade.dev MCP / agent tool runtime. Usage-based metering
+  across tool executions, user challenges, and hosted MCP server runtime hours, billed monthly in USD.
+sources:
+  - https://arcade.dev/pricing
+  - https://docs.arcade.dev
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Arcade Computing, Inc.
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Usage-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+    - Usage
+    - Purchase
+    - Tax
+    - Credit
+    - Adjustment
+  primaryUnit: execution
+  secondaryUnits:
+    - challenge
+    - hour
+focusColumns:
+  ServiceName: Arcade.dev
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Arcade Computing, Inc.
+  PublisherName: Arcade Computing, Inc.
+  InvoiceIssuerName: Arcade Computing, Inc.
+  PricingCategory: Usage-Based
+chargeTypes:
+  - id: tool-execution-standard
+    name: Standard Tool Execution
+    chargeCategory: Usage
+    pricingUnit: execution
+    description: Charge for each invocation of a standard-tier Arcade tool above the included quota.
+  - id: tool-execution-pro
+    name: Pro Tool Execution
+    chargeCategory: Usage
+    pricingUnit: execution
+    description: Charge for each invocation of a pro-tier Arcade tool above the included quota.
+  - id: user-challenge
+    name: User Challenge
+    chargeCategory: Usage
+    pricingUnit: challenge
+    description: Charge for each end-user authorization challenge (OAuth or API-key prompt) above the included
+      quota.
+  - id: hosted-mcp-runtime
+    name: Hosted MCP Server Runtime
+    chargeCategory: Usage
+    pricingUnit: hour
+    description: Hourly runtime charge for Arcade-hosted MCP servers above the Hobby allotment.
+  - id: subscription-base
+    name: Plan Base Fee
+    chargeCategory: Purchase
+    pricingUnit: month
+    description: Monthly base fee for the Growth plan ($25/month). Enterprise base fees are custom.
+recommendations:
+  - capability: Cost Allocation
+    practice: Forward Arcade audit hooks to your data lake to attribute tool executions to specific user_id values
+      and downstream business units.
+  - capability: Anomaly Management
+    practice: Subscribe to tool_execution hooks and alert on sudden growth in pro-tier executions or hosted MCP
+      runtime hours.
+  - capability: Forecasting
+    practice: Track monthly standard vs pro execution ratios and project against the published $0.01 vs $0.50
+      unit prices.
+  - capability: Rate Optimization
+    practice: Co-locate tools onto Arcade-hosted MCP servers to amortize fixed runtime hours across many agents
+      rather than spinning up dedicated servers per agent.

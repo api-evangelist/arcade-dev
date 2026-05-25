@@ -1,0 +1,10 @@
+{
+  "tool_name": "Google.SendEmail@1.0.0",
+  "input": {
+    "recipient": "ops@example.com",
+    "subject": "Run completed",
+    "body": "The agent finished the requested workflow."
+  },
+  "user_id": "user_2nL93dQwExampleUUID",
+  "run_at": null
+}

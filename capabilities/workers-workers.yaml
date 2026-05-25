@@ -1,0 +1,285 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Arcade Workers API
+  description: Arcade Workers API capability. Self-contained Naftiko capability covering the Arcade Engine's Workers surface.
+  tags:
+  - Arcade
+  - Workers
+  - MCP
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ARCADE_API_KEY: ARCADE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: arcade-workers
+    baseUri: https://api.arcade.dev
+    description: Arcade Engine Workers business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-workers
+      path: /v1/workers
+      operations:
+      - name: workerslist
+        method: GET
+        description: Arcade List All Workers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: 'Number of items to return (default: 25, max: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: 'Offset from the start of the list (default: 0)'
+      - name: workerscreate
+        method: POST
+        description: Arcade Create A Worker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+    - name: v1-workers-test
+      path: /v1/workers/test
+      operations:
+      - name: workerstest
+        method: POST
+        description: Arcade Test A Worker Connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+    - name: v1-workers-id
+      path: /v1/workers/{id}
+      operations:
+      - name: workersget
+        method: GET
+        description: Arcade Get A Worker By ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+      - name: workersdelete
+        method: DELETE
+        description: Arcade Delete A Worker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+      - name: workersupdate
+        method: PATCH
+        description: Arcade Update A Worker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+    - name: v1-workers-id-authorize
+      path: /v1/workers/{id}/authorize
+      operations:
+      - name: workersauthorize
+        method: GET
+        description: Arcade Authorize A Worker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+    - name: v1-workers-id-health
+      path: /v1/workers/{id}/health
+      operations:
+      - name: workershealth
+        method: GET
+        description: Arcade Get The Health Of A Worker
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+    - name: v1-workers-id-tools
+      path: /v1/workers/{id}/tools
+      operations:
+      - name: toolslist
+        method: GET
+        description: Arcade List Tools
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: path
+          type: string
+          description: Worker ID
+        - name: limit
+          in: query
+          type: integer
+          description: 'Number of items to return (default: 25, max: 100)'
+        - name: offset
+          in: query
+          type: integer
+          description: 'Offset from the start of the list (default: 0)'
+  tools:
+  - name: arcade-workerslist
+    description: Arcade List All Workers
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-workers.workerslist
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      limit: tools.limit
+      offset: tools.offset
+  - name: arcade-workerscreate
+    description: Arcade Create A Worker
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-workers.workerscreate
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      body: tools.body
+  - name: arcade-workerstest
+    description: Arcade Test A Worker Connection
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-workers.workerstest
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      body: tools.body
+  - name: arcade-workersget
+    description: Arcade Get A Worker By ID
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-workers.workersget
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+  - name: arcade-workersdelete
+    description: Arcade Delete A Worker
+    hints:
+      readOnly: false
+      destructive: true
+      idempotent: true
+    call: arcade-workers.workersdelete
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+  - name: arcade-workersupdate
+    description: Arcade Update A Worker
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-workers.workersupdate
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+      body: tools.body
+  - name: arcade-workersauthorize
+    description: Arcade Authorize A Worker
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-workers.workersauthorize
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+  - name: arcade-workershealth
+    description: Arcade Get The Health Of A Worker
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-workers.workershealth
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+  - name: arcade-toolslist
+    description: Arcade List Tools
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-workers.toolslist
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+      limit: tools.limit
+      offset: tools.offset

@@ -1,0 +1,140 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Arcade Authorization API
+  description: Arcade Authorization API capability. Self-contained Naftiko capability covering the Arcade Engine's Authorization
+    surface.
+  tags:
+  - Arcade
+  - Authorization
+  - OAuth
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ARCADE_API_KEY: ARCADE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: arcade-auth
+    baseUri: https://api.arcade.dev
+    description: Arcade Engine Authorization business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-auth-authorize
+      path: /v1/auth/authorize
+      operations:
+      - name: initiateauthorization
+        method: POST
+        description: Arcade Initiate Authorization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+    - name: v1-auth-confirm_user
+      path: /v1/auth/confirm_user
+      operations:
+      - name: confirmuserauthflow
+        method: POST
+        description: Arcade Confirm User Authorization
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+    - name: v1-auth-status
+      path: /v1/auth/status
+      operations:
+      - name: authstatus
+        method: GET
+        description: Arcade Check Authorization Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: id
+          in: query
+          type: string
+          description: Authorization ID
+        - name: wait
+          in: query
+          type: integer
+          description: Timeout in seconds (max 59)
+    - name: v1-auth-validate_custom_verifier
+      path: /v1/auth/validate_custom_verifier
+      operations:
+      - name: testauthorizationflow
+        method: POST
+        description: Arcade Test Authorization Flow
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body.
+  tools:
+  - name: arcade-initiateauthorization
+    description: Arcade Initiate Authorization
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-auth.initiateauthorization
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      body: tools.body
+  - name: arcade-confirmuserauthflow
+    description: Arcade Confirm User Authorization
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-auth.confirmuserauthflow
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      body: tools.body
+  - name: arcade-authstatus
+    description: Arcade Check Authorization Status
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-auth.authstatus
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      id: tools.id
+      wait: tools.wait
+  - name: arcade-testauthorizationflow
+    description: Arcade Test Authorization Flow
+    hints:
+      readOnly: false
+      destructive: false
+      idempotent: false
+    call: arcade-auth.testauthorizationflow
+    outputParameters:
+    - type: object
+      mapping: $.
+    with:
+      body: tools.body

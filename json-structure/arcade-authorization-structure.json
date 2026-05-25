@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-structure.org/schemas/draft/2025-09/structure.json",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-structure/arcade-authorization-structure.json",
+  "title": "Arcade Authorization Structure",
+  "description": "JSON Structure description of an end-user authorization grant managed by Arcade. Grants tie a stable user_id to a provider (OAuth, API key, or custom) and a set of scopes; tools that require this provider+scopes are unlocked once the grant reaches completed status.",
+  "type": "object",
+  "fields": [
+    {"name": "id", "type": "string", "required": true},
+    {"name": "user_id", "type": "string", "required": true, "description": "Stable end-user identifier."},
+    {"name": "provider_id", "type": "string", "required": true},
+    {"name": "provider_type", "type": "string", "enum": ["oauth2", "api_key", "custom"]},
+    {"name": "scopes", "type": "array", "items": {"type": "string"}},
+    {"name": "status", "type": "string", "enum": ["pending", "needs_user_action", "completed", "failed", "expired"]},
+    {"name": "authorization_url", "type": "string", "format": "uri"},
+    {"name": "next_uri", "type": "string", "format": "uri"},
+    {"name": "context", "type": "object", "description": "Provider-specific completion context including profile and optionally the live token."},
+    {"name": "expires_at", "type": "string", "format": "date-time"},
+    {"name": "created_at", "type": "string", "format": "date-time"},
+    {"name": "updated_at", "type": "string", "format": "date-time"}
+  ]
+}

@@ -1,0 +1,65 @@
+extends:
+  - spectral:oas
+documentationUrl: https://docs.arcade.dev/references/api
+description: Spectral ruleset enforcing Arcade.dev API conventions across the Arcade Engine OpenAPI surface.
+rules:
+  arcade-base-server:
+    description: The base server URL must be https://api.arcade.dev.
+    message: 'Servers[].url must equal https://api.arcade.dev'
+    severity: error
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https:\/\/api\.arcade\.dev$'
+  arcade-v1-prefix:
+    description: All Arcade Engine paths are versioned under /v1/.
+    message: 'Path must start with /v1/'
+    severity: error
+    given: $.paths.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^\/v1\/'
+  arcade-summary-title-case:
+    description: Operation summaries should use Title Case.
+    message: 'Operation summary should use Title Case'
+    severity: warn
+    given: $.paths.*.*.summary
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z0-9][A-Za-z0-9 \-/:]+$'
+  arcade-snake-case-properties:
+    description: JSON property names in Arcade schemas use snake_case.
+    message: 'Property "{{property}}" should be snake_case'
+    severity: warn
+    given: $.components.schemas.*.properties.*~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-z0-9_]*$'
+  arcade-operation-id-camel-case:
+    description: operationId should be lowerCamelCase.
+    message: 'operationId should be lowerCamelCase'
+    severity: warn
+    given: $.paths.*.*.operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][A-Za-z0-9]*$'
+  arcade-response-2xx-required:
+    description: Every operation must define at least one 2xx response.
+    severity: error
+    given: $.paths.*.*.responses
+    then:
+      field: '@key'
+      function: pattern
+      functionOptions:
+        match: '^2\d\d$'
+  arcade-error-envelope:
+    description: Error responses (4xx/5xx) should reference the Arcade Error schema.
+    severity: warn
+    given: '$.paths.*.*.responses[?(@property.match(/^[45]\d\d$/))].content.application/json.schema'
+    then:
+      function: truthy

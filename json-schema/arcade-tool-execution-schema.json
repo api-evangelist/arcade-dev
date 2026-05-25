@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-schema/arcade-tool-execution-schema.json",
+  "title": "Arcade Tool Execution",
+  "description": "Schema for an Arcade tool execution request/response. Tool executions are the unit of work performed by the Arcade Engine on behalf of a user_id with user-scoped authorization.",
+  "type": "object",
+  "required": ["tool_name", "user_id"],
+  "properties": {
+    "tool_name": {
+      "type": "string",
+      "description": "Fully qualified tool name (Toolkit.Name@version) to execute.",
+      "examples": ["Google.SendEmail@1.0.0"]
+    },
+    "user_id": {
+      "type": "string",
+      "description": "Stable identifier of the end-user whose authorization tokens will be used. Required for user-scoped tool calls."
+    },
+    "input": {
+      "type": "object",
+      "description": "Input arguments conforming to the tool's input JSON Schema.",
+      "additionalProperties": true
+    },
+    "run_at": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Optional future time at which the tool should be executed. When set, the call is converted into a scheduled tool execution."
+    },
+    "execution_id": {
+      "type": "string",
+      "description": "Server-assigned identifier of the execution attempt (response field)."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["queued", "running", "completed", "failed", "needs_authorization"],
+      "description": "Lifecycle status of the execution."
+    },
+    "output": {
+      "type": "object",
+      "description": "Tool output. Present when status is completed.",
+      "additionalProperties": true
+    },
+    "error": {
+      "type": "object",
+      "description": "Error details when status is failed.",
+      "properties": {
+        "code": {"type": "string"},
+        "message": {"type": "string"}
+      }
+    },
+    "started_at": {"type": "string", "format": "date-time", "description": "When the execution started."},
+    "completed_at": {"type": "string", "format": "date-time", "description": "When the execution finished."}
+  },
+  "additionalProperties": true
+}

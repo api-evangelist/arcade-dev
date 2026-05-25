@@ -1,0 +1,11 @@
+{
+  "id": "auth_2nL93dQwExampleAuthId",
+  "status": "completed",
+  "context": {
+    "token": "ya29.a0AfH6SMBxRedactedToken",
+    "user_info": {
+      "email": "user@example.com",
+      "sub": "1234567890"
+    }
+  }
+}

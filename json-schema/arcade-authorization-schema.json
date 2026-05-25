@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-schema/arcade-authorization-schema.json",
+  "title": "Arcade Authorization",
+  "description": "Schema for an Arcade end-user authorization grant. Arcade manages OAuth and API-key tokens per user_id so that AI agents act with the end-user's permissions rather than a shared service account.",
+  "type": "object",
+  "required": ["id", "user_id", "provider_id", "status"],
+  "properties": {
+    "id": {"type": "string", "description": "Server-assigned authorization identifier."},
+    "user_id": {"type": "string", "description": "Stable end-user identifier the grant belongs to."},
+    "provider_id": {"type": "string", "description": "Arcade auth provider identifier (e.g., google, slack, github, microsoft)."},
+    "provider_type": {"type": "string", "enum": ["oauth2", "api_key", "custom"], "description": "Authorization mechanism used by the provider."},
+    "scopes": {"type": "array", "items": {"type": "string"}, "description": "Granted scopes (OAuth) or capability strings (custom)."},
+    "status": {
+      "type": "string",
+      "enum": ["pending", "needs_user_action", "completed", "failed", "expired"],
+      "description": "Lifecycle status of the authorization."
+    },
+    "authorization_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL the end-user must visit to complete the grant when status is needs_user_action."
+    },
+    "next_uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "URI the user is redirected to after completing the grant. The Arcade Engine appends authorization state to this URL."
+    },
+    "context": {
+      "type": "object",
+      "description": "Provider-specific completion context, including the user's profile and (optionally) the live token. Tokens are only surfaced for trusted callers.",
+      "additionalProperties": true
+    },
+    "expires_at": {"type": "string", "format": "date-time", "description": "When the underlying token expires."},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Arcade Operations API
+  description: Arcade Operations API capability. Self-contained Naftiko capability covering the Arcade Engine's Operations
+    surface.
+  tags:
+  - Arcade
+  - Operations
+  - Health
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+- namespace: env
+  keys:
+    ARCADE_API_KEY: ARCADE_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: arcade-operations
+    baseUri: https://api.arcade.dev
+    description: Arcade Engine Operations business capability. Self-contained, no shared references.
+    resources:
+    - name: v1-config
+      path: /v1/config
+      operations:
+      - name: engineconfig
+        method: GET
+        description: Arcade Get Engine Config
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-health
+      path: /v1/health
+      operations:
+      - name: arcadehealth
+        method: GET
+        description: Arcade Engine Health Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: v1-swagger
+      path: /v1/swagger
+      operations:
+      - name: swagger
+        method: GET
+        description: Arcade Get Openapi Specification
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  tools:
+  - name: arcade-engineconfig
+    description: Arcade Get Engine Config
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-operations.engineconfig
+    outputParameters:
+    - type: object
+      mapping: $.
+  - name: arcade-arcadehealth
+    description: Arcade Engine Health Check
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-operations.arcadehealth
+    outputParameters:
+    - type: object
+      mapping: $.
+  - name: arcade-swagger
+    description: Arcade Get Openapi Specification
+    hints:
+      readOnly: true
+      destructive: false
+      idempotent: true
+    call: arcade-operations.swagger
+    outputParameters:
+    - type: object
+      mapping: $.

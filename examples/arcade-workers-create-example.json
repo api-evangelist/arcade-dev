@@ -1,0 +1,10 @@
+{
+  "id": "company-tools",
+  "enabled": true,
+  "http": {
+    "uri": "https://tools.internal.example.com",
+    "secret": "shared-secret-redacted",
+    "timeout": 30,
+    "retry": 1
+  }
+}

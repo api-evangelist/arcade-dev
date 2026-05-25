@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-schema/arcade-hook-schema.json",
+  "title": "Arcade Hook",
+  "description": "Schema for an Arcade hook. Hooks deliver lifecycle events (authorization grants, tool executions, errors) to an external HTTP endpoint and are the primary integration point for audit, governance, and SIEM forwarding.",
+  "type": "object",
+  "required": ["name", "type", "url"],
+  "properties": {
+    "id": {"type": "string", "description": "Server-assigned hook identifier."},
+    "name": {"type": "string", "description": "Human-friendly hook name."},
+    "type": {
+      "type": "string",
+      "enum": ["tool_authorization", "tool_execution", "worker_health", "audit"],
+      "description": "Event family the hook subscribes to."
+    },
+    "url": {"type": "string", "format": "uri", "description": "Destination URL that receives hook events."},
+    "secret": {"type": "string", "description": "Shared secret used to sign hook payloads."},
+    "enabled": {"type": "boolean", "default": true},
+    "filters": {
+      "type": "object",
+      "description": "Optional event filters (toolkit, status, user, etc.)",
+      "additionalProperties": true
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

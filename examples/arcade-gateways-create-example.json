@@ -1,0 +1,6 @@
+{
+  "name": "marketing-mcp",
+  "slug": "marketing-mcp",
+  "description": "MCP gateway for the marketing agent team",
+  "enabled": true
+}

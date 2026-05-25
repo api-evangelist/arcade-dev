@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/schemas/draft/2025-09/structure.json",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-structure/arcade-worker-structure.json",
+  "title": "Arcade Worker Structure",
+  "description": "JSON Structure for an Arcade worker. Workers host toolkits and are reached over HTTP (with a shared secret) or via MCP transports. Each worker advertises a set of tools and a health endpoint.",
+  "type": "object",
+  "fields": [
+    {"name": "id", "type": "string", "required": true},
+    {"name": "enabled", "type": "boolean"},
+    {"name": "http", "type": "object", "fields": [
+      {"name": "uri", "type": "string", "format": "uri", "required": true},
+      {"name": "secret", "type": "string"},
+      {"name": "timeout", "type": "integer", "default": 30},
+      {"name": "retry", "type": "integer", "default": 1}
+    ]},
+    {"name": "mcp", "type": "object", "fields": [
+      {"name": "uri", "type": "string", "format": "uri"},
+      {"name": "transport", "type": "string", "enum": ["http", "sse", "websocket"]}
+    ]},
+    {"name": "tools", "type": "array", "items": {"$ref": "arcade-tool-structure.json"}},
+    {"name": "health", "type": "object", "fields": [
+      {"name": "healthy", "type": "boolean"},
+      {"name": "checked_at", "type": "string", "format": "date-time"},
+      {"name": "message", "type": "string"}
+    ]}
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-schema/arcade-tool-schema.json",
+  "title": "Arcade Tool",
+  "description": "Schema for an Arcade tool as exposed by the Arcade Engine. A tool is a single named action that an AI agent can invoke through the Tools API, scoped to a toolkit and addressable by its fully qualified name (toolkit.name@version).",
+  "type": "object",
+  "required": ["name", "fully_qualified_name", "description", "toolkit"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Short, human-readable tool name within its toolkit (e.g., SendEmail).",
+      "examples": ["SendEmail", "PostMessage", "CreateIssue"]
+    },
+    "fully_qualified_name": {
+      "type": "string",
+      "description": "Globally unique identifier of the tool including toolkit and semantic version (Toolkit.Name@MAJOR.MINOR.PATCH).",
+      "examples": ["Google.SendEmail@1.0.0", "Slack.PostMessage@1.0.0"]
+    },
+    "description": {
+      "type": "string",
+      "description": "Natural-language description used by the LLM to decide when to call the tool."
+    },
+    "toolkit": {
+      "type": "object",
+      "description": "The toolkit this tool belongs to.",
+      "required": ["name", "version"],
+      "properties": {
+        "name": {"type": "string", "description": "Toolkit name (e.g., Google, Slack, GitHub)."},
+        "version": {"type": "string", "description": "Semantic version of the toolkit."}
+      }
+    },
+    "input": {
+      "type": "object",
+      "description": "JSON Schema describing the tool's input parameters.",
+      "additionalProperties": true
+    },
+    "output": {
+      "type": "object",
+      "description": "JSON Schema describing the tool's output.",
+      "additionalProperties": true
+    },
+    "requirements": {
+      "type": "object",
+      "description": "Runtime requirements for the tool, including authorization and metadata.",
+      "properties": {
+        "authorization": {
+          "type": "object",
+          "description": "User-scoped authorization needed before the tool can be executed.",
+          "properties": {
+            "provider_id": {"type": "string", "description": "Arcade auth provider identifier (e.g., google, slack, github)."},
+            "provider_type": {"type": "string", "enum": ["oauth2", "api_key", "custom"], "description": "Authorization mechanism used by the provider."},
+            "scopes": {"type": "array", "items": {"type": "string"}, "description": "OAuth scopes (or equivalent) required for this tool."}
+          }
+        },
+        "metadata": {
+          "type": "object",
+          "description": "Free-form metadata such as deprecation flags, rate-limit hints, or pricing tier (standard vs pro).",
+          "additionalProperties": true
+        }
+      }
+    },
+    "deprecation_date": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "If set, the date after which the tool will no longer be executable."
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+  "auth_requirement": {
+    "provider_id": "google",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.send"
+    ]
+  },
+  "user_id": "user_2nL93dQwExampleUUID"
+}

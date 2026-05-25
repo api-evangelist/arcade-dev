@@ -1,0 +1,702 @@
+openapi: 3.0.0
+info:
+  description: Manage plugins that extend the Arcade Engine with custom auth providers, transformers, and tool sources.
+  title: Arcade Plugins API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/plugins:
+    get:
+      security:
+      - Bearer: []
+      description: Returns all plugins for the current binding
+      tags:
+      - Plugins
+      summary: List Plugins
+      operationId: plugins-list
+      parameters:
+      - description: Limit
+        name: limit
+        in: query
+        schema:
+          type: integer
+      - description: Offset
+        name: offset
+        in: query
+        schema:
+          type: integer
+      - description: Binding type filter (e.g., 'tenant')
+        name: binding_type
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_PluginResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    post:
+      security:
+      - Bearer: []
+      description: Creates a new plugin with optional inline hooks
+      tags:
+      - Plugins
+      summary: Create a Plugin
+      operationId: plugins-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.CreatePluginRequest'
+        description: Plugin configuration
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.CreatePluginResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/plugins/{plugin_id}:
+    get:
+      security:
+      - Bearer: []
+      description: Returns a single plugin by ID
+      tags:
+      - Plugins
+      summary: Get a Plugin
+      operationId: plugins-get
+      parameters:
+      - description: Plugin ID
+        name: plugin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.PluginResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    delete:
+      security:
+      - Bearer: []
+      description: Deletes a plugin by ID
+      tags:
+      - Plugins
+      summary: Delete a Plugin
+      operationId: plugins-delete
+      parameters:
+      - description: Plugin ID
+        name: plugin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    patch:
+      security:
+      - Bearer: []
+      description: Updates an existing plugin configuration
+      tags:
+      - Plugins
+      summary: Update a Plugin
+      operationId: plugins-update
+      parameters:
+      - description: Plugin ID
+        name: plugin_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.PatchPluginRequest'
+        description: Plugin configuration to update
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.PluginResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    identity.BindingType:
+      type: string
+      enum:
+      - static
+      - tenant
+      - project
+      - account
+      x-enum-varnames:
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
+    plugins.FailureMode:
+      type: string
+      enum:
+      - fail_closed
+      - fail_open
+      x-enum-varnames:
+      - FailureModeClosed
+      - FailureModeOpen
+    plugins.HookPointStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - HookPointStatusInactive
+      - HookPointStatusActive
+    plugins.Phase:
+      type: string
+      enum:
+      - before
+      - after
+      x-enum-varnames:
+      - PhaseBefore
+      - PhaseAfter
+    plugins.PluginStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - PluginStatusInactive
+      - PluginStatusActive
+    schemas.BindingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.CreatePluginRequest:
+      type: object
+      required:
+      - name
+      - plugin_type
+      properties:
+        description:
+          type: string
+          maxLength: 1000
+        name:
+          type: string
+          maxLength: 256
+        plugin_type:
+          type: string
+          enum:
+          - webhook
+        retry:
+          $ref: '#/components/schemas/schemas.CreateRetryConfigRequest'
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.PluginStatus'
+        webhook_config:
+          $ref: '#/components/schemas/schemas.CreateWebhookConfigRequest'
+    schemas.CreatePluginResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        created_by:
+          type: string
+        description:
+          type: string
+        health_status:
+          type: string
+        hooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.HookResponse'
+        id:
+          type: string
+        name:
+          type: string
+        plugin_type:
+          type: string
+        retry:
+          $ref: '#/components/schemas/schemas.RetryConfigResponse'
+        status:
+          $ref: '#/components/schemas/plugins.PluginStatus'
+        updated_at:
+          type: string
+        updated_by:
+          type: string
+        version:
+          type: integer
+        webhook_config:
+          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
+    schemas.CreateRetryConfigRequest:
+      type: object
+      properties:
+        backoff:
+          type: string
+          enum:
+          - fixed
+          - exponential
+        base_delay_ms:
+          type: integer
+          maximum: 10000
+          minimum: 10
+        enabled:
+          type: boolean
+        max_attempts:
+          type: integer
+          maximum: 10
+          minimum: 1
+        retry_on:
+          type: array
+          items:
+            type: string
+    schemas.CreateWebhookConfigRequest:
+      type: object
+      required:
+      - endpoints
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
+        endpoints:
+          $ref: '#/components/schemas/schemas.CreateWebhookEndpointsRequest'
+        health_check_path:
+          type: string
+    schemas.CreateWebhookEndpointsRequest:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
+        post:
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
+        pre:
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.HookResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        created_at:
+          type: string
+        failure_mode:
+          $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        phase:
+          $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+        updated_at:
+          type: string
+        version:
+          type: integer
+    schemas.OffsetPage-schemas_PluginResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.PluginResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.PatchPluginRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 1000
+        name:
+          type: string
+          maxLength: 256
+          minLength: 1
+        retry:
+          $ref: '#/components/schemas/schemas.PatchRetryConfigRequest'
+        status:
+          $ref: '#/components/schemas/plugins.PluginStatus'
+        webhook_config:
+          $ref: '#/components/schemas/schemas.PatchWebhookConfigRequest'
+    schemas.PatchRetryConfigRequest:
+      type: object
+      properties:
+        backoff:
+          type: string
+          enum:
+          - fixed
+          - exponential
+        base_delay_ms:
+          type: integer
+          maximum: 10000
+          minimum: 10
+        enabled:
+          type: boolean
+        max_attempts:
+          type: integer
+          maximum: 10
+          minimum: 1
+        retry_on:
+          type: array
+          items:
+            type: string
+    schemas.PatchWebhookConfigRequest:
+      type: object
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
+        endpoints:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointsRequest'
+        health_check_path:
+          type: string
+    schemas.PatchWebhookEndpointRequest:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          description: 1s to 1 week
+          type: integer
+          maximum: 604800000
+          minimum: 1000
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          description: 100ms to 2 minutes
+          type: integer
+          maximum: 120000
+          minimum: 100
+        url:
+          type: string
+    schemas.PatchWebhookEndpointsRequest:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+        post:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+        pre:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+    schemas.PluginResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        created_by:
+          type: string
+        description:
+          type: string
+        health_status:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        plugin_type:
+          type: string
+        retry:
+          $ref: '#/components/schemas/schemas.RetryConfigResponse'
+        status:
+          $ref: '#/components/schemas/plugins.PluginStatus'
+        updated_at:
+          type: string
+        updated_by:
+          type: string
+        version:
+          type: integer
+        webhook_config:
+          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
+    schemas.RetryConfigResponse:
+      type: object
+      properties:
+        backoff:
+          type: string
+        base_delay_ms:
+          type: integer
+        enabled:
+          type: boolean
+        max_attempts:
+          type: integer
+        retry_on:
+          type: array
+          items:
+            type: string
+    schemas.SecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/identity.BindingType'
+        editable:
+          type: boolean
+        exists:
+          type: boolean
+        value:
+          type: string
+    schemas.WebhookAuthRequest:
+      type: object
+      properties:
+        ca_cert:
+          type: string
+        client_cert:
+          type: string
+        client_key:
+          type: string
+        token:
+          type: string
+        type:
+          type: string
+          enum:
+          - bearer
+          - mtls
+          - none
+    schemas.WebhookAuthResponse:
+      type: object
+      properties:
+        ca_cert:
+          type: string
+        client_cert_configured:
+          type: boolean
+        client_key_configured:
+          type: boolean
+        token:
+          $ref: '#/components/schemas/schemas.SecretResponse'
+        type:
+          type: string
+    schemas.WebhookConfigResponse:
+      type: object
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthResponse'
+        endpoints:
+          $ref: '#/components/schemas/schemas.WebhookEndpointsResponse'
+        health_check_path:
+          type: string
+    schemas.WebhookEndpointRequest:
+      type: object
+      required:
+      - failure_mode
+      - phase
+      - url
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          description: 1s to 1 week
+          type: integer
+          maximum: 604800000
+          minimum: 1000
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          description: 100ms to 2 minutes
+          type: integer
+          maximum: 120000
+          minimum: 100
+        url:
+          type: string
+    schemas.WebhookEndpointResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        timeout_ms:
+          type: integer
+        url:
+          type: string
+    schemas.WebhookEndpointsResponse:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
+        post:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
+        pre:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-schema/arcade-worker-schema.json",
+  "title": "Arcade Worker",
+  "description": "Schema for an Arcade worker. Workers host one or more toolkits and are called by the Arcade Engine to execute tool invocations. Workers can be Arcade-hosted or self-hosted via HTTP behind a shared secret.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {"type": "string", "description": "Stable worker identifier within the organization (e.g., company-tools)."},
+    "enabled": {"type": "boolean", "description": "Whether the worker is currently routable."},
+    "http": {
+      "type": "object",
+      "description": "HTTP transport configuration for self-hosted workers.",
+      "required": ["uri"],
+      "properties": {
+        "uri": {"type": "string", "format": "uri", "description": "Base URI the Arcade Engine calls."},
+        "secret": {"type": "string", "description": "Shared secret used to authenticate Engine -> Worker calls."},
+        "timeout": {"type": "integer", "description": "Request timeout in seconds.", "default": 30},
+        "retry": {"type": "integer", "description": "Number of retries on transient failure.", "default": 1}
+      }
+    },
+    "mcp": {
+      "type": "object",
+      "description": "Configuration when the worker is an MCP server rather than an Arcade HTTP worker.",
+      "properties": {
+        "uri": {"type": "string", "format": "uri"},
+        "transport": {"type": "string", "enum": ["http", "sse", "websocket"]}
+      }
+    },
+    "tools": {
+      "type": "array",
+      "description": "Tools advertised by this worker.",
+      "items": {"$ref": "arcade-tool-schema.json"}
+    },
+    "health": {
+      "type": "object",
+      "description": "Most recent health status reported by the worker.",
+      "properties": {
+        "healthy": {"type": "boolean"},
+        "checked_at": {"type": "string", "format": "date-time"},
+        "message": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

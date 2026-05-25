@@ -1,0 +1,6 @@
+{
+  "name": "audit-tool-executions",
+  "type": "tool_execution",
+  "url": "https://hooks.internal.example.com/arcade",
+  "enabled": true
+}

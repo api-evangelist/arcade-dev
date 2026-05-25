@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-structure.org/schemas/draft/2025-09/structure.json",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/arcade-dev/main/json-structure/arcade-tool-structure.json",
+  "title": "Arcade Tool Structure",
+  "description": "JSON Structure description of an Arcade tool, intended for documentation and code generation. An Arcade tool is an addressable agent action belonging to a toolkit and gated by user-scoped authorization requirements.",
+  "type": "object",
+  "fields": [
+    {"name": "name", "type": "string", "required": true, "description": "Short tool name within its toolkit."},
+    {"name": "fully_qualified_name", "type": "string", "required": true, "description": "Toolkit.Name@semver address of the tool."},
+    {"name": "description", "type": "string", "required": true, "description": "Natural-language description used by the LLM to choose the tool."},
+    {"name": "toolkit", "type": "object", "required": true, "fields": [
+      {"name": "name", "type": "string", "required": true},
+      {"name": "version", "type": "string", "required": true}
+    ]},
+    {"name": "input", "type": "object", "description": "JSON Schema for tool input parameters."},
+    {"name": "output", "type": "object", "description": "JSON Schema for tool output."},
+    {"name": "requirements", "type": "object", "fields": [
+      {"name": "authorization", "type": "object", "fields": [
+        {"name": "provider_id", "type": "string"},
+        {"name": "provider_type", "type": "string", "enum": ["oauth2", "api_key", "custom"]},
+        {"name": "scopes", "type": "array", "items": {"type": "string"}}
+      ]},
+      {"name": "metadata", "type": "object"}
+    ]},
+    {"name": "deprecation_date", "type": "string", "format": "date-time", "nullable": true}
+  ]
+}

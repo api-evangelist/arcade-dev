@@ -1,0 +1,346 @@
+openapi: 3.0.0
+info:
+  description: Authorize end-users for third-party providers (OAuth, API key, custom). Check authorization status and confirm
+    users to obtain user-scoped tokens for tools.
+  title: Arcade Authorization API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/auth/authorize:
+    post:
+      security:
+      - Bearer: []
+      - Bearer: []
+      description: Starts the authorization process for given authorization requirements
+      tags:
+      - Authorization
+      summary: Initiate Authorization
+      operationId: initiate-authorization
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.AuthorizationInitiationRequest'
+        description: Authorization request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.AuthorizationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/auth/confirm_user:
+    post:
+      security:
+      - Bearer: []
+      - Bearer: []
+      description: Confirms a user's details during an authorization flow
+      tags:
+      - Authorization
+      summary: Confirm User Authorization
+      operationId: confirm-user-auth-flow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.AuthorizationConfirmUserRequest'
+        description: User confirmation request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.AuthorizationConfirmUserResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/auth/status:
+    get:
+      security:
+      - Bearer: []
+      - Bearer: []
+      description: 'Checks the status of an ongoing authorization process for a specific tool.
+
+        If ''wait'' param is present, does not respond until either the auth status becomes completed or the timeout is reached.'
+      tags:
+      - Authorization
+      summary: Check Authorization Status
+      operationId: auth-status
+      parameters:
+      - description: Authorization ID
+        name: id
+        in: query
+        required: true
+        schema:
+          type: string
+      - description: Timeout in seconds (max 59)
+        name: wait
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/auth.AuthorizationResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/auth/validate_custom_verifier:
+    post:
+      security:
+      - Bearer: []
+      - Bearer: []
+      description: Starts a test authorization flow
+      tags:
+      - Authorization
+      summary: Test Authorization Flow
+      operationId: test-authorization-flow
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.ValidateCustomVerifierRequest'
+        description: Validate custom verifier request
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.ValidateCustomVerifierResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '415':
+          description: Unsupported Media Type
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    auth.AuthorizationContext:
+      type: object
+      properties:
+        token:
+          type: string
+        user_info:
+          type: object
+          additionalProperties: true
+    auth.AuthorizationRequirement:
+      type: object
+      properties:
+        id:
+          description: one of ID or ProviderID must be set
+          type: string
+        oauth2:
+          $ref: '#/components/schemas/auth.OAuth2AuthorizationRequirement'
+        provider_id:
+          description: one of ID or ProviderID must be set
+          type: string
+        provider_type:
+          type: string
+    auth.AuthorizationResponse:
+      type: object
+      properties:
+        context:
+          $ref: '#/components/schemas/auth.AuthorizationContext'
+        id:
+          type: string
+        provider_id:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        status:
+          default: pending
+          allOf:
+          - $ref: '#/components/schemas/auth.AuthorizationStatus'
+        url:
+          type: string
+        user_id:
+          type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    auth.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    schemas.AuthorizationConfirmUserRequest:
+      type: object
+      required:
+      - flow_id
+      - user_id
+      properties:
+        flow_id:
+          type: string
+        user_id:
+          type: string
+    schemas.AuthorizationConfirmUserResponse:
+      type: object
+      required:
+      - auth_id
+      properties:
+        auth_id:
+          type: string
+        next_uri:
+          type: string
+    schemas.AuthorizationInitiationRequest:
+      type: object
+      required:
+      - auth_requirement
+      - user_id
+      properties:
+        auth_requirement:
+          $ref: '#/components/schemas/auth.AuthorizationRequirement'
+        next_uri:
+          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
+          type: string
+        user_id:
+          type: string
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.ValidateCustomVerifierRequest:
+      type: object
+      required:
+      - user_id
+      - verifier_url
+      properties:
+        user_id:
+          type: string
+        verifier_url:
+          type: string
+    schemas.ValidateCustomVerifierResponse:
+      type: object
+      properties:
+        flow_id:
+          type: string
+        next_uri:
+          type: string

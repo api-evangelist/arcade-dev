@@ -1,0 +1,108 @@
+specification: API Evangelist Vocabulary
+specificationVersion: '0.1'
+provider: Arcade.dev
+providerId: arcade-dev
+created: '2026-05-25'
+modified: '2026-05-25'
+description: Vocabulary describing the Arcade.dev MCP / agent tool runtime surface — domain entities, operational
+  axes, and AI-agent capabilities exposed by the Arcade Engine.
+sources:
+  - https://arcade.dev
+  - https://docs.arcade.dev
+  - https://api.arcade.dev/v1/swagger
+domains:
+  - id: agents-and-tools
+    label: AI Agents and Tools
+    description: Concepts related to AI agent tool calling, tool definition, and execution.
+    terms:
+      - id: tool
+        label: Tool
+        definition: A single named action that an AI agent can invoke, scoped to a toolkit and addressable by
+          fully_qualified_name (Toolkit.Name@version).
+        aliases: [agent-tool, mcp-tool]
+        seeAlso:
+          - https://docs.arcade.dev/home/tools
+      - id: toolkit
+        label: Toolkit
+        definition: A versioned collection of related tools — usually mapped to one upstream SaaS provider
+          (Google, Slack, Salesforce, GitHub, etc.).
+      - id: tool-execution
+        label: Tool Execution
+        definition: A single invocation of a tool by user_id; the unit of metered usage in the Arcade billing
+          model.
+      - id: worker
+        label: Worker
+        definition: A process that hosts toolkits and is called by the Arcade Engine over HTTP (with shared
+          secret) or via MCP transports.
+      - id: gateway
+        label: MCP Gateway
+        definition: A scoped MCP endpoint, per organization and project, that exposes a curated catalog of
+          tools to MCP clients (Cursor, Claude Desktop, VS Code).
+  - id: identity-and-auth
+    label: Identity and Authorization
+    description: How Arcade ties tool invocations to specific end-users.
+    terms:
+      - id: user-id
+        label: User ID
+        definition: A stable identifier the caller supplies to indicate which end-user the tool call acts on
+          behalf of. Required for any user-scoped tool.
+      - id: authorization
+        label: Authorization
+        definition: A user-scoped grant tying user_id + provider_id + scopes to a live OAuth or API-key token
+          managed by the Arcade Engine.
+      - id: auth-provider
+        label: Auth Provider
+        definition: An external identity / OAuth provider that Arcade integrates with (Google, Microsoft,
+          Slack, GitHub, Salesforce, HubSpot, and 40+ more).
+      - id: user-challenge
+        label: User Challenge
+        definition: A prompt to an end-user to complete an OAuth or API-key grant. Used as a billing metric
+          ($0.05 each above the included quota on the Growth plan).
+  - id: governance
+    label: Governance and Operations
+    description: Operational, audit, and governance concepts.
+    terms:
+      - id: hook
+        label: Hook
+        definition: An HTTP destination that receives Arcade lifecycle events (tool_authorization,
+          tool_execution, audit). Hooks are the primary integration point for SIEM and audit logging.
+      - id: plugin
+        label: Plugin
+        definition: An extension that adds custom auth providers, transformers, or tool sources to the Arcade
+          Engine.
+      - id: scheduled-tool
+        label: Scheduled Tool
+        definition: A tool execution queued for a future run_at time.
+      - id: audit-log
+        label: Audit Log
+        definition: A record of authorization grants and tool executions surfaced through hooks and the
+          Arcade audit log feature.
+  - id: deployment
+    label: Deployment Topology
+    description: Where the Arcade Engine and workers can run.
+    terms:
+      - id: arcade-cloud
+        label: Arcade Cloud
+        definition: Arcade-hosted SaaS deployment at api.arcade.dev.
+      - id: arcade-vpc
+        label: Arcade VPC
+        definition: Single-tenant Arcade Engine deployed into a customer's cloud VPC.
+      - id: arcade-on-prem
+        label: Arcade On-Prem / Air-Gapped
+        definition: Self-hosted Arcade Engine, including air-gapped installations.
+      - id: hosted-mcp-server
+        label: Hosted MCP Server
+        definition: Arcade-managed MCP server running 24/7 ($0.05/hour above the Hobby allotment).
+      - id: self-hosted-worker
+        label: Self-Hosted Worker
+        definition: Customer-run worker reached over HTTP with a shared secret, used to keep tool execution
+          (and end-user tokens) inside the customer's perimeter.
+tags:
+  - AI
+  - Agents
+  - Tools
+  - MCP
+  - OAuth
+  - Authorization
+  - Identity
+  - Governance

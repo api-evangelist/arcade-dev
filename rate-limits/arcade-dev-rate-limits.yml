@@ -1,0 +1,78 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Arcade.dev
+providerId: arcade-dev
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: false
+tags:
+  - Rate Limiting
+  - Quotas
+  - Agents
+description: 'Reconciled monthly quotas for the Arcade.dev platform, expressed as plan-level included quantities
+  with usage-based overage. Arcade enforces quotas per organization across tool executions, user challenges,
+  and Arcade-hosted MCP server runtime hours. Pricing-page values; per-second / per-minute throttles are not
+  publicly published.'
+sources:
+  - https://arcade.dev/pricing
+  - https://docs.arcade.dev
+algorithm: monthly-quota
+responseCodes:
+  throttled: 429
+  quotaExceeded: 429
+quotas:
+  - tier: Hobby
+    metric: user_challenges
+    included: 100
+    period: month
+    overage: not_available
+  - tier: Hobby
+    metric: standard_tool_executions
+    included: 1000
+    period: month
+    overage: not_available
+  - tier: Hobby
+    metric: pro_tool_executions
+    included: 50
+    period: month
+    overage: not_available
+  - tier: Hobby
+    metric: hosted_mcp_servers
+    included: 1
+    period: concurrent
+    overage: not_available
+  - tier: Growth
+    metric: user_challenges
+    included: 600
+    period: month
+    overagePrice: '0.05'
+    overageUnit: per_challenge
+  - tier: Growth
+    metric: standard_tool_executions
+    included: 2000
+    period: month
+    overagePrice: '0.01'
+    overageUnit: per_execution
+  - tier: Growth
+    metric: pro_tool_executions
+    included: 100
+    period: month
+    overagePrice: '0.50'
+    overageUnit: per_execution
+  - tier: Growth
+    metric: hosted_mcp_server_runtime
+    included: 0
+    period: month
+    overagePrice: '0.05'
+    overageUnit: per_hour
+  - tier: Enterprise
+    metric: all
+    included: custom
+    period: month
+    overage: custom
+notes:
+  - The /v1/tools/execute endpoint counts as a tool execution against either the standard or pro execution quota
+    depending on the toolkit / tool tier.
+  - The /v1/auth/authorize endpoint and end-user OAuth grant flow count as a user challenge.
+  - Arcade-hosted MCP servers running 24/7 are billed per runtime hour above the Hobby tier.
