@@ -1,0 +1,1778 @@
+{
+  "item": [
+    {
+      "id": "93a5081f-7723-48ee-a36e-5a9e1f53be13",
+      "name": "Admin",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8e3bfa4f-f958-4c16-8a31-9255b6762a5c",
+          "name": "List All Workers",
+          "request": {
+            "name": "List All Workers",
+            "description": {
+              "content": "List all workers with their definitions",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return (default: 25, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset from the start of the list (default: 0)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cba89968-df64-427f-ad83-5250db9e12d8",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"binding\": {\n        \"id\": \"string\",\n        \"type\": \"project\"\n      },\n      \"enabled\": false,\n      \"http\": {\n        \"retry\": 7284,\n        \"secret\": {\n          \"binding\": \"tenant\",\n          \"editable\": false,\n          \"exists\": false,\n          \"value\": \"string\"\n        },\n        \"timeout\": 1403,\n        \"uri\": \"string\"\n      },\n      \"id\": \"string\",\n      \"managed\": true,\n      \"mcp\": {\n        \"external_id\": \"string\",\n        \"headers\": {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\"\n        },\n        \"oauth2\": {\n          \"authorization_url\": \"string\",\n          \"client_id\": \"string\",\n          \"client_secret\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"exists\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"external_id\": \"string\",\n          \"redirect_uri\": \"string\",\n          \"supported_scopes\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"redirect_uri\": \"string\",\n        \"retry\": 865,\n        \"secrets\": {\n          \"key_0\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": true,\n            \"exists\": false,\n            \"value\": \"string\"\n          },\n          \"key_1\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": true,\n            \"exists\": false,\n            \"value\": \"string\"\n          },\n          \"key_2\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": true,\n            \"exists\": true,\n            \"value\": \"string\"\n          }\n        },\n        \"timeout\": 4905,\n        \"uri\": \"string\"\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"met\": false,\n          \"oauth2\": {\n            \"met\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"met\": false\n      },\n      \"type\": \"http\"\n    },\n    {\n      \"binding\": {\n        \"id\": \"string\",\n        \"type\": \"static\"\n      },\n      \"enabled\": false,\n      \"http\": {\n        \"retry\": 6860,\n        \"secret\": {\n          \"binding\": \"account\",\n          \"editable\": false,\n          \"exists\": false,\n          \"value\": \"string\"\n        },\n        \"timeout\": 4162,\n        \"uri\": \"string\"\n      },\n      \"id\": \"string\",\n      \"managed\": false,\n      \"mcp\": {\n        \"external_id\": \"string\",\n        \"headers\": {\n          \"key_0\": \"string\"\n        },\n        \"oauth2\": {\n          \"authorization_url\": \"string\",\n          \"client_id\": \"string\",\n          \"client_secret\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"exists\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"value\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"external_id\": \"string\",\n          \"redirect_uri\": \"string\",\n          \"supported_scopes\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"redirect_uri\": \"string\",\n        \"retry\": 8672,\n        \"secrets\": {\n          \"key_0\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": true,\n            \"exists\": false,\n            \"value\": \"string\"\n          },\n          \"key_1\": {\n            \"binding\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"editable\": false,\n            \"exists\": false,\n            \"value\": \"string\"\n          }\n        },\n        \"timeout\": 6662,\n        \"uri\": \"string\"\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"met\": false,\n          \"oauth2\": {\n            \"met\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        },\n        \"met\": true\n      },\n      \"type\": \"mcp\"\n    }\n  ],\n  \"limit\": 6853,\n  \"offset\": 8975,\n  \"page_count\": 7702,\n  \"total_count\": 4050\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a37348e-4ac2-4f83-a2cf-d70832c16a61",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a16f0b13-643c-4e5f-b4e3-606e1e26fb8f",
+          "name": "Create a Worker",
+          "request": {
+            "name": "Create a Worker",
+            "description": {
+              "content": "Create a worker",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"retry\": \"<integer>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\",\n      \"external_id\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"type\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0271c518-e6a8-4ee3-94cc-b2d02c4f9f95",
+              "name": "Created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"retry\": \"<integer>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\",\n      \"external_id\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"binding\": {\n    \"id\": \"string\",\n    \"type\": \"project\"\n  },\n  \"enabled\": false,\n  \"http\": {\n    \"retry\": 1725,\n    \"secret\": {\n      \"binding\": \"static\",\n      \"editable\": true,\n      \"exists\": true,\n      \"value\": \"string\"\n    },\n    \"timeout\": 1495,\n    \"uri\": \"string\"\n  },\n  \"id\": \"string\",\n  \"managed\": false,\n  \"mcp\": {\n    \"external_id\": \"string\",\n    \"headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"string\",\n      \"client_id\": \"string\",\n      \"client_secret\": {\n        \"binding\": \"account\",\n        \"editable\": false,\n        \"exists\": true,\n        \"value\": \"string\"\n      },\n      \"external_id\": \"string\",\n      \"redirect_uri\": \"string\",\n      \"supported_scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"redirect_uri\": \"string\",\n    \"retry\": 5446,\n    \"secrets\": {\n      \"key_0\": {\n        \"binding\": \"static\",\n        \"editable\": false,\n        \"exists\": false,\n        \"value\": \"string\"\n      }\n    },\n    \"timeout\": 2247,\n    \"uri\": \"string\"\n  },\n  \"requirements\": {\n    \"authorization\": {\n      \"met\": true,\n      \"oauth2\": {\n        \"met\": true\n      }\n    },\n    \"met\": true\n  },\n  \"type\": \"mcp\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88db0569-60a2-4e29-9d84-dae35ade4f66",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"retry\": \"<integer>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\",\n    \"headers\": {\n      \"key_0\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\",\n      \"external_id\": \"<string>\"\n    },\n    \"secrets\": {\n      \"key_0\": \"<string>\"\n    }\n  },\n  \"type\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e73f1ac1-e01c-4a88-b69b-e8bd0eaaf547",
+          "name": "Test a Worker Connection",
+          "request": {
+            "name": "Test a Worker Connection",
+            "description": {
+              "content": "Test a worker connection before adding it to the system",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                "test"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"http\": {\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"uri\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68a3e8fb-398d-4735-949c-bb1f78e5be34",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"http\": {\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"serverInfo\": {\n    \"description\": \"string\",\n    \"name\": \"string\",\n    \"version\": \"string\"\n  },\n  \"success\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc21bc10-196f-492c-9f40-c7a642e1cd17",
+              "name": "Invalid request body or URI",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"http\": {\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97d427f2-e3ad-47eb-8d5d-60d5072977d6",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    "test"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"http\": {\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "598d11d5-ecdd-4638-aca5-c80d1ba53892",
+          "name": "Get a Worker by ID",
+          "request": {
+            "name": "Get a Worker by ID",
+            "description": {
+              "content": "Get a worker by ID",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c91219e-2752-40c5-abcd-afb37b89cfb3",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"binding\": {\n    \"id\": \"string\",\n    \"type\": \"project\"\n  },\n  \"enabled\": false,\n  \"http\": {\n    \"retry\": 1725,\n    \"secret\": {\n      \"binding\": \"static\",\n      \"editable\": true,\n      \"exists\": true,\n      \"value\": \"string\"\n    },\n    \"timeout\": 1495,\n    \"uri\": \"string\"\n  },\n  \"id\": \"string\",\n  \"managed\": false,\n  \"mcp\": {\n    \"external_id\": \"string\",\n    \"headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"string\",\n      \"client_id\": \"string\",\n      \"client_secret\": {\n        \"binding\": \"account\",\n        \"editable\": false,\n        \"exists\": true,\n        \"value\": \"string\"\n      },\n      \"external_id\": \"string\",\n      \"redirect_uri\": \"string\",\n      \"supported_scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"redirect_uri\": \"string\",\n    \"retry\": 5446,\n    \"secrets\": {\n      \"key_0\": {\n        \"binding\": \"static\",\n        \"editable\": false,\n        \"exists\": false,\n        \"value\": \"string\"\n      }\n    },\n    \"timeout\": 2247,\n    \"uri\": \"string\"\n  },\n  \"requirements\": {\n    \"authorization\": {\n      \"met\": true,\n      \"oauth2\": {\n        \"met\": true\n      }\n    },\n    \"met\": true\n  },\n  \"type\": \"mcp\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50ff2202-b26d-4473-a243-14a6a315e2ad",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cbaf7069-72a0-4258-98cc-873c36325dcb",
+          "name": "Delete a Worker",
+          "request": {
+            "name": "Delete a Worker",
+            "description": {
+              "content": "Delete a worker",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd621b22-8cee-4591-b395-e2b75308131e",
+              "name": "No Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4a6ae7fa-664d-4a40-8cf3-e30b3cf56e82",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a656a4d4-6dc2-421d-9a53-8eb13736bef9",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1b06a7dd-3aee-4d3c-9728-520c9ececeab",
+          "name": "Update a Worker",
+          "request": {
+            "name": "Update a Worker",
+            "description": {
+              "content": "Update a worker",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\"\n    },\n    \"retry\": \"<integer>\",\n    \"secrets\": {\n      \"key_0\": \"<string>\"\n    },\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "611c84f7-1dca-4ce8-80e8-467d1f561be5",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\"\n    },\n    \"retry\": \"<integer>\",\n    \"secrets\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"binding\": {\n    \"id\": \"string\",\n    \"type\": \"project\"\n  },\n  \"enabled\": false,\n  \"http\": {\n    \"retry\": 1725,\n    \"secret\": {\n      \"binding\": \"static\",\n      \"editable\": true,\n      \"exists\": true,\n      \"value\": \"string\"\n    },\n    \"timeout\": 1495,\n    \"uri\": \"string\"\n  },\n  \"id\": \"string\",\n  \"managed\": false,\n  \"mcp\": {\n    \"external_id\": \"string\",\n    \"headers\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"string\",\n      \"client_id\": \"string\",\n      \"client_secret\": {\n        \"binding\": \"account\",\n        \"editable\": false,\n        \"exists\": true,\n        \"value\": \"string\"\n      },\n      \"external_id\": \"string\",\n      \"redirect_uri\": \"string\",\n      \"supported_scopes\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    \"redirect_uri\": \"string\",\n    \"retry\": 5446,\n    \"secrets\": {\n      \"key_0\": {\n        \"binding\": \"static\",\n        \"editable\": false,\n        \"exists\": false,\n        \"value\": \"string\"\n      }\n    },\n    \"timeout\": 2247,\n    \"uri\": \"string\"\n  },\n  \"requirements\": {\n    \"authorization\": {\n      \"met\": true,\n      \"oauth2\": {\n        \"met\": true\n      }\n    },\n    \"met\": true\n  },\n  \"type\": \"mcp\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd1ef8f3-d40e-42aa-b9a2-b3b51e1449ae",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\"\n    },\n    \"retry\": \"<integer>\",\n    \"secrets\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a944a8d8-7dc6-42b3-9bfc-2bc0d8a8c553",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"enabled\": \"<boolean>\",\n  \"http\": {\n    \"retry\": \"<integer>\",\n    \"secret\": \"<string>\",\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  },\n  \"mcp\": {\n    \"headers\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\",\n      \"key_2\": \"<string>\"\n    },\n    \"oauth2\": {\n      \"authorization_url\": \"<string>\",\n      \"client_id\": \"<string>\",\n      \"client_secret\": \"<string>\"\n    },\n    \"retry\": \"<integer>\",\n    \"secrets\": {\n      \"key_0\": \"<string>\",\n      \"key_1\": \"<string>\"\n    },\n    \"timeout\": \"<integer>\",\n    \"uri\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0525b72e-c472-47ee-b861-0a501eb3b9e1",
+          "name": "Authorize a Worker",
+          "request": {
+            "name": "Authorize a Worker",
+            "description": {
+              "content": "Authorize a worker",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id",
+                "authorize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4fe66c85-ad68-4cec-a926-52906ec63c36",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"scopes\": [\n    \"string\",\n    \"string\"\n  ],\n  \"status\": \"string\",\n  \"user_id\": \"string\",\n  \"worker_id\": \"string\",\n  \"next_uri\": \"string\",\n  \"url\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b515446-5dfa-4990-a61b-92f93291cec8",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "authorize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d30a2c92-19bf-42e4-8e2d-324ef6a5fdd1",
+          "name": "Get the Health of a Worker",
+          "request": {
+            "name": "Get the Health of a Worker",
+            "description": {
+              "content": "Get the health of a worker",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id",
+                "health"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4541ebe3-22bb-4053-9848-af55d4053d63",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"enabled\": false,\n  \"healthy\": true,\n  \"id\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3536a68-5b59-4e45-832d-31ab1d4774d5",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "health"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "716297b0-722e-4764-9222-d986ef26e500",
+          "name": "List Tools",
+          "request": {
+            "name": "List Tools",
+            "description": {
+              "content": "Returns a page of tools",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "workers",
+                ":id",
+                "tools"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Number of items to return (default: 25, max: 100)"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Offset from the start of the list (default: 0)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Worker ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d6f6c43e-67bb-421e-bbaf-6ceea97b4b3a",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"fully_qualified_name\": \"string\",\n      \"input\": {\n        \"parameters\": [\n          {\n            \"name\": \"string\",\n            \"value_schema\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\",\n            \"inferrable\": true,\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"value_schema\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\",\n            \"inferrable\": true,\n            \"required\": true\n          }\n        ]\n      },\n      \"name\": \"string\",\n      \"qualified_name\": \"string\",\n      \"toolkit\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"version\": \"string\"\n      },\n      \"description\": \"string\",\n      \"formatted_schema\": {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      \"metadata\": {\n        \"behavior\": {\n          \"destructive\": true,\n          \"idempotent\": false,\n          \"open_world\": false,\n          \"operations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"read_only\": false\n        },\n        \"classification\": {\n          \"service_domains\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"extras\": {\n          \"key_0\": {}\n        }\n      },\n      \"output\": {\n        \"available_modes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"value_schema\": {\n          \"val_type\": \"string\",\n          \"enum\": [\n            \"string\",\n            \"string\"\n          ],\n          \"inner_val_type\": \"string\"\n        }\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"id\": \"string\",\n          \"oauth2\": {\n            \"scopes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"provider_id\": \"string\",\n          \"provider_type\": \"string\",\n          \"status\": \"disabled\",\n          \"status_reason\": \"string\",\n          \"token_status\": \"pending\"\n        },\n        \"met\": false,\n        \"secrets\": [\n          {\n            \"key\": \"string\",\n            \"met\": false,\n            \"status_reason\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"met\": false,\n            \"status_reason\": \"string\"\n          }\n        ]\n      }\n    },\n    {\n      \"fully_qualified_name\": \"string\",\n      \"input\": {\n        \"parameters\": [\n          {\n            \"name\": \"string\",\n            \"value_schema\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\",\n            \"inferrable\": true,\n            \"required\": true\n          },\n          {\n            \"name\": \"string\",\n            \"value_schema\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"description\": \"string\",\n            \"inferrable\": true,\n            \"required\": false\n          }\n        ]\n      },\n      \"name\": \"string\",\n      \"qualified_name\": \"string\",\n      \"toolkit\": {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"version\": \"string\"\n      },\n      \"description\": \"string\",\n      \"formatted_schema\": {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {},\n        \"key_3\": {}\n      },\n      \"metadata\": {\n        \"behavior\": {\n          \"destructive\": false,\n          \"idempotent\": true,\n          \"open_world\": true,\n          \"operations\": [\n            \"string\",\n            \"string\"\n          ],\n          \"read_only\": true\n        },\n        \"classification\": {\n          \"service_domains\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        \"extras\": {\n          \"key_0\": {}\n        }\n      },\n      \"output\": {\n        \"available_modes\": [\n          \"string\",\n          \"string\"\n        ],\n        \"description\": \"string\",\n        \"value_schema\": {\n          \"val_type\": \"string\",\n          \"enum\": [\n            \"string\",\n            \"string\"\n          ],\n          \"inner_val_type\": \"string\"\n        }\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"id\": \"string\",\n          \"oauth2\": {\n            \"scopes\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          \"provider_id\": \"string\",\n          \"provider_type\": \"string\",\n          \"status\": \"disabled\",\n          \"status_reason\": \"string\",\n          \"token_status\": \"not_started\"\n        },\n        \"met\": false,\n        \"secrets\": [\n          {\n            \"key\": \"string\",\n            \"met\": false,\n            \"status_reason\": \"string\"\n          },\n          {\n            \"key\": \"string\",\n            \"met\": false,\n            \"status_reason\": \"string\"\n          }\n        ]\n      }\n    }\n  ],\n  \"limit\": 7103,\n  \"offset\": 965,\n  \"page_count\": 2095,\n  \"total_count\": 1879\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96bab610-d1b0-4229-b3e7-5b8549d4dc38",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "workers",
+                    ":id",
+                    "tools"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Worker ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.arcade.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b9a6338-aaa4-425b-9172-13a90c68f39e",
+    "name": "Arcade Workers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Register, manage, health-check, and authorize workers that host MCP tools and toolkits behind the Arcade Engine.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+      "type": "text/plain"
+    }
+  }
+}

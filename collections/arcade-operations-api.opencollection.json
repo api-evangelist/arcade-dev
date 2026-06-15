@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Operations API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Engine Config",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/config"
+          },
+          "docs": "Get the Engine configuration"
+        },
+        {
+          "info": {
+            "name": "Engine Health Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/health"
+          },
+          "docs": "Check if Arcade Engine is healthy"
+        },
+        {
+          "info": {
+            "name": "Get OpenAPI Specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/swagger"
+          },
+          "docs": "Get the OpenAPI 3.0 specification in JSON format"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
