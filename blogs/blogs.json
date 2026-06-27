@@ -2,11 +2,11 @@
   "repo": "arcade-dev",
   "feeds": [
     {
-      "source": "https://arcade.dev/blog",
+      "source": "https://www.arcade.dev/blog/rss.xml",
       "feed_url": "https://www.arcade.dev/blog/rss.xml",
       "title": "",
-      "saved": 4,
-      "method": "discovered"
+      "saved": 6,
+      "method": "feed"
     },
     {
       "source": "https://arcade.dev/pricing",
@@ -16,6 +16,6 @@
       "method": "none"
     }
   ],
-  "post_count": 6,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 14,
+  "fetched": "2026-06-27T12:03:07Z"
 }
