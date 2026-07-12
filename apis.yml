@@ -180,6 +180,10 @@ apis:
       Operational endpoints exposing service health, engine runtime configuration, and the OpenAPI / swagger description
       of the Arcade Engine.
 common:
+  - type: DomainSecurity
+    url: security/arcade-dev-domain-security.yml
+  - type: Authentication
+    url: authentication/arcade-dev-authentication.yml
   - type: Portal
     url: https://arcade.dev
   - type: Documentation

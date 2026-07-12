@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/arcade-admin-api-openapi.yml, openapi/arcade-auth-api-openapi.yml, openapi/arcade-gateways-api-openapi.yml,
+  openapi/arcade-hooks-api-openapi.yml, openapi/arcade-llm-api-openapi.yml, openapi/arcade-operations-api-openapi.yml,
+  openapi/arcade-plugins-api-openapi.yml, openapi/arcade-tools-api-openapi.yml, openapi/arcade-workers-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: Bearer
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: 'Enter your API key or API token in the format: Bearer <token>'
+  sources:
+  - openapi/arcade-admin-api-openapi.yml
+  - openapi/arcade-auth-api-openapi.yml
+  - openapi/arcade-gateways-api-openapi.yml
+  - openapi/arcade-hooks-api-openapi.yml
+  - openapi/arcade-llm-api-openapi.yml
+  - openapi/arcade-operations-api-openapi.yml
+  - openapi/arcade-plugins-api-openapi.yml
+  - openapi/arcade-tools-api-openapi.yml
+  - openapi/arcade-workers-api-openapi.yml
