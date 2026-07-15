@@ -180,6 +180,8 @@ apis:
       Operational endpoints exposing service health, engine runtime configuration, and the OpenAPI / swagger description
       of the Arcade Engine.
 common:
+  - type: AgenticAccess
+    url: agentic-access/arcade-dev-agentic-access.yml
   - type: DomainSecurity
     url: security/arcade-dev-domain-security.yml
   - type: Authentication
