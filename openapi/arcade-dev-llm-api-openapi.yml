@@ -1,13 +1,16 @@
 openapi: 3.0.0
 info:
-  description: OpenAI-compatible chat completions endpoint that lets agents call LLMs with Arcade tools attached and execute
-    them with user-scoped authorization.
-  title: Arcade LLM API
+  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
+  title: Arcade Admin LLM API
   contact:
     name: Arcade
     url: https://arcade.dev
     email: contact@arcade.dev
   version: 0.1.0
+servers:
+- url: https://api.arcade.dev
+tags:
+- name: LLM
 paths:
   /v1/chat/completions:
     post:
@@ -56,60 +59,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas.Error'
-externalDocs:
-  description: Documentation
-  url: https://docs.arcade.dev
-servers:
-- url: https://api.arcade.dev
 components:
-  securitySchemes:
-    Bearer:
-      description: 'Enter your API key or API token in the format: Bearer <token>'
-      type: apiKey
-      name: Authorization
-      in: header
   schemas:
-    auth.AuthorizationContext:
+    schemas.Error:
       type: object
       properties:
-        token:
+        message:
           type: string
-        user_info:
-          type: object
-          additionalProperties: true
-    auth.AuthorizationResponse:
+        name:
+          type: string
+    schemas.Choice:
       type: object
       properties:
-        context:
-          $ref: '#/components/schemas/auth.AuthorizationContext'
-        id:
+        finish_reason:
           type: string
-        provider_id:
-          type: string
-        scopes:
+        index:
+          type: integer
+        logprobs: {}
+        message:
+          $ref: '#/components/schemas/schemas.ChatMessage'
+        tool_authorizations:
           type: array
           items:
-            type: string
-        status:
-          default: pending
-          allOf:
-          - $ref: '#/components/schemas/auth.AuthorizationStatus'
-        url:
-          type: string
-        user_id:
-          type: string
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
+            $ref: '#/components/schemas/auth.AuthorizationResponse'
+        tool_messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.ChatMessage'
     schemas.ChatMessage:
       type: object
       required:
@@ -133,14 +109,108 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/schemas.ModelToolCall'
+    auth.AuthorizationContext:
+      type: object
+      properties:
+        token:
+          type: string
+        user_info:
+          type: object
+          additionalProperties: true
+    schemas.ToolType:
+      type: string
+      enum:
+      - function
+      x-enum-varnames:
+      - ToolTypeFunction
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    schemas.Usage:
+      type: object
+      properties:
+        completion_tokens:
+          type: integer
+        prompt_tokens:
+          type: integer
+        total_tokens:
+          type: integer
+    schemas.ResponseFormat:
+      type: object
+      properties:
+        type:
+          $ref: '#/components/schemas/schemas.ResponseFormatType'
+    schemas.ChatResponse:
+      type: object
+      properties:
+        choices:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.Choice'
+        created:
+          type: integer
+        id:
+          type: string
+        model:
+          type: string
+        object:
+          type: string
+        system_fingerprint:
+          type: string
+        usage:
+          $ref: '#/components/schemas/schemas.Usage'
+    schemas.ResponseFormatType:
+      type: string
+      enum:
+      - json_object
+      - text
+      x-enum-varnames:
+      - ResponseFormatJSON
+      - ResponseFormatText
+    schemas.ToolFunctionCall:
+      type: object
+      properties:
+        arguments:
+          type: string
+        name:
+          type: string
+    schemas.ModelToolCall:
+      type: object
+      properties:
+        function:
+          $ref: '#/components/schemas/schemas.ToolFunctionCall'
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/schemas.ToolType'
+    schemas.StreamOptions:
+      type: object
+      properties:
+        include_usage:
+          description: 'If set, an additional chunk will be streamed before the data: [DONE] message.
+
+            The usage field on this chunk shows the token usage statistics for the entire request,
+
+            and the choices field will always be an empty array.
+
+            All other chunks will also include a usage field, but with a null value.'
+          type: boolean
     schemas.ChatRequest:
       type: object
       properties:
         frequency_penalty:
           type: number
         logit_bias:
-          description: 'LogitBias is must be a token id string (specified by their token ID in the tokenizer), not a word
-            string.
+          description: 'LogitBias is must be a token id string (specified by their token ID in the tokenizer), not a word string.
 
             incorrect: `"logit_bias":{"You": 6}`, correct: `"logit_bias":{"1639": 6}`
 
@@ -190,8 +260,7 @@ components:
           description: This can be either a string or an ToolChoice object.
         tools: {}
         top_logprobs:
-          description: 'TopLogProbs is an integer between 0 and 5 specifying the number of most likely tokens to return at
-            each
+          description: 'TopLogProbs is an integer between 0 and 5 specifying the number of most likely tokens to return at each
 
             token position, each with an associated log probability.
 
@@ -201,103 +270,33 @@ components:
           type: number
         user:
           type: string
-    schemas.ChatResponse:
+    auth.AuthorizationResponse:
       type: object
       properties:
-        choices:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.Choice'
-        created:
-          type: integer
+        context:
+          $ref: '#/components/schemas/auth.AuthorizationContext'
         id:
           type: string
-        model:
+        provider_id:
           type: string
-        object:
-          type: string
-        system_fingerprint:
-          type: string
-        usage:
-          $ref: '#/components/schemas/schemas.Usage'
-    schemas.Choice:
-      type: object
-      properties:
-        finish_reason:
-          type: string
-        index:
-          type: integer
-        logprobs: {}
-        message:
-          $ref: '#/components/schemas/schemas.ChatMessage'
-        tool_authorizations:
+        scopes:
           type: array
           items:
-            $ref: '#/components/schemas/auth.AuthorizationResponse'
-        tool_messages:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.ChatMessage'
-    schemas.Error:
-      type: object
-      properties:
-        message:
+            type: string
+        status:
+          default: pending
+          allOf:
+          - $ref: '#/components/schemas/auth.AuthorizationStatus'
+        url:
           type: string
-        name:
+        user_id:
           type: string
-    schemas.ModelToolCall:
-      type: object
-      properties:
-        function:
-          $ref: '#/components/schemas/schemas.ToolFunctionCall'
-        id:
-          type: string
-        type:
-          $ref: '#/components/schemas/schemas.ToolType'
-    schemas.ResponseFormat:
-      type: object
-      properties:
-        type:
-          $ref: '#/components/schemas/schemas.ResponseFormatType'
-    schemas.ResponseFormatType:
-      type: string
-      enum:
-      - json_object
-      - text
-      x-enum-varnames:
-      - ResponseFormatJSON
-      - ResponseFormatText
-    schemas.StreamOptions:
-      type: object
-      properties:
-        include_usage:
-          description: 'If set, an additional chunk will be streamed before the data: [DONE] message.
-
-            The usage field on this chunk shows the token usage statistics for the entire request,
-
-            and the choices field will always be an empty array.
-
-            All other chunks will also include a usage field, but with a null value.'
-          type: boolean
-    schemas.ToolFunctionCall:
-      type: object
-      properties:
-        arguments:
-          type: string
-        name:
-          type: string
-    schemas.ToolType:
-      type: string
-      enum:
-      - function
-      x-enum-varnames:
-      - ToolTypeFunction
-    schemas.Usage:
-      type: object
-      properties:
-        completion_tokens:
-          type: integer
-        prompt_tokens:
-          type: integer
-        total_tokens:
-          type: integer
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev

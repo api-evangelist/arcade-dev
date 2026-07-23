@@ -1,13 +1,16 @@
 openapi: 3.0.0
 info:
-  description: Operational endpoints for service health, runtime configuration, and the OpenAPI / swagger description of the
-    Arcade Engine.
-  title: Arcade Operations API
+  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
+  title: Arcade Admin Operations API
   contact:
     name: Arcade
     url: https://arcade.dev
     email: contact@arcade.dev
   version: 0.1.0
+servers:
+- url: https://api.arcade.dev
+tags:
+- name: Operations
 paths:
   /v1/config:
     get:
@@ -58,18 +61,7 @@ paths:
               schema:
                 type: object
                 additionalProperties: true
-externalDocs:
-  description: Documentation
-  url: https://docs.arcade.dev
-servers:
-- url: https://api.arcade.dev
 components:
-  securitySchemes:
-    Bearer:
-      description: 'Enter your API key or API token in the format: Bearer <token>'
-      type: apiKey
-      name: Authorization
-      in: header
   schemas:
     schemas.DashboardConfigResponse:
       type: object
@@ -89,16 +81,16 @@ components:
           $ref: '#/components/schemas/schemas.EngineOAuth2ConfigResponse'
         servers:
           $ref: '#/components/schemas/schemas.EngineServersConfig'
-    schemas.EngineOAuth2ConfigResponse:
-      type: object
-      properties:
-        callback_url_template:
-          type: string
     schemas.EngineServersConfig:
       type: object
       properties:
         timeout_max_seconds:
           type: integer
+    schemas.EngineOAuth2ConfigResponse:
+      type: object
+      properties:
+        callback_url_template:
+          type: string
     schemas.HealthSchema:
       type: object
       properties:
@@ -107,3 +99,12 @@ components:
         reason:
           description: 'Optional: explains why unhealthy'
           type: string
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev

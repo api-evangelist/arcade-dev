@@ -1,13 +1,16 @@
 openapi: 3.0.0
 info:
-  description: Authorize end-users for third-party providers (OAuth, API key, custom). Check authorization status and confirm
-    users to obtain user-scoped tokens for tools.
-  title: Arcade Authorization API
+  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
+  title: Arcade Admin Authorization API
   contact:
     name: Arcade
     url: https://arcade.dev
     email: contact@arcade.dev
   version: 0.1.0
+servers:
+- url: https://api.arcade.dev
+tags:
+- name: Authorization
 paths:
   /v1/auth/authorize:
     post:
@@ -214,19 +217,45 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/schemas.Error'
-externalDocs:
-  description: Documentation
-  url: https://docs.arcade.dev
-servers:
-- url: https://api.arcade.dev
 components:
-  securitySchemes:
-    Bearer:
-      description: 'Enter your API key or API token in the format: Bearer <token>'
-      type: apiKey
-      name: Authorization
-      in: header
   schemas:
+    schemas.AuthorizationInitiationRequest:
+      type: object
+      required:
+      - auth_requirement
+      - user_id
+      properties:
+        auth_requirement:
+          $ref: '#/components/schemas/auth.AuthorizationRequirement'
+        next_uri:
+          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
+          type: string
+        user_id:
+          type: string
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.ValidateCustomVerifierResponse:
+      type: object
+      properties:
+        flow_id:
+          type: string
+        next_uri:
+          type: string
+    schemas.ValidateCustomVerifierRequest:
+      type: object
+      required:
+      - user_id
+      - verifier_url
+      properties:
+        user_id:
+          type: string
+        verifier_url:
+          type: string
     auth.AuthorizationContext:
       type: object
       properties:
@@ -235,6 +264,28 @@ components:
         user_info:
           type: object
           additionalProperties: true
+    schemas.AuthorizationConfirmUserRequest:
+      type: object
+      required:
+      - flow_id
+      - user_id
+      properties:
+        flow_id:
+          type: string
+        user_id:
+          type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
     auth.AuthorizationRequirement:
       type: object
       properties:
@@ -247,6 +298,22 @@ components:
           description: one of ID or ProviderID must be set
           type: string
         provider_type:
+          type: string
+    auth.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    schemas.AuthorizationConfirmUserResponse:
+      type: object
+      required:
+      - auth_id
+      properties:
+        auth_id:
+          type: string
+        next_uri:
           type: string
     auth.AuthorizationResponse:
       type: object
@@ -269,78 +336,12 @@ components:
           type: string
         user_id:
           type: string
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
-    auth.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
-    schemas.AuthorizationConfirmUserRequest:
-      type: object
-      required:
-      - flow_id
-      - user_id
-      properties:
-        flow_id:
-          type: string
-        user_id:
-          type: string
-    schemas.AuthorizationConfirmUserResponse:
-      type: object
-      required:
-      - auth_id
-      properties:
-        auth_id:
-          type: string
-        next_uri:
-          type: string
-    schemas.AuthorizationInitiationRequest:
-      type: object
-      required:
-      - auth_requirement
-      - user_id
-      properties:
-        auth_requirement:
-          $ref: '#/components/schemas/auth.AuthorizationRequirement'
-        next_uri:
-          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
-          type: string
-        user_id:
-          type: string
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
-    schemas.ValidateCustomVerifierRequest:
-      type: object
-      required:
-      - user_id
-      - verifier_url
-      properties:
-        user_id:
-          type: string
-        verifier_url:
-          type: string
-    schemas.ValidateCustomVerifierResponse:
-      type: object
-      properties:
-        flow_id:
-          type: string
-        next_uri:
-          type: string
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
