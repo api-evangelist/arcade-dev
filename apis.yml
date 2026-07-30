@@ -1,185 +1,511 @@
 aid: arcade-dev
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/arcade-dev.png
 url: https://raw.githubusercontent.com/api-evangelist/arcade-dev/refs/heads/main/apis.yml
 apis:
-  - aid: arcade-dev:arcade-tools-api
-    name: Arcade Tools API
-    tags:
-      - Tools
-      - Agents
-      - AI
-      - Execution
-    humanURL: https://docs.arcade.dev/references/api
-    properties:
-      - url: https://docs.arcade.dev/home/tools
-        type: Documentation
-      - url: openapi/arcade-tools-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/arcade-tool-schema.json
-        type: JSONSchema
-      - url: json-schema/arcade-tool-execution-schema.json
-        type: JSONSchema
-      - url: json-structure/arcade-tool-structure.json
-        type: JSONStructure
-      - url: examples/arcade-tools-list-example.json
-        type: Examples
-      - url: examples/arcade-tools-execute-example.json
-        type: Examples
-      - url: examples/arcade-tools-authorize-example.json
-        type: Examples
-    description: >-
-      List, inspect, authorize, execute, and schedule Arcade tools. Tools are user-scoped agent actions addressed by
-      fully qualified name (Toolkit.Name@version) and executed against a stable user_id with Arcade-managed
-      authorization tokens.
-  - aid: arcade-dev:arcade-auth-api
-    name: Arcade Authorization API
-    tags:
-      - Authorization
-      - OAuth
-      - Identity
-      - Agents
-    humanURL: https://docs.arcade.dev/home/auth
-    properties:
-      - url: https://docs.arcade.dev/home/auth
-        type: Documentation
-      - url: openapi/arcade-auth-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/arcade-authorization-schema.json
-        type: JSONSchema
-      - url: json-structure/arcade-authorization-structure.json
-        type: JSONStructure
-      - url: examples/arcade-auth-authorize-example.json
-        type: Examples
-      - url: examples/arcade-auth-status-example.json
-        type: Examples
-    description: >-
-      Authorize end-users against 40+ identity providers (Google, Microsoft, Slack, GitHub, Salesforce, HubSpot, and
-      more). Issue user-scoped grants, poll authorization status, and confirm users so agents can call tools as the
-      end-user rather than a shared service account.
-  - aid: arcade-dev:arcade-llm-api
-    name: Arcade LLM API
-    tags:
-      - LLM
-      - AI
-      - Chat
-      - OpenAI Compatible
-    humanURL: https://docs.arcade.dev/home/chat-overview
-    properties:
-      - url: https://docs.arcade.dev/home/chat-overview
-        type: Documentation
-      - url: openapi/arcade-llm-api-openapi.yml
-        type: OpenAPI
-      - url: examples/arcade-llm-chat-completions-example.json
-        type: Examples
-    description: >-
-      OpenAI-compatible chat completions endpoint that lets agents call LLMs through Arcade with tools attached. The
-      engine handles tool selection, end-user authorization, and tool execution so agents need only speak the OpenAI
-      Chat Completions protocol.
-  - aid: arcade-dev:arcade-workers-api
-    name: Arcade Workers API
-    tags:
-      - Workers
-      - MCP
-      - Infrastructure
-      - Agents
-    humanURL: https://docs.arcade.dev/home/workers
-    properties:
-      - url: https://docs.arcade.dev/home/workers
-        type: Documentation
-      - url: openapi/arcade-workers-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/arcade-worker-schema.json
-        type: JSONSchema
-      - url: json-structure/arcade-worker-structure.json
-        type: JSONStructure
-      - url: examples/arcade-workers-create-example.json
-        type: Examples
-    description: >-
-      Register, manage, health-check, and authorize workers that host Arcade toolkits or MCP servers behind the Arcade
-      Engine. Self-hosted workers let customers keep tool execution (and end-user tokens) inside their own perimeter.
-  - aid: arcade-dev:arcade-gateways-api
-    name: Arcade Gateways API
-    tags:
-      - Gateways
-      - MCP
-      - Agents
-    humanURL: https://docs.arcade.dev/guides/mcp-gateways
-    properties:
-      - url: https://docs.arcade.dev/guides/mcp-gateways
-        type: Documentation
-      - url: openapi/arcade-gateways-api-openapi.yml
-        type: OpenAPI
-      - url: examples/arcade-gateways-create-example.json
-        type: Examples
-    description: >-
-      Create and manage MCP gateways scoped to organizations and projects. Gateways expose curated tool catalogs to MCP
-      clients (Cursor, Claude Desktop, Claude Code, VS Code, Microsoft Copilot Studio, GitHub Copilot).
-  - aid: arcade-dev:arcade-hooks-api
-    name: Arcade Hooks API
-    tags:
-      - Hooks
-      - Webhooks
-      - Events
-      - Agents
-    humanURL: https://docs.arcade.dev/guides/audit-logs
-    properties:
-      - url: https://docs.arcade.dev/guides/audit-logs
-        type: Documentation
-      - url: openapi/arcade-hooks-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/arcade-hook-schema.json
-        type: JSONSchema
-      - url: examples/arcade-hooks-create-example.json
-        type: Examples
-    description: >-
-      Manage lifecycle hooks that fire on tool authorization, tool execution, worker health, and audit events. Hooks are
-      the primary integration point for SIEM forwarding, audit logging, and downstream governance pipelines.
-  - aid: arcade-dev:arcade-admin-api
-    name: Arcade Admin API
-    tags:
-      - Administrative
-      - Secrets
-      - Identity
-      - Agents
-    humanURL: https://docs.arcade.dev/references/api
-    properties:
-      - url: https://docs.arcade.dev/home/auth-providers
-        type: Documentation
-      - url: openapi/arcade-admin-api-openapi.yml
-        type: OpenAPI
-      - url: examples/arcade-admin-secrets-set-example.json
-        type: Examples
-    description: >-
-      Administer Arcade auth providers, organization secrets, user connections, and session verification settings. The
-      control plane behind tool authorization and end-user identity.
-  - aid: arcade-dev:arcade-plugins-api
-    name: Arcade Plugins API
-    tags:
-      - Plugins
-      - Agents
-      - Extensibility
-    humanURL: https://docs.arcade.dev/references/api
-    properties:
-      - url: openapi/arcade-plugins-api-openapi.yml
-        type: OpenAPI
-    description: >-
-      Manage plugins that extend the Arcade Engine with custom auth providers, transformers, and tool sources. Plugins
-      let teams bring their own integrations behind the Arcade governance and auth layer.
-  - aid: arcade-dev:arcade-operations-api
-    name: Arcade Operations API
-    tags:
-      - Operations
-      - Health
-      - Configuration
-    humanURL: https://docs.arcade.dev/references/api
-    properties:
-      - url: openapi/arcade-operations-api-openapi.yml
-        type: OpenAPI
-      - url: examples/arcade-operations-health-example.json
-        type: Examples
-    description: >-
-      Operational endpoints exposing service health, engine runtime configuration, and the OpenAPI / swagger description
-      of the Arcade Engine.
+- aid: arcade-dev:arcade-dev-admin-api
+  name: arcade-dev Admin API
+  description: The Admin API from arcade-dev — 14 operation(s) for admin.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Admin
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-admin-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-authorization-api
+  name: arcade-dev Authorization API
+  description: The Authorization API from arcade-dev — 4 operation(s) for authorization.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Authorization
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-authorization-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-gateways-api
+  name: arcade-dev Gateways API
+  description: The Gateways API from arcade-dev — 3 operation(s) for gateways.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Gateways
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-gateways-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-hooks-api
+  name: arcade-dev Hooks API
+  description: The Hooks API from arcade-dev — 3 operation(s) for hooks.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Hooks
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-hooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-llm-api
+  name: arcade-dev LLM API
+  description: The LLM API from arcade-dev — 1 operation(s) for llm.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - LLM
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-llm-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-operations-api
+  name: arcade-dev Operations API
+  description: The Operations API from arcade-dev — 3 operation(s) for operations.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-operations-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-plugins-api
+  name: arcade-dev Plugins API
+  description: The Plugins API from arcade-dev — 2 operation(s) for plugins.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Plugins
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-plugins-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
+- aid: arcade-dev:arcade-dev-tools-api
+  name: arcade-dev Tools API
+  description: The Tools API from arcade-dev — 9 operation(s) for tools.
+  humanURL: https://docs.arcade.dev/references/api
+  tags:
+  - Tools
+  properties:
+  - type: OpenAPI
+    url: openapi/arcade-dev-tools-api-openapi.yml
+  - type: Documentation
+    url: https://docs.arcade.dev/home/tools
+  - type: JSONSchema
+    url: json-schema/arcade-tool-schema.json
+  - type: JSONSchema
+    url: json-schema/arcade-tool-execution-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-tool-structure.json
+  - type: Examples
+    url: examples/arcade-tools-list-example.json
+  - type: Examples
+    url: examples/arcade-tools-execute-example.json
+  - type: Examples
+    url: examples/arcade-tools-authorize-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth
+  - type: JSONSchema
+    url: json-schema/arcade-authorization-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-authorization-structure.json
+  - type: Examples
+    url: examples/arcade-auth-authorize-example.json
+  - type: Examples
+    url: examples/arcade-auth-status-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/chat-overview
+  - type: Examples
+    url: examples/arcade-llm-chat-completions-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/workers
+  - type: JSONSchema
+    url: json-schema/arcade-worker-schema.json
+  - type: JSONStructure
+    url: json-structure/arcade-worker-structure.json
+  - type: Examples
+    url: examples/arcade-workers-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/mcp-gateways
+  - type: Examples
+    url: examples/arcade-gateways-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/guides/audit-logs
+  - type: JSONSchema
+    url: json-schema/arcade-hook-schema.json
+  - type: Examples
+    url: examples/arcade-hooks-create-example.json
+  - type: Documentation
+    url: https://docs.arcade.dev/home/auth-providers
+  - type: Examples
+    url: examples/arcade-admin-secrets-set-example.json
+  - type: Examples
+    url: examples/arcade-operations-health-example.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/arcade-dev/overview
   - type: AgenticAccess
     url: agentic-access/arcade-dev-agentic-access.yml
   - type: DomainSecurity
