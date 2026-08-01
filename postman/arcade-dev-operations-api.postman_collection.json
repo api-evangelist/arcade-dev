@@ -1,0 +1,304 @@
+{
+  "info": {
+    "_postman_id": "f2793006-53a3-499d-bdf8-6963c3186378",
+    "name": "Arcade Admin Operations API",
+    "description": "Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:04:00.000Z",
+    "updatedAt": "2026-07-28T01:04:00.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f2793006-53a3-499d-bdf8-6963c3186378"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "config",
+          "item": [
+            {
+              "name": "Get Engine Config",
+              "id": "023b27ea-1944-4cb0-978f-1250faa22373",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/config",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "config"
+                  ]
+                },
+                "description": "Get the Engine configuration"
+              },
+              "response": [
+                {
+                  "id": "237c42b2-3db6-484a-9b8a-2a26fdd1f680",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/config",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "config"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"dashboard\": {\n    \"authority\": \"<string>\",\n    \"clientId\": \"<string>\",\n    \"coordinatorUri\": \"<string>\"\n  },\n  \"oauth2\": {\n    \"callback_url_template\": \"<string>\"\n  },\n  \"servers\": {\n    \"timeout_max_seconds\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T01:04:00.000Z",
+                  "updatedAt": "2026-07-28T01:04:00.000Z",
+                  "uid": "35240-237c42b2-3db6-484a-9b8a-2a26fdd1f680"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:00.000Z",
+              "updatedAt": "2026-07-28T01:04:00.000Z",
+              "uid": "35240-023b27ea-1944-4cb0-978f-1250faa22373"
+            }
+          ],
+          "id": "20b183fb-189e-48c7-8ea1-0c559f7dc57e",
+          "createdAt": "2026-07-28T01:04:00.000Z",
+          "updatedAt": "2026-07-28T01:04:00.000Z",
+          "uid": "35240-20b183fb-189e-48c7-8ea1-0c559f7dc57e"
+        },
+        {
+          "name": "health",
+          "item": [
+            {
+              "name": "Engine Health Check",
+              "id": "7e6986ea-d40b-429f-9e6c-df24e4d64299",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/health",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "health"
+                  ]
+                },
+                "description": "Check if Arcade Engine is healthy"
+              },
+              "response": [
+                {
+                  "id": "2bb4f602-92e5-428e-8023-91a6564ab98f",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/health",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "health"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"healthy\": \"<boolean>\",\n  \"reason\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:00.000Z",
+                  "updatedAt": "2026-07-28T01:04:00.000Z",
+                  "uid": "35240-2bb4f602-92e5-428e-8023-91a6564ab98f"
+                },
+                {
+                  "id": "956d2f13-3119-4433-b45d-caec52819630",
+                  "name": "Service Unavailable",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/health",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "health"
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"healthy\": \"<boolean>\",\n  \"reason\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:00.000Z",
+                  "updatedAt": "2026-07-28T01:04:00.000Z",
+                  "uid": "35240-956d2f13-3119-4433-b45d-caec52819630"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:00.000Z",
+              "updatedAt": "2026-07-28T01:04:00.000Z",
+              "uid": "35240-7e6986ea-d40b-429f-9e6c-df24e4d64299"
+            }
+          ],
+          "id": "abde1ad6-989b-4480-a1b6-2db2582347c8",
+          "createdAt": "2026-07-28T01:04:00.000Z",
+          "updatedAt": "2026-07-28T01:04:00.000Z",
+          "uid": "35240-abde1ad6-989b-4480-a1b6-2db2582347c8"
+        },
+        {
+          "name": "swagger",
+          "item": [
+            {
+              "name": "Get OpenAPI Specification",
+              "id": "73bfeedc-7dde-4feb-951b-8f5b46fb7851",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/swagger",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "swagger"
+                  ]
+                },
+                "description": "Get the OpenAPI 3.0 specification in JSON format"
+              },
+              "response": [
+                {
+                  "id": "519aa3e5-c9d3-4346-9e72-2a4f88661cfc",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/swagger",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "swagger"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"laborum_d9b\": \"cillum non fugiat sint\"\n}",
+                  "createdAt": "2026-07-28T01:04:00.000Z",
+                  "updatedAt": "2026-07-28T01:04:00.000Z",
+                  "uid": "35240-519aa3e5-c9d3-4346-9e72-2a4f88661cfc"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:00.000Z",
+              "updatedAt": "2026-07-28T01:04:00.000Z",
+              "uid": "35240-73bfeedc-7dde-4feb-951b-8f5b46fb7851"
+            }
+          ],
+          "id": "de9724ec-2e51-46e8-b2ca-3d1ec5875c1f",
+          "createdAt": "2026-07-28T01:04:00.000Z",
+          "updatedAt": "2026-07-28T01:04:00.000Z",
+          "uid": "35240-de9724ec-2e51-46e8-b2ca-3d1ec5875c1f"
+        }
+      ],
+      "id": "b41a60ff-aedb-4e2f-8700-a1d0d4a2fbac",
+      "createdAt": "2026-07-28T01:04:00.000Z",
+      "updatedAt": "2026-07-28T01:04:00.000Z",
+      "uid": "35240-b41a60ff-aedb-4e2f-8700-a1d0d4a2fbac"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arcade.dev"
+    }
+  ]
+}

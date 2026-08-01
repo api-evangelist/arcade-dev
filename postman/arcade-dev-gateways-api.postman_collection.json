@@ -1,0 +1,2883 @@
+{
+  "info": {
+    "_postman_id": "8759b52a-0cc4-47aa-84d2-13804c8df25c",
+    "name": "Arcade Admin Gateways API",
+    "description": "Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:03:57.000Z",
+    "updatedAt": "2026-07-28T01:03:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8759b52a-0cc4-47aa-84d2-13804c8df25c"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "orgs",
+          "item": [
+            {
+              "name": "{org_id}",
+              "item": [
+                {
+                  "name": "projects",
+                  "item": [
+                    {
+                      "name": "{project_id}",
+                      "item": [
+                        {
+                          "name": "gateways",
+                          "item": [
+                            {
+                              "name": "slug",
+                              "item": [
+                                {
+                                  "name": "Check Gateway Slug Availability",
+                                  "id": "64c6da2d-ab27-447e-bf2f-34df9c1a5771",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "Authorization",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"slug\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways",
+                                        "slug"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "9ccaca09-5906-4b98-a68c-a170f0c8d0b2",
+                                          "key": "org_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Organization ID"
+                                        },
+                                        {
+                                          "id": "b1861784-c74a-4b70-8734-4d6a49ce1eb2",
+                                          "key": "project_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Project ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Checks whether a gateway slug is available for use"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "59f5c639-956f-4894-a7b1-096a8c3d8071",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"slug\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            "slug"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"available\": \"<boolean>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-59f5c639-956f-4894-a7b1-096a8c3d8071"
+                                    },
+                                    {
+                                      "id": "e2136fd3-3d3e-48dd-911a-d79eaabba6f1",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"slug\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            "slug"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-e2136fd3-3d3e-48dd-911a-d79eaabba6f1"
+                                    },
+                                    {
+                                      "id": "3f48e632-3c7e-42f5-b37a-39f9440176c2",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"slug\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            "slug"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-3f48e632-3c7e-42f5-b37a-39f9440176c2"
+                                    },
+                                    {
+                                      "id": "ac043327-4752-4fd5-9ef8-005199d619fd",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "POST",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"slug\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            "slug"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-ac043327-4752-4fd5-9ef8-005199d619fd"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-64c6da2d-ab27-447e-bf2f-34df9c1a5771"
+                                }
+                              ],
+                              "id": "732ebc7b-f310-4403-ac8c-a28b3a21826a",
+                              "createdAt": "2026-07-28T01:03:57.000Z",
+                              "updatedAt": "2026-07-28T01:03:57.000Z",
+                              "uid": "35240-732ebc7b-f310-4403-ac8c-a28b3a21826a"
+                            },
+                            {
+                              "name": "{gateway_id}",
+                              "item": [
+                                {
+                                  "name": "Get a Gateway",
+                                  "id": "052397ae-947f-4a63-aa80-7e9f7ef6c9c5",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "Authorization",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways",
+                                        ":gateway_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "a5d57935-00f9-4135-8be9-099e046f32d0",
+                                          "key": "org_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Organization ID"
+                                        },
+                                        {
+                                          "id": "b01a57f2-c534-4978-b138-d1d61875efb2",
+                                          "key": "project_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Project ID"
+                                        },
+                                        {
+                                          "id": "876e0d1f-e300-4d71-800c-d47ae4c0656f",
+                                          "key": "gateway_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Gateway ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Returns a single gateway by ID"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "255efe30-3bad-4f31-9497-b3ef215b2084",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"<string>\",\n  \"binding\": {\n    \"id\": \"<string>\",\n    \"type\": \"project\"\n  },\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"updated_at\": \"<string>\",\n  \"user_source_id\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-255efe30-3bad-4f31-9497-b3ef215b2084"
+                                    },
+                                    {
+                                      "id": "f74fe5bd-d273-4305-866b-adb600a27c96",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-f74fe5bd-d273-4305-866b-adb600a27c96"
+                                    },
+                                    {
+                                      "id": "8310eb1a-9575-4cc6-b4ae-7b2876463e3c",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-8310eb1a-9575-4cc6-b4ae-7b2876463e3c"
+                                    },
+                                    {
+                                      "id": "0ff78c63-4bd3-4d83-93cd-2a891a2f2d36",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-0ff78c63-4bd3-4d83-93cd-2a891a2f2d36"
+                                    },
+                                    {
+                                      "id": "f02a36d1-2372-45a5-86da-5ab78efcbebe",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-f02a36d1-2372-45a5-86da-5ab78efcbebe"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-052397ae-947f-4a63-aa80-7e9f7ef6c9c5"
+                                },
+                                {
+                                  "name": "Update a Gateway",
+                                  "id": "c962949b-f701-4683-92a0-9b679d5aab34",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "Authorization",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "PUT",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways",
+                                        ":gateway_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "266f7b51-ee83-40be-bb3d-263870e16f65",
+                                          "key": "org_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Organization ID"
+                                        },
+                                        {
+                                          "id": "a214bc48-49ba-4472-8250-c515d0f27b1d",
+                                          "key": "project_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Project ID"
+                                        },
+                                        {
+                                          "id": "f5645968-12c7-4f07-a48e-f015498399f7",
+                                          "key": "gateway_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Gateway ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Replaces the full configuration of an existing gateway"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "7434817a-b429-4e28-ba55-c9c02e447b8f",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"<string>\",\n  \"binding\": {\n    \"id\": \"<string>\",\n    \"type\": \"project\"\n  },\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"updated_at\": \"<string>\",\n  \"user_source_id\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-7434817a-b429-4e28-ba55-c9c02e447b8f"
+                                    },
+                                    {
+                                      "id": "2e62bf72-6d36-4ef8-ab87-5f3f8014a931",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-2e62bf72-6d36-4ef8-ab87-5f3f8014a931"
+                                    },
+                                    {
+                                      "id": "e1a639e4-d832-4f74-b570-320129a2311b",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-e1a639e4-d832-4f74-b570-320129a2311b"
+                                    },
+                                    {
+                                      "id": "05c59a33-a4c8-49ef-b128-7c9728aa3214",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-05c59a33-a4c8-49ef-b128-7c9728aa3214"
+                                    },
+                                    {
+                                      "id": "0ec2e7d5-e4a5-4e22-915e-51e6bff336da",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "PUT",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"arcade\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-0ec2e7d5-e4a5-4e22-915e-51e6bff336da"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-c962949b-f701-4683-92a0-9b679d5aab34"
+                                },
+                                {
+                                  "name": "Delete a Gateway",
+                                  "id": "0c1fbace-fd3a-477a-a805-ec8b2458109d",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "Authorization",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "DELETE",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways",
+                                        ":gateway_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "30bec120-c142-412b-a534-6e0da7cfd2cd",
+                                          "key": "org_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Organization ID"
+                                        },
+                                        {
+                                          "id": "12d53a8c-7c01-43c1-a17e-a69a34dba4db",
+                                          "key": "project_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Project ID"
+                                        },
+                                        {
+                                          "id": "40a8b7ae-310d-439f-b64c-f6781c1fe896",
+                                          "key": "gateway_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Gateway ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Deletes a gateway by ID"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "93248cc7-c5f9-40c2-80e0-810643c48d7c",
+                                      "name": "No Content",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "No Content",
+                                      "code": 204,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-93248cc7-c5f9-40c2-80e0-810643c48d7c"
+                                    },
+                                    {
+                                      "id": "b45340b1-abc8-4ed6-ad38-5f96887bccfa",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-b45340b1-abc8-4ed6-ad38-5f96887bccfa"
+                                    },
+                                    {
+                                      "id": "56d21444-13a7-4e42-b488-20460fa39a86",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-56d21444-13a7-4e42-b488-20460fa39a86"
+                                    },
+                                    {
+                                      "id": "211cd347-d30b-4ef4-92f5-2bf5e18cac96",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-211cd347-d30b-4ef4-92f5-2bf5e18cac96"
+                                    },
+                                    {
+                                      "id": "acc295c9-3cfe-478d-923f-34a37a15c253",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "DELETE",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-acc295c9-3cfe-478d-923f-34a37a15c253"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-0c1fbace-fd3a-477a-a805-ec8b2458109d"
+                                },
+                                {
+                                  "name": "Patch a Gateway",
+                                  "id": "fb949eb8-536d-4c27-893e-b06ad1c8c6db",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "Authorization",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "PATCH",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways",
+                                        ":gateway_id"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "6ec77268-e62e-4a57-bf5e-7f580f55c8db",
+                                          "key": "org_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Organization ID"
+                                        },
+                                        {
+                                          "id": "cb0ca8bd-7735-4088-b0e1-31fd3438a11c",
+                                          "key": "project_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Project ID"
+                                        },
+                                        {
+                                          "id": "1ddac6d9-626e-4331-b122-640c059e32db",
+                                          "key": "gateway_id",
+                                          "value": "<string>",
+                                          "description": "(Required) Gateway ID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Partially updates an existing gateway configuration"
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "89d2e7a4-e1bb-482f-95fa-c4bfb272bf1a",
+                                      "name": "OK",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"<string>\",\n  \"binding\": {\n    \"id\": \"<string>\",\n    \"type\": \"project\"\n  },\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"updated_at\": \"<string>\",\n  \"user_source_id\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-89d2e7a4-e1bb-482f-95fa-c4bfb272bf1a"
+                                    },
+                                    {
+                                      "id": "cb7a5586-a592-4d25-b399-a48536faad6e",
+                                      "name": "Bad Request",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Bad Request",
+                                      "code": 400,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-cb7a5586-a592-4d25-b399-a48536faad6e"
+                                    },
+                                    {
+                                      "id": "58950767-a94b-49f9-b21e-cfdf488f84e1",
+                                      "name": "Unauthorized",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Unauthorized",
+                                      "code": 401,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-58950767-a94b-49f9-b21e-cfdf488f84e1"
+                                    },
+                                    {
+                                      "id": "503b6eed-9faf-47c5-b51c-5faa31668f6b",
+                                      "name": "Not Found",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-503b6eed-9faf-47c5-b51c-5faa31668f6b"
+                                    },
+                                    {
+                                      "id": "8750bc64-5940-4c01-b928-a119bcf07cce",
+                                      "name": "Internal Server Error",
+                                      "originalRequest": {
+                                        "method": "PATCH",
+                                        "header": [
+                                          {
+                                            "key": "Content-Type",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "Authorization",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "body": {
+                                          "mode": "raw",
+                                          "raw": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                          "options": {
+                                            "raw": {
+                                              "headerFamily": "json",
+                                              "language": "json"
+                                            }
+                                          }
+                                        },
+                                        "url": {
+                                          "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "v1",
+                                            "orgs",
+                                            ":org_id",
+                                            "projects",
+                                            ":project_id",
+                                            "gateways",
+                                            ":gateway_id"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "org_id"
+                                            },
+                                            {
+                                              "key": "project_id"
+                                            },
+                                            {
+                                              "key": "gateway_id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Internal Server Error",
+                                      "code": 500,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                      "createdAt": "2026-07-28T01:03:57.000Z",
+                                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                                      "uid": "35240-8750bc64-5940-4c01-b928-a119bcf07cce"
+                                    }
+                                  ],
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-fb949eb8-536d-4c27-893e-b06ad1c8c6db"
+                                }
+                              ],
+                              "id": "1ef8101f-686b-4de8-a27e-bc58d22f76b9",
+                              "createdAt": "2026-07-28T01:03:57.000Z",
+                              "updatedAt": "2026-07-28T01:03:57.000Z",
+                              "uid": "35240-1ef8101f-686b-4de8-a27e-bc58d22f76b9"
+                            },
+                            {
+                              "name": "List Gateways",
+                              "id": "ac7ff940-1a8d-456f-aac4-7d80d4e203a6",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways?limit=<integer>&offset=<integer>",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "orgs",
+                                    ":org_id",
+                                    "projects",
+                                    ":project_id",
+                                    "gateways"
+                                  ],
+                                  "query": [
+                                    {
+                                      "description": "Number of items to return (default: 25, max: 100)",
+                                      "key": "limit",
+                                      "value": "<integer>"
+                                    },
+                                    {
+                                      "description": "Offset from the start of the list (default: 0)",
+                                      "key": "offset",
+                                      "value": "<integer>"
+                                    }
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "a6dee83b-72a9-42ed-a397-cfdb8e7b3b34",
+                                      "key": "org_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "ce0bb778-ae12-4a39-8f5f-3efd0ebff6a1",
+                                      "key": "project_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Project ID"
+                                    }
+                                  ]
+                                },
+                                "description": "Returns a paginated list of gateways for the current project"
+                              },
+                              "response": [
+                                {
+                                  "id": "2e7f75b8-157d-42e7-a7e0-386ecde36af7",
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways?limit=<integer>&offset=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Number of items to return (default: 25, max: 100)",
+                                          "key": "limit",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Offset from the start of the list (default: 0)",
+                                          "key": "offset",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"items\": [\n    {\n      \"allowed_passthrough_headers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"auth_type\": \"<string>\",\n      \"binding\": {\n        \"id\": \"<string>\",\n        \"type\": \"static\"\n      },\n      \"consent_skip_client_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"instructions\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"status\": \"<string>\",\n      \"tool_filter\": {\n        \"allowed_tools\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"discovery\": {\n          \"allowed_classes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\",\n          \"pinned_asset_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      \"updated_at\": \"<string>\",\n      \"user_source_id\": \"<string>\"\n    },\n    {\n      \"allowed_passthrough_headers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"auth_type\": \"<string>\",\n      \"binding\": {\n        \"id\": \"<string>\",\n        \"type\": \"project\"\n      },\n      \"consent_skip_client_ids\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"created_at\": \"<string>\",\n      \"description\": \"<string>\",\n      \"id\": \"<string>\",\n      \"instructions\": \"<string>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"status\": \"<string>\",\n      \"tool_filter\": {\n        \"allowed_tools\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"discovery\": {\n          \"allowed_classes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"enabled\": \"<boolean>\",\n          \"pinned_asset_keys\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      },\n      \"updated_at\": \"<string>\",\n      \"user_source_id\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"page_count\": \"<integer>\",\n  \"total_count\": \"<integer>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-2e7f75b8-157d-42e7-a7e0-386ecde36af7"
+                                },
+                                {
+                                  "id": "f3ba6079-1104-424f-8e2e-beb8e664bd30",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways?limit=<integer>&offset=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Number of items to return (default: 25, max: 100)",
+                                          "key": "limit",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Offset from the start of the list (default: 0)",
+                                          "key": "offset",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-f3ba6079-1104-424f-8e2e-beb8e664bd30"
+                                },
+                                {
+                                  "id": "ee7fa059-3476-42ff-a905-607611757537",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways?limit=<integer>&offset=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Number of items to return (default: 25, max: 100)",
+                                          "key": "limit",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Offset from the start of the list (default: 0)",
+                                          "key": "offset",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-ee7fa059-3476-42ff-a905-607611757537"
+                                },
+                                {
+                                  "id": "55da4751-0ac7-42dd-93ca-bc6afb5b1310",
+                                  "name": "Internal Server Error",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways?limit=<integer>&offset=<integer>",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "query": [
+                                        {
+                                          "description": "Number of items to return (default: 25, max: 100)",
+                                          "key": "limit",
+                                          "value": "<integer>"
+                                        },
+                                        {
+                                          "description": "Offset from the start of the list (default: 0)",
+                                          "key": "offset",
+                                          "value": "<integer>"
+                                        }
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-55da4751-0ac7-42dd-93ca-bc6afb5b1310"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:03:57.000Z",
+                              "updatedAt": "2026-07-28T01:03:57.000Z",
+                              "uid": "35240-ac7ff940-1a8d-456f-aac4-7d80d4e203a6"
+                            },
+                            {
+                              "name": "Create a Gateway",
+                              "id": "c826114f-9fc0-400b-a3d7-78101db4f0f5",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "Authorization",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "v1",
+                                    "orgs",
+                                    ":org_id",
+                                    "projects",
+                                    ":project_id",
+                                    "gateways"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "3c30c0ca-07a9-412c-a8df-9ccd26f84435",
+                                      "key": "org_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Organization ID"
+                                    },
+                                    {
+                                      "id": "c7159ad0-2b68-4e5a-81e1-1297f741dd5c",
+                                      "key": "project_id",
+                                      "value": "<string>",
+                                      "description": "(Required) Project ID"
+                                    }
+                                  ]
+                                },
+                                "description": "Creates a new gateway in the current project"
+                              },
+                              "response": [
+                                {
+                                  "id": "43203ab9-7166-4e3c-b701-105891ed6bad",
+                                  "name": "Created",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Created",
+                                  "code": 201,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"<string>\",\n  \"binding\": {\n    \"id\": \"<string>\",\n    \"type\": \"project\"\n  },\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"created_at\": \"<string>\",\n  \"description\": \"<string>\",\n  \"id\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"updated_at\": \"<string>\",\n  \"user_source_id\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-43203ab9-7166-4e3c-b701-105891ed6bad"
+                                },
+                                {
+                                  "id": "dda5cbc6-04e3-43c1-b6ac-4e2812ce99c4",
+                                  "name": "Bad Request",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Bad Request",
+                                  "code": 400,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-dda5cbc6-04e3-43c1-b6ac-4e2812ce99c4"
+                                },
+                                {
+                                  "id": "47eec50d-bb5f-4837-901b-ed4b654c3b77",
+                                  "name": "Unauthorized",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Unauthorized",
+                                  "code": 401,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-47eec50d-bb5f-4837-901b-ed4b654c3b77"
+                                },
+                                {
+                                  "id": "7ff3b84f-6520-4b15-8466-d2702e2ee5c4",
+                                  "name": "Conflict",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Conflict",
+                                  "code": 409,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-7ff3b84f-6520-4b15-8466-d2702e2ee5c4"
+                                },
+                                {
+                                  "id": "04513d53-bb5c-4803-b4bf-3ab29b06946e",
+                                  "name": "Internal Server Error",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "Authorization",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"name\": \"<string>\",\n  \"allowed_passthrough_headers\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"auth_type\": \"user_source\",\n  \"consent_skip_client_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"description\": \"<string>\",\n  \"instructions\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"status\": \"<string>\",\n  \"tool_filter\": {\n    \"allowed_tools\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"discovery\": {\n      \"allowed_classes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"enabled\": \"<boolean>\",\n      \"pinned_asset_keys\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  \"user_source_id\": \"<string>\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/v1/orgs/:org_id/projects/:project_id/gateways",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "v1",
+                                        "orgs",
+                                        ":org_id",
+                                        "projects",
+                                        ":project_id",
+                                        "gateways"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "org_id"
+                                        },
+                                        {
+                                          "key": "project_id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Internal Server Error",
+                                  "code": 500,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                                  "createdAt": "2026-07-28T01:03:57.000Z",
+                                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                                  "uid": "35240-04513d53-bb5c-4803-b4bf-3ab29b06946e"
+                                }
+                              ],
+                              "createdAt": "2026-07-28T01:03:57.000Z",
+                              "updatedAt": "2026-07-28T01:03:57.000Z",
+                              "uid": "35240-c826114f-9fc0-400b-a3d7-78101db4f0f5"
+                            }
+                          ],
+                          "id": "0581dffe-9936-441d-ae6f-a4385a20da54",
+                          "createdAt": "2026-07-28T01:03:57.000Z",
+                          "updatedAt": "2026-07-28T01:03:57.000Z",
+                          "uid": "35240-0581dffe-9936-441d-ae6f-a4385a20da54"
+                        }
+                      ],
+                      "id": "ea55eed7-afbf-453f-8db2-5e70eb2943b7",
+                      "createdAt": "2026-07-28T01:03:57.000Z",
+                      "updatedAt": "2026-07-28T01:03:57.000Z",
+                      "uid": "35240-ea55eed7-afbf-453f-8db2-5e70eb2943b7"
+                    }
+                  ],
+                  "id": "9e93cac2-46b6-4aef-888d-52cee7177fa8",
+                  "createdAt": "2026-07-28T01:03:57.000Z",
+                  "updatedAt": "2026-07-28T01:03:57.000Z",
+                  "uid": "35240-9e93cac2-46b6-4aef-888d-52cee7177fa8"
+                }
+              ],
+              "id": "d71d13c6-ddbc-4c66-8b2d-cfea4ad0e3af",
+              "createdAt": "2026-07-28T01:03:57.000Z",
+              "updatedAt": "2026-07-28T01:03:57.000Z",
+              "uid": "35240-d71d13c6-ddbc-4c66-8b2d-cfea4ad0e3af"
+            }
+          ],
+          "id": "9d8a0a26-0186-413c-a35c-543613d5fcaf",
+          "createdAt": "2026-07-28T01:03:57.000Z",
+          "updatedAt": "2026-07-28T01:03:57.000Z",
+          "uid": "35240-9d8a0a26-0186-413c-a35c-543613d5fcaf"
+        }
+      ],
+      "id": "b6a60388-25f1-4d99-88d7-82d24e6f188e",
+      "createdAt": "2026-07-28T01:03:57.000Z",
+      "updatedAt": "2026-07-28T01:03:57.000Z",
+      "uid": "35240-b6a60388-25f1-4d99-88d7-82d24e6f188e"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arcade.dev"
+    }
+  ]
+}

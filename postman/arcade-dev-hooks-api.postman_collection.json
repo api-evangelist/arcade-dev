@@ -1,0 +1,1804 @@
+{
+  "info": {
+    "_postman_id": "acd1f142-1ee2-401c-9fc3-a3321490f05e",
+    "name": "Arcade Admin Hooks API",
+    "description": "Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:03:58.000Z",
+    "updatedAt": "2026-07-28T01:03:58.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-acd1f142-1ee2-401c-9fc3-a3321490f05e"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "hooks",
+          "item": [
+            {
+              "name": "bulk",
+              "item": [
+                {
+                  "name": "Bulk Upsert Hooks",
+                  "id": "910628af-cd03-4717-af04-a36af8a0de02",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"configs\": [\n    {\n      \"hook_point\": \"tool.post\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_closed\",\n      \"phase\": \"after\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"hook_point\": \"tool.access\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"phase\": \"before\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks/bulk",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks",
+                        "bulk"
+                      ]
+                    },
+                    "description": "Creates or updates multiple hooks at once. The operation is transactional."
+                  },
+                  "response": [
+                    {
+                      "id": "16b22713-0dcb-49e3-b6e3-64e0dbbd89c6",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"configs\": [\n    {\n      \"hook_point\": \"tool.post\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_closed\",\n      \"phase\": \"after\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"hook_point\": \"tool.access\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"phase\": \"before\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            "bulk"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"failed\": \"<integer>\",\n  \"results\": [\n    {\n      \"action\": \"<string>\",\n      \"error\": \"<string>\",\n      \"hook_id\": \"<string>\",\n      \"hook_point\": \"<string>\",\n      \"plugin_id\": \"<string>\"\n    },\n    {\n      \"action\": \"<string>\",\n      \"error\": \"<string>\",\n      \"hook_id\": \"<string>\",\n      \"hook_point\": \"<string>\",\n      \"plugin_id\": \"<string>\"\n    }\n  ],\n  \"success\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-16b22713-0dcb-49e3-b6e3-64e0dbbd89c6"
+                    },
+                    {
+                      "id": "95ceccf3-23b6-4061-bf0c-435ac6b5e7f3",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"configs\": [\n    {\n      \"hook_point\": \"tool.post\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_closed\",\n      \"phase\": \"after\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"hook_point\": \"tool.access\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"phase\": \"before\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            "bulk"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-95ceccf3-23b6-4061-bf0c-435ac6b5e7f3"
+                    },
+                    {
+                      "id": "a85e65cf-0e16-4176-be76-18653440f6b8",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"configs\": [\n    {\n      \"hook_point\": \"tool.post\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_closed\",\n      \"phase\": \"after\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    },\n    {\n      \"hook_point\": \"tool.access\",\n      \"plugin_id\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"phase\": \"before\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/bulk",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            "bulk"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-a85e65cf-0e16-4176-be76-18653440f6b8"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-910628af-cd03-4717-af04-a36af8a0de02"
+                }
+              ],
+              "id": "c6791783-0f2d-46e4-8861-1c3c5d9114aa",
+              "createdAt": "2026-07-28T01:03:58.000Z",
+              "updatedAt": "2026-07-28T01:03:58.000Z",
+              "uid": "35240-c6791783-0f2d-46e4-8861-1c3c5d9114aa"
+            },
+            {
+              "name": "{hook_id}",
+              "item": [
+                {
+                  "name": "Get a Hook",
+                  "id": "4fae6f6e-0b98-48fd-9853-6b86a6ed34e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks/:hook_id?binding_type=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks",
+                        ":hook_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by binding type (tenant or project)",
+                          "key": "binding_type",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d062abcf-beb8-40e9-afba-d1f4a9af0448",
+                          "key": "hook_id",
+                          "value": "<string>",
+                          "description": "(Required) Hook ID"
+                        }
+                      ]
+                    },
+                    "description": "Returns a single hook by ID"
+                  },
+                  "response": [
+                    {
+                      "id": "9288879b-e1f7-434f-9dbd-f5174012bffa",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id?binding_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by binding type (tenant or project)",
+                              "key": "binding_type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cache_enabled\": \"<boolean>\",\n  \"cache_ttl_ms\": \"<integer>\",\n  \"created_at\": \"<string>\",\n  \"failure_mode\": \"fail_open\",\n  \"hook_point\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"inactive\",\n  \"timeout_ms\": \"<integer>\",\n  \"updated_at\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-9288879b-e1f7-434f-9dbd-f5174012bffa"
+                    },
+                    {
+                      "id": "1fe161d5-ae93-4106-9666-8b276b854530",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id?binding_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by binding type (tenant or project)",
+                              "key": "binding_type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-1fe161d5-ae93-4106-9666-8b276b854530"
+                    },
+                    {
+                      "id": "a3ffdb2a-b13b-44e3-b611-28de496359e5",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id?binding_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by binding type (tenant or project)",
+                              "key": "binding_type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-a3ffdb2a-b13b-44e3-b611-28de496359e5"
+                    },
+                    {
+                      "id": "55880bf6-284d-4fb2-afea-8489a86a57e6",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id?binding_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by binding type (tenant or project)",
+                              "key": "binding_type",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-55880bf6-284d-4fb2-afea-8489a86a57e6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-4fae6f6e-0b98-48fd-9853-6b86a6ed34e3"
+                },
+                {
+                  "name": "Delete a Hook",
+                  "id": "dfb596f9-7490-49ae-99d6-a5ff50ad709b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks",
+                        ":hook_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "39129900-bdcb-47a5-a190-67af056bb0e0",
+                          "key": "hook_id",
+                          "value": "<string>",
+                          "description": "(Required) Hook ID"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a hook by ID"
+                  },
+                  "response": [
+                    {
+                      "id": "fd25f49e-916f-4d0d-ba5b-ae2be83f04a1",
+                      "name": "No Content",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-fd25f49e-916f-4d0d-ba5b-ae2be83f04a1"
+                    },
+                    {
+                      "id": "72b654b5-413a-47ca-ae38-daebb6d48191",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-72b654b5-413a-47ca-ae38-daebb6d48191"
+                    },
+                    {
+                      "id": "aba706f1-d5d0-41d0-b8b0-49ba05f5e096",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-aba706f1-d5d0-41d0-b8b0-49ba05f5e096"
+                    },
+                    {
+                      "id": "3d5d5561-2b85-4631-bfd6-dcbb5a0a759d",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-3d5d5561-2b85-4631-bfd6-dcbb5a0a759d"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-dfb596f9-7490-49ae-99d6-a5ff50ad709b"
+                },
+                {
+                  "name": "Update a Hook",
+                  "id": "ab9fb028-d2d7-4c21-b9e1-7c2c472233ac",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PATCH",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"phase\": \"after\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks",
+                        ":hook_id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f3fd9245-e893-4e26-895f-88b62d9851fe",
+                          "key": "hook_id",
+                          "value": "<string>",
+                          "description": "(Required) Hook ID"
+                        }
+                      ]
+                    },
+                    "description": "Updates an existing hook configuration"
+                  },
+                  "response": [
+                    {
+                      "id": "604b6b56-e907-4d5c-8154-d476605eb2fa",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"phase\": \"after\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cache_enabled\": \"<boolean>\",\n  \"cache_ttl_ms\": \"<integer>\",\n  \"created_at\": \"<string>\",\n  \"failure_mode\": \"fail_open\",\n  \"hook_point\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"inactive\",\n  \"timeout_ms\": \"<integer>\",\n  \"updated_at\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-604b6b56-e907-4d5c-8154-d476605eb2fa"
+                    },
+                    {
+                      "id": "67328d29-4d01-46f7-bc0f-444b818f2ddf",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"phase\": \"after\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-67328d29-4d01-46f7-bc0f-444b818f2ddf"
+                    },
+                    {
+                      "id": "e273de8a-2b8a-49f8-b0ac-1d00fa0c7559",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"phase\": \"after\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-e273de8a-2b8a-49f8-b0ac-1d00fa0c7559"
+                    },
+                    {
+                      "id": "36d068ce-1d0a-49df-aa8b-5447f1985dd6",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "PATCH",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"phase\": \"after\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/hooks/:hook_id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "hooks",
+                            ":hook_id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "hook_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:03:58.000Z",
+                      "updatedAt": "2026-07-28T01:03:58.000Z",
+                      "uid": "35240-36d068ce-1d0a-49df-aa8b-5447f1985dd6"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-ab9fb028-d2d7-4c21-b9e1-7c2c472233ac"
+                }
+              ],
+              "id": "06ddff7b-1052-411e-bd22-47edac2fdb1d",
+              "createdAt": "2026-07-28T01:03:58.000Z",
+              "updatedAt": "2026-07-28T01:03:58.000Z",
+              "uid": "35240-06ddff7b-1052-411e-bd22-47edac2fdb1d"
+            },
+            {
+              "name": "List Hooks",
+              "id": "d3818d87-83be-4b14-87c4-fc6ba5717ff7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/hooks?limit=<integer>&offset=<integer>&hook_point=<string>&plugin_id=<string>&status=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "hooks"
+                  ],
+                  "query": [
+                    {
+                      "description": "Limit",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Offset",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Filter by hook point",
+                      "key": "hook_point",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by plugin ID",
+                      "key": "plugin_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by status",
+                      "key": "status",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns all hooks for the current binding with optional filtering"
+              },
+              "response": [
+                {
+                  "id": "01c3b751-abd1-403c-bf7a-f96838eaa434",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks?limit=<integer>&offset=<integer>&hook_point=<string>&plugin_id=<string>&status=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limit",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by hook point",
+                          "key": "hook_point",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by plugin ID",
+                          "key": "plugin_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status",
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"cache_enabled\": \"<boolean>\",\n      \"cache_ttl_ms\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"hook_point\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phase\": \"before\",\n      \"plugin_id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"status\": \"inactive\",\n      \"timeout_ms\": \"<integer>\",\n      \"updated_at\": \"<string>\",\n      \"version\": \"<integer>\"\n    },\n    {\n      \"cache_enabled\": \"<boolean>\",\n      \"cache_ttl_ms\": \"<integer>\",\n      \"created_at\": \"<string>\",\n      \"failure_mode\": \"fail_open\",\n      \"hook_point\": \"<string>\",\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"phase\": \"before\",\n      \"plugin_id\": \"<string>\",\n      \"priority\": \"<integer>\",\n      \"status\": \"active\",\n      \"timeout_ms\": \"<integer>\",\n      \"updated_at\": \"<string>\",\n      \"version\": \"<integer>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"page_count\": \"<integer>\",\n  \"total_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-01c3b751-abd1-403c-bf7a-f96838eaa434"
+                },
+                {
+                  "id": "33020a39-24c0-4df5-a067-7d1e942a656a",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks?limit=<integer>&offset=<integer>&hook_point=<string>&plugin_id=<string>&status=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limit",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by hook point",
+                          "key": "hook_point",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by plugin ID",
+                          "key": "plugin_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status",
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-33020a39-24c0-4df5-a067-7d1e942a656a"
+                },
+                {
+                  "id": "09fb7a93-b420-4ea4-b97d-699da4f85ef5",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks?limit=<integer>&offset=<integer>&hook_point=<string>&plugin_id=<string>&status=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ],
+                      "query": [
+                        {
+                          "description": "Limit",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Filter by hook point",
+                          "key": "hook_point",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by plugin ID",
+                          "key": "plugin_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by status",
+                          "key": "status",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-09fb7a93-b420-4ea4-b97d-699da4f85ef5"
+                }
+              ],
+              "createdAt": "2026-07-28T01:03:58.000Z",
+              "updatedAt": "2026-07-28T01:03:58.000Z",
+              "uid": "35240-d3818d87-83be-4b14-87c4-fc6ba5717ff7"
+            },
+            {
+              "name": "Create a Hook",
+              "id": "43d0440e-e84e-4bb8-957d-4c8ade572148",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/v1/hooks",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "hooks"
+                  ]
+                },
+                "description": "Creates a new hook configuration"
+              },
+              "response": [
+                {
+                  "id": "b16e68d9-e2d2-4713-ae02-fa447e30d69a",
+                  "name": "Created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"cache_enabled\": \"<boolean>\",\n  \"cache_ttl_ms\": \"<integer>\",\n  \"created_at\": \"<string>\",\n  \"failure_mode\": \"fail_open\",\n  \"hook_point\": \"<string>\",\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"inactive\",\n  \"timeout_ms\": \"<integer>\",\n  \"updated_at\": \"<string>\",\n  \"version\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-b16e68d9-e2d2-4713-ae02-fa447e30d69a"
+                },
+                {
+                  "id": "05170512-c584-4f50-b3d3-dd55563af97c",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-05170512-c584-4f50-b3d3-dd55563af97c"
+                },
+                {
+                  "id": "218fc02a-29c5-4ea2-872d-32df21262c6a",
+                  "name": "Not Found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-218fc02a-29c5-4ea2-872d-32df21262c6a"
+                },
+                {
+                  "id": "c88466bd-ac77-4105-a235-f1ffc327f6b1",
+                  "name": "Conflict",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-c88466bd-ac77-4105-a235-f1ffc327f6b1"
+                },
+                {
+                  "id": "0bddf905-1579-4de3-9b75-72b79913a4b5",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"failure_mode\": \"fail_closed\",\n  \"hook_point\": \"tool.pre\",\n  \"name\": \"<string>\",\n  \"phase\": \"after\",\n  \"plugin_id\": \"<string>\",\n  \"priority\": \"<integer>\",\n  \"status\": \"active\",\n  \"timeout_ms\": \"<integer>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/hooks",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "hooks"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:03:58.000Z",
+                  "updatedAt": "2026-07-28T01:03:58.000Z",
+                  "uid": "35240-0bddf905-1579-4de3-9b75-72b79913a4b5"
+                }
+              ],
+              "createdAt": "2026-07-28T01:03:58.000Z",
+              "updatedAt": "2026-07-28T01:03:58.000Z",
+              "uid": "35240-43d0440e-e84e-4bb8-957d-4c8ade572148"
+            }
+          ],
+          "id": "450fe818-f1db-4375-8434-05b251cf847f",
+          "createdAt": "2026-07-28T01:03:58.000Z",
+          "updatedAt": "2026-07-28T01:03:58.000Z",
+          "uid": "35240-450fe818-f1db-4375-8434-05b251cf847f"
+        }
+      ],
+      "id": "5d2c01aa-a855-4f22-bb19-537c1c734efa",
+      "createdAt": "2026-07-28T01:03:58.000Z",
+      "updatedAt": "2026-07-28T01:03:58.000Z",
+      "uid": "35240-5d2c01aa-a855-4f22-bb19-537c1c734efa"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arcade.dev"
+    }
+  ]
+}

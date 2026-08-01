@@ -1,0 +1,3618 @@
+{
+  "info": {
+    "_postman_id": "5012e17e-f6ef-4b35-bc79-261ba0777315",
+    "name": "Arcade Admin Tools API",
+    "description": "Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:04:02.000Z",
+    "updatedAt": "2026-07-28T01:04:02.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5012e17e-f6ef-4b35-bc79-261ba0777315"
+  },
+  "item": [
+    {
+      "name": "v1",
+      "item": [
+        {
+          "name": "formatted_tools",
+          "item": [
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "Get Formatted Tool Specification",
+                  "id": "a7d7ce9c-0dbc-4374-8cdb-43c63ade8d4b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "2499df80-dcff-4806-8ef7-b947aab731e9",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) Tool name"
+                        }
+                      ]
+                    },
+                    "description": "Returns the formatted tool specification for a specific tool, given a provider"
+                  },
+                  "response": [
+                    {
+                      "id": "1ce18af5-5092-4877-bbe1-62cc8db6ffd4",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formatted_tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Provider format",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"irure67\": true\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-1ce18af5-5092-4877-bbe1-62cc8db6ffd4"
+                    },
+                    {
+                      "id": "d1f422c0-2393-4b66-ad1e-c1fbcf159a55",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formatted_tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Provider format",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-d1f422c0-2393-4b66-ad1e-c1fbcf159a55"
+                    },
+                    {
+                      "id": "0ac8b9f8-b2a7-43fb-93b6-3e0ff0c41761",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formatted_tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Provider format",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-0ac8b9f8-b2a7-43fb-93b6-3e0ff0c41761"
+                    },
+                    {
+                      "id": "3aa53870-9aa5-4d19-920a-14c42d3b2553",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formatted_tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Provider format",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-3aa53870-9aa5-4d19-920a-14c42d3b2553"
+                    },
+                    {
+                      "id": "18296c31-991c-4939-b1a3-9c9576f572c5",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/formatted_tools/:name?format=<string>&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "formatted_tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Provider format",
+                              "key": "format",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-18296c31-991c-4939-b1a3-9c9576f572c5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-a7d7ce9c-0dbc-4374-8cdb-43c63ade8d4b"
+                }
+              ],
+              "id": "8d8caf86-07d4-48e0-83ff-0e5fbe24daba",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-8d8caf86-07d4-48e0-83ff-0e5fbe24daba"
+            },
+            {
+              "name": "List Formatted Static Tools",
+              "id": "0111db70-c51b-42a5-9d5f-d66dd11a8c32",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "formatted_tools"
+                  ],
+                  "query": [
+                    {
+                      "description": "Toolkit name",
+                      "key": "toolkit",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of items to return (default: 25, max: 100)",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Offset from the start of the list (default: 0)",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Provider format",
+                      "key": "format",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "User ID",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include all versions of each tool",
+                      "key": "include_all_versions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a page of tools from the engine configuration, optionally filtered by toolkit, formatted for a specific provider"
+              },
+              "response": [
+                {
+                  "id": "69314404-c15d-43f7-96d1-f90ccb436a07",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"laboris2c\": false,\n      \"amet_0d\": \"eu qui\",\n      \"in056\": 54667920\n    },\n    {\n      \"commodo_e\": 2093249.1474981755,\n      \"proident3c\": \"qui\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"page_count\": \"<integer>\",\n  \"total_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-69314404-c15d-43f7-96d1-f90ccb436a07"
+                },
+                {
+                  "id": "3e9396e9-ee3a-4eb9-a69e-dad69e2dd32d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-3e9396e9-ee3a-4eb9-a69e-dad69e2dd32d"
+                },
+                {
+                  "id": "b93a4980-e7eb-4bca-8ec5-bce8d68285cd",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-b93a4980-e7eb-4bca-8ec5-bce8d68285cd"
+                },
+                {
+                  "id": "134f9b09-f7f7-4e9b-9e71-d2b97ff24d2f",
+                  "name": "Unsupported Media Type",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-134f9b09-f7f7-4e9b-9e71-d2b97ff24d2f"
+                },
+                {
+                  "id": "9a75a1b2-55c1-4c2a-a069-b0bcfe0e80bb",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/formatted_tools?toolkit=<string>&limit=<integer>&offset=<integer>&format=<string>&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "formatted_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Provider format",
+                          "key": "format",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-9a75a1b2-55c1-4c2a-a069-b0bcfe0e80bb"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-0111db70-c51b-42a5-9d5f-d66dd11a8c32"
+            }
+          ],
+          "id": "9db378c8-a86d-418e-b597-3a4bfb385163",
+          "createdAt": "2026-07-28T01:04:03.000Z",
+          "updatedAt": "2026-07-28T01:04:03.000Z",
+          "uid": "35240-9db378c8-a86d-418e-b597-3a4bfb385163"
+        },
+        {
+          "name": "scheduled_tools",
+          "item": [
+            {
+              "name": "{id}",
+              "item": [
+                {
+                  "name": "Get Scheduled Tool Execution Details",
+                  "id": "62a3513c-d1d8-47c9-bf09-2be65851b0ff",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools",
+                        ":id"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e1732017-2ca5-4ae5-9290-ae8d36823b9c",
+                          "key": "id",
+                          "value": "<string>",
+                          "description": "(Required) Scheduled execution ID"
+                        }
+                      ]
+                    },
+                    "description": "Returns the details for a specific scheduled tool execution"
+                  },
+                  "response": [
+                    {
+                      "id": "c23f07e6-12db-4203-9807-2b477f0418a6",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "scheduled_tools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"attempts\": [\n    {\n      \"finished_at\": \"<string>\",\n      \"id\": \"<string>\",\n      \"output\": {\n        \"authorization\": {\n          \"context\": {\n            \"token\": \"<string>\",\n            \"user_info\": {\n              \"dolore551\": true\n            }\n          },\n          \"id\": \"<string>\",\n          \"provider_id\": \"<string>\",\n          \"scopes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"<string>\",\n          \"user_id\": \"<string>\"\n        },\n        \"error\": {\n          \"can_retry\": \"<boolean>\",\n          \"kind\": \"UPSTREAM_RUNTIME_UNMAPPED\",\n          \"message\": \"<string>\",\n          \"additional_prompt_content\": \"<string>\",\n          \"developer_message\": \"<string>\",\n          \"extra\": {\n            \"labore_f6\": {},\n            \"veniam_e02\": {}\n          },\n          \"retry_after_ms\": \"<integer>\",\n          \"stacktrace\": \"<string>\",\n          \"status_code\": \"<integer>\"\n        },\n        \"logs\": [\n          {\n            \"level\": \"<string>\",\n            \"message\": \"<string>\",\n            \"subtype\": \"<string>\"\n          },\n          {\n            \"level\": \"<string>\",\n            \"message\": \"<string>\",\n            \"subtype\": \"<string>\"\n          }\n        ],\n        \"value\": {}\n      },\n      \"started_at\": \"<string>\",\n      \"success\": \"<boolean>\",\n      \"system_error_message\": \"<string>\"\n    },\n    {\n      \"finished_at\": \"<string>\",\n      \"id\": \"<string>\",\n      \"output\": {\n        \"authorization\": {\n          \"context\": {\n            \"token\": \"<string>\",\n            \"user_info\": {\n              \"non_f\": -16730662,\n              \"sunt_1\": 97198270.72438595,\n              \"sunt_9\": true\n            }\n          },\n          \"id\": \"<string>\",\n          \"provider_id\": \"<string>\",\n          \"scopes\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"<string>\",\n          \"user_id\": \"<string>\"\n        },\n        \"error\": {\n          \"can_retry\": \"<boolean>\",\n          \"kind\": \"UNKNOWN\",\n          \"message\": \"<string>\",\n          \"additional_prompt_content\": \"<string>\",\n          \"developer_message\": \"<string>\",\n          \"extra\": {\n            \"ad_3\": {},\n            \"elit_b_0\": {},\n            \"laboref\": {}\n          },\n          \"retry_after_ms\": \"<integer>\",\n          \"stacktrace\": \"<string>\",\n          \"status_code\": \"<integer>\"\n        },\n        \"logs\": [\n          {\n            \"level\": \"<string>\",\n            \"message\": \"<string>\",\n            \"subtype\": \"<string>\"\n          },\n          {\n            \"level\": \"<string>\",\n            \"message\": \"<string>\",\n            \"subtype\": \"<string>\"\n          }\n        ],\n        \"value\": {}\n      },\n      \"started_at\": \"<string>\",\n      \"success\": \"<boolean>\",\n      \"system_error_message\": \"<string>\"\n    }\n  ],\n  \"created_at\": \"<string>\",\n  \"execution_status\": \"<string>\",\n  \"execution_type\": \"<string>\",\n  \"finished_at\": \"<string>\",\n  \"id\": \"<string>\",\n  \"input\": {\n    \"veniama\": false,\n    \"eu_047\": \"labore sit ut mollit ullamco\"\n  },\n  \"run_at\": \"<string>\",\n  \"started_at\": \"<string>\",\n  \"tool_name\": \"<string>\",\n  \"toolkit_name\": \"<string>\",\n  \"toolkit_version\": \"<string>\",\n  \"updated_at\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-c23f07e6-12db-4203-9807-2b477f0418a6"
+                    },
+                    {
+                      "id": "b4cd82f4-9f2a-43c9-bb82-4a1374e1ae3e",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "scheduled_tools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-b4cd82f4-9f2a-43c9-bb82-4a1374e1ae3e"
+                    },
+                    {
+                      "id": "764eb58d-57a6-4d3b-b9b6-619862398c9e",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "scheduled_tools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-764eb58d-57a6-4d3b-b9b6-619862398c9e"
+                    },
+                    {
+                      "id": "c7619a5b-d1b7-4e3b-90b8-3552bde6e025",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "scheduled_tools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-c7619a5b-d1b7-4e3b-90b8-3552bde6e025"
+                    },
+                    {
+                      "id": "5111946c-ce97-4cdc-bebd-11f3d2b1b8ee",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/scheduled_tools/:id",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "scheduled_tools",
+                            ":id"
+                          ],
+                          "variable": [
+                            {
+                              "key": "id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-5111946c-ce97-4cdc-bebd-11f3d2b1b8ee"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-62a3513c-d1d8-47c9-bf09-2be65851b0ff"
+                }
+              ],
+              "id": "7021eba2-cfea-4f86-8889-1400880902f6",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-7021eba2-cfea-4f86-8889-1400880902f6"
+            },
+            {
+              "name": "List Scheduled Tool Executions",
+              "id": "84f24d0a-c2a0-40e1-90cd-10e8ef5145c2",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "scheduled_tools"
+                  ],
+                  "query": [
+                    {
+                      "description": "Number of items to return (default: 25, max: 100)",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Offset from the start of the list (default: 0)",
+                      "key": "offset",
+                      "value": "<integer>"
+                    }
+                  ]
+                },
+                "description": "Returns a page of scheduled tool executions"
+              },
+              "response": [
+                {
+                  "id": "f3359191-9b67-455f-9fec-3d94da436793",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"created_at\": \"<string>\",\n      \"execution_status\": \"<string>\",\n      \"execution_type\": \"<string>\",\n      \"finished_at\": \"<string>\",\n      \"id\": \"<string>\",\n      \"run_at\": \"<string>\",\n      \"started_at\": \"<string>\",\n      \"tool_name\": \"<string>\",\n      \"toolkit_name\": \"<string>\",\n      \"toolkit_version\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"user_id\": \"<string>\"\n    },\n    {\n      \"created_at\": \"<string>\",\n      \"execution_status\": \"<string>\",\n      \"execution_type\": \"<string>\",\n      \"finished_at\": \"<string>\",\n      \"id\": \"<string>\",\n      \"run_at\": \"<string>\",\n      \"started_at\": \"<string>\",\n      \"tool_name\": \"<string>\",\n      \"toolkit_name\": \"<string>\",\n      \"toolkit_version\": \"<string>\",\n      \"updated_at\": \"<string>\",\n      \"user_id\": \"<string>\"\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"page_count\": \"<integer>\",\n  \"total_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-f3359191-9b67-455f-9fec-3d94da436793"
+                },
+                {
+                  "id": "f73e5ecc-b92d-4651-bea8-3f902f70895d",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-f73e5ecc-b92d-4651-bea8-3f902f70895d"
+                },
+                {
+                  "id": "a7bded96-ad16-48cf-9833-c8d5c2eb94e4",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-a7bded96-ad16-48cf-9833-c8d5c2eb94e4"
+                },
+                {
+                  "id": "c878e54c-a7cc-45b5-80c4-d62bde463c56",
+                  "name": "Unsupported Media Type",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-c878e54c-a7cc-45b5-80c4-d62bde463c56"
+                },
+                {
+                  "id": "2a2ef225-9d78-4e8f-bff5-52d01e25f228",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/scheduled_tools?limit=<integer>&offset=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "scheduled_tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-2a2ef225-9d78-4e8f-bff5-52d01e25f228"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-84f24d0a-c2a0-40e1-90cd-10e8ef5145c2"
+            }
+          ],
+          "id": "f4d35b29-af62-424b-a12b-28a90e7b8f75",
+          "createdAt": "2026-07-28T01:04:03.000Z",
+          "updatedAt": "2026-07-28T01:04:03.000Z",
+          "uid": "35240-f4d35b29-af62-424b-a12b-28a90e7b8f75"
+        },
+        {
+          "name": "tools",
+          "item": [
+            {
+              "name": "authorize",
+              "item": [
+                {
+                  "name": "Authorize Tool",
+                  "id": "53b670f5-96a9-4f02-a0dc-c94af8907dae",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools/authorize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools",
+                        "authorize"
+                      ]
+                    },
+                    "description": "Authorizes a user for a specific tool by name"
+                  },
+                  "response": [
+                    {
+                      "id": "c316af20-2113-41b7-b9e1-341979c0e6dc",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/authorize",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "authorize"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"context\": {\n    \"token\": \"<string>\",\n    \"user_info\": {\n      \"cillumb\": true\n    }\n  },\n  \"id\": \"<string>\",\n  \"provider_id\": \"<string>\",\n  \"scopes\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"status\": \"pending\",\n  \"url\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-c316af20-2113-41b7-b9e1-341979c0e6dc"
+                    },
+                    {
+                      "id": "05606cc6-4d65-4b34-b572-9ef2ada4def5",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/authorize",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "authorize"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-05606cc6-4d65-4b34-b572-9ef2ada4def5"
+                    },
+                    {
+                      "id": "af9398fc-9826-4d73-99f9-ef3f6dcd613f",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/authorize",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "authorize"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-af9398fc-9826-4d73-99f9-ef3f6dcd613f"
+                    },
+                    {
+                      "id": "df27e4fa-68fb-4425-a507-61e596d5e97a",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/authorize",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "authorize"
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-df27e4fa-68fb-4425-a507-61e596d5e97a"
+                    },
+                    {
+                      "id": "be3c099a-6473-419b-9b63-d338457a8844",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"next_uri\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/authorize",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "authorize"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-be3c099a-6473-419b-9b63-d338457a8844"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-53b670f5-96a9-4f02-a0dc-c94af8907dae"
+                }
+              ],
+              "id": "22a4486c-2c50-4702-9e72-c9df4f164481",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-22a4486c-2c50-4702-9e72-c9df4f164481"
+            },
+            {
+              "name": "execute",
+              "item": [
+                {
+                  "name": "Execute Tool",
+                  "id": "9e51d676-c640-49f4-a7b2-11d50fcf850f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools/execute",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools",
+                        "execute"
+                      ]
+                    },
+                    "description": "Executes a tool by name and arguments"
+                  },
+                  "response": [
+                    {
+                      "id": "d2b4e42f-a66c-4427-8fdd-cd58a87cf4e4",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"duration\": \"<number>\",\n  \"execution_id\": \"<string>\",\n  \"execution_type\": \"<string>\",\n  \"finished_at\": \"<string>\",\n  \"id\": \"<string>\",\n  \"output\": {\n    \"authorization\": {\n      \"context\": {\n        \"token\": \"<string>\",\n        \"user_info\": {\n          \"laborisb11\": 14397979\n        }\n      },\n      \"id\": \"<string>\",\n      \"provider_id\": \"<string>\",\n      \"scopes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"status\": \"pending\",\n      \"url\": \"<string>\",\n      \"user_id\": \"<string>\"\n    },\n    \"error\": {\n      \"can_retry\": \"<boolean>\",\n      \"kind\": \"TOOL_RUNTIME_RETRY\",\n      \"message\": \"<string>\",\n      \"additional_prompt_content\": \"<string>\",\n      \"developer_message\": \"<string>\",\n      \"extra\": {\n        \"irure_ab\": {},\n        \"deserunt_99b\": {},\n        \"commodo__\": {},\n        \"esse0b6\": {}\n      },\n      \"retry_after_ms\": \"<integer>\",\n      \"stacktrace\": \"<string>\",\n      \"status_code\": \"<integer>\"\n    },\n    \"logs\": [\n      {\n        \"level\": \"<string>\",\n        \"message\": \"<string>\",\n        \"subtype\": \"<string>\"\n      },\n      {\n        \"level\": \"<string>\",\n        \"message\": \"<string>\",\n        \"subtype\": \"<string>\"\n      }\n    ],\n    \"value\": {}\n  },\n  \"run_at\": \"<string>\",\n  \"status\": \"<string>\",\n  \"success\": \"<boolean>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-d2b4e42f-a66c-4427-8fdd-cd58a87cf4e4"
+                    },
+                    {
+                      "id": "2a84d53c-49a6-4d12-832c-4b2b1b0147ea",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-2a84d53c-49a6-4d12-832c-4b2b1b0147ea"
+                    },
+                    {
+                      "id": "8c996577-2404-46fb-b754-e178003c3877",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-8c996577-2404-46fb-b754-e178003c3877"
+                    },
+                    {
+                      "id": "001c19b6-1322-40dd-8e7d-df60bb93512e",
+                      "name": "Forbidden",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-001c19b6-1322-40dd-8e7d-df60bb93512e"
+                    },
+                    {
+                      "id": "9a28399a-e602-4f93-aeb4-96e24f1b9459",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-9a28399a-e602-4f93-aeb4-96e24f1b9459"
+                    },
+                    {
+                      "id": "8bc3b77f-d702-4473-ac03-a6a6c652a002",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"tool_name\": \"<string>\",\n  \"include_error_stacktrace\": \"<boolean>\",\n  \"input\": {},\n  \"run_at\": \"<string>\",\n  \"tool_version\": \"<string>\",\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/execute",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "execute"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-8bc3b77f-d702-4473-ac03-a6a6c652a002"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-9e51d676-c640-49f4-a7b2-11d50fcf850f"
+                }
+              ],
+              "id": "78207676-dbd3-4c56-9f83-4240d322c649",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-78207676-dbd3-4c56-9f83-4240d322c649"
+            },
+            {
+              "name": "requirements",
+              "item": [
+                {
+                  "name": "Check Tool Requirements",
+                  "id": "e66ca6c8-b6aa-489d-b0c6-5903e6fb2119",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools/requirements",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools",
+                        "requirements"
+                      ]
+                    },
+                    "description": "Checks authorization and secret requirements for multiple tools. Optionally starts OAuth flows for unmet auth requirements."
+                  },
+                  "response": [
+                    {
+                      "id": "6e778b94-8401-4dbb-aad2-0289fad0d767",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/requirements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "requirements"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"authorization\": {\n    \"items\": {\n      \"aliqua__92\": {\n        \"authorization_id\": \"<string>\",\n        \"met\": \"<boolean>\",\n        \"provider_id\": \"<string>\",\n        \"provider_type\": \"<string>\",\n        \"scopes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"status\": \"active\",\n        \"token_status\": \"not_started\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<string>\"\n      },\n      \"exercitation8\": {\n        \"authorization_id\": \"<string>\",\n        \"met\": \"<boolean>\",\n        \"provider_id\": \"<string>\",\n        \"provider_type\": \"<string>\",\n        \"scopes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"status\": \"active\",\n        \"token_status\": \"completed\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<string>\"\n      },\n      \"non79_\": {\n        \"authorization_id\": \"<string>\",\n        \"met\": \"<boolean>\",\n        \"provider_id\": \"<string>\",\n        \"provider_type\": \"<string>\",\n        \"scopes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"status\": \"active\",\n        \"token_status\": \"completed\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"url\": \"<string>\"\n      }\n    },\n    \"met\": \"<boolean>\"\n  },\n  \"met\": \"<boolean>\",\n  \"secrets\": {\n    \"items\": {\n      \"velit8\": {\n        \"met\": \"<boolean>\",\n        \"status_reason\": \"<string>\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"quis_45\": {\n        \"met\": \"<boolean>\",\n        \"status_reason\": \"<string>\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"ut7\": {\n        \"met\": \"<boolean>\",\n        \"status_reason\": \"<string>\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"ex2\": {\n        \"met\": \"<boolean>\",\n        \"status_reason\": \"<string>\",\n        \"tool_names\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    },\n    \"met\": \"<boolean>\"\n  }\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-6e778b94-8401-4dbb-aad2-0289fad0d767"
+                    },
+                    {
+                      "id": "5250843b-bf67-4014-a1f2-f003d17c4e88",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/requirements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "requirements"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-5250843b-bf67-4014-a1f2-f003d17c4e88"
+                    },
+                    {
+                      "id": "3b8184e7-b211-443a-9c46-e9d0ce3eb1d5",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/requirements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "requirements"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-3b8184e7-b211-443a-9c46-e9d0ce3eb1d5"
+                    },
+                    {
+                      "id": "7d624162-aa5a-475e-80f6-bfb929edeaf1",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/requirements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "requirements"
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-7d624162-aa5a-475e-80f6-bfb929edeaf1"
+                    },
+                    {
+                      "id": "4db6b50b-448d-4e20-878f-c80093097bcf",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"authorize\": \"<boolean>\",\n  \"tool_names\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"tools\": [\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    },\n    {\n      \"tool_name\": \"<string>\",\n      \"tool_version\": \"<string>\"\n    }\n  ],\n  \"user_id\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/requirements",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            "requirements"
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-4db6b50b-448d-4e20-878f-c80093097bcf"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-e66ca6c8-b6aa-489d-b0c6-5903e6fb2119"
+                }
+              ],
+              "id": "4da76420-f7b9-4f1c-aee8-9f86aa0fe5b4",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-4da76420-f7b9-4f1c-aee8-9f86aa0fe5b4"
+            },
+            {
+              "name": "{name}",
+              "item": [
+                {
+                  "name": "Get Arcade Tool Specification",
+                  "id": "e4c8cbc5-d2f9-4322-bc80-27811303f911",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "auth": {
+                      "type": "apikey",
+                      "apikey": [
+                        {
+                          "key": "key",
+                          "value": "Authorization",
+                          "type": "string"
+                        },
+                        {
+                          "key": "value",
+                          "value": "{{apiKey}}",
+                          "type": "string"
+                        },
+                        {
+                          "key": "in",
+                          "value": "header",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools",
+                        ":name"
+                      ],
+                      "query": [
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "61fc65eb-b0db-42e1-a58b-b260c4080e36",
+                          "key": "name",
+                          "value": "<string>",
+                          "description": "(Required) Tool name"
+                        }
+                      ]
+                    },
+                    "description": "Returns the arcade tool specification for a specific tool"
+                  },
+                  "response": [
+                    {
+                      "id": "16d46b70-57a5-49d8-b6bb-9a52efcbf410",
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma separated tool formats that will be included in the response.",
+                              "key": "include_format",
+                              "value": "openai,openai"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"fully_qualified_name\": \"<string>\",\n  \"input\": {\n    \"parameters\": [\n      {\n        \"name\": \"<string>\",\n        \"value_schema\": {\n          \"val_type\": \"<string>\",\n          \"enum\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"inner_val_type\": \"<string>\"\n        },\n        \"description\": \"<string>\",\n        \"inferrable\": true,\n        \"required\": \"<boolean>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"value_schema\": {\n          \"val_type\": \"<string>\",\n          \"enum\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"inner_val_type\": \"<string>\"\n        },\n        \"description\": \"<string>\",\n        \"inferrable\": true,\n        \"required\": \"<boolean>\"\n      }\n    ]\n  },\n  \"name\": \"<string>\",\n  \"qualified_name\": \"<string>\",\n  \"toolkit\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<string>\"\n  },\n  \"description\": \"<string>\",\n  \"formatted_schema\": {\n    \"dolor2\": {},\n    \"adipisicing_73\": {}\n  },\n  \"metadata\": {\n    \"behavior\": {\n      \"destructive\": \"<boolean>\",\n      \"idempotent\": \"<boolean>\",\n      \"open_world\": \"<boolean>\",\n      \"operations\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"read_only\": \"<boolean>\"\n    },\n    \"classification\": {\n      \"service_domains\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"extras\": {\n      \"Ut90e\": {}\n    }\n  },\n  \"output\": {\n    \"available_modes\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"description\": \"<string>\",\n    \"value_schema\": {\n      \"val_type\": \"<string>\",\n      \"enum\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"inner_val_type\": \"<string>\"\n    }\n  },\n  \"requirements\": {\n    \"authorization\": {\n      \"id\": \"<string>\",\n      \"oauth2\": {\n        \"scopes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"provider_id\": \"<string>\",\n      \"provider_type\": \"<string>\",\n      \"status\": \"disabled\",\n      \"status_reason\": \"<string>\",\n      \"token_status\": \"failed\"\n    },\n    \"met\": false,\n    \"secrets\": [\n      {\n        \"key\": \"<string>\",\n        \"met\": false,\n        \"status_reason\": \"<string>\"\n      },\n      {\n        \"key\": \"<string>\",\n        \"met\": false,\n        \"status_reason\": \"<string>\"\n      }\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-16d46b70-57a5-49d8-b6bb-9a52efcbf410"
+                    },
+                    {
+                      "id": "97d6d0f1-e90b-4867-a8f6-360a6686abe6",
+                      "name": "Bad Request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma separated tool formats that will be included in the response.",
+                              "key": "include_format",
+                              "value": "openai,openai"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-97d6d0f1-e90b-4867-a8f6-360a6686abe6"
+                    },
+                    {
+                      "id": "8fed2630-4321-452c-9c7c-7953718a717d",
+                      "name": "Unauthorized",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma separated tool formats that will be included in the response.",
+                              "key": "include_format",
+                              "value": "openai,openai"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-8fed2630-4321-452c-9c7c-7953718a717d"
+                    },
+                    {
+                      "id": "e952c0ce-9786-4922-8922-64e5e9241837",
+                      "name": "Unsupported Media Type",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma separated tool formats that will be included in the response.",
+                              "key": "include_format",
+                              "value": "openai,openai"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unsupported Media Type",
+                      "code": 415,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-e952c0ce-9786-4922-8922-64e5e9241837"
+                    },
+                    {
+                      "id": "f51f61cc-4c2d-4dc7-b34c-85933efb2582",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/v1/tools/:name?include_format=openai,openai&user_id=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "v1",
+                            "tools",
+                            ":name"
+                          ],
+                          "query": [
+                            {
+                              "description": "Comma separated tool formats that will be included in the response.",
+                              "key": "include_format",
+                              "value": "openai,openai"
+                            },
+                            {
+                              "description": "User ID",
+                              "key": "user_id",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "name"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:04:03.000Z",
+                      "updatedAt": "2026-07-28T01:04:03.000Z",
+                      "uid": "35240-f51f61cc-4c2d-4dc7-b34c-85933efb2582"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-e4c8cbc5-d2f9-4322-bc80-27811303f911"
+                }
+              ],
+              "id": "8173c7d4-657f-48e1-824c-dbd547f6149a",
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-8173c7d4-657f-48e1-824c-dbd547f6149a"
+            },
+            {
+              "name": "List Static Tools",
+              "id": "ed8f8df3-0b4a-4e84-8b39-ac6e0804aa55",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "apikey",
+                  "apikey": [
+                    {
+                      "key": "key",
+                      "value": "Authorization",
+                      "type": "string"
+                    },
+                    {
+                      "key": "value",
+                      "value": "{{apiKey}}",
+                      "type": "string"
+                    },
+                    {
+                      "key": "in",
+                      "value": "header",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "v1",
+                    "tools"
+                  ],
+                  "query": [
+                    {
+                      "description": "Toolkit name",
+                      "key": "toolkit",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Number of items to return (default: 25, max: 100)",
+                      "key": "limit",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Offset from the start of the list (default: 0)",
+                      "key": "offset",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Comma separated tool formats that will be included in the response.",
+                      "key": "include_format",
+                      "value": "openai,openai"
+                    },
+                    {
+                      "description": "User ID",
+                      "key": "user_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Include all versions of each tool",
+                      "key": "include_all_versions",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                      "key": "filter",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Returns a page of tools from the engine configuration, optionally filtered by toolkit and/or metadata"
+              },
+              "response": [
+                {
+                  "id": "0f4dac3a-25b2-4b2e-b2fe-23cf927618f9",
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"items\": [\n    {\n      \"fully_qualified_name\": \"<string>\",\n      \"input\": {\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"value_schema\": {\n              \"val_type\": \"<string>\",\n              \"enum\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"inner_val_type\": \"<string>\"\n            },\n            \"description\": \"<string>\",\n            \"inferrable\": true,\n            \"required\": \"<boolean>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value_schema\": {\n              \"val_type\": \"<string>\",\n              \"enum\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"inner_val_type\": \"<string>\"\n            },\n            \"description\": \"<string>\",\n            \"inferrable\": true,\n            \"required\": \"<boolean>\"\n          }\n        ]\n      },\n      \"name\": \"<string>\",\n      \"qualified_name\": \"<string>\",\n      \"toolkit\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"description\": \"<string>\",\n      \"formatted_schema\": {\n        \"anim81\": {},\n        \"ipsum936\": {}\n      },\n      \"metadata\": {\n        \"behavior\": {\n          \"destructive\": \"<boolean>\",\n          \"idempotent\": \"<boolean>\",\n          \"open_world\": \"<boolean>\",\n          \"operations\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"read_only\": \"<boolean>\"\n        },\n        \"classification\": {\n          \"service_domains\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"extras\": {\n          \"elitf6\": {},\n          \"Excepteur_90\": {}\n        }\n      },\n      \"output\": {\n        \"available_modes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"description\": \"<string>\",\n        \"value_schema\": {\n          \"val_type\": \"<string>\",\n          \"enum\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"inner_val_type\": \"<string>\"\n        }\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"id\": \"<string>\",\n          \"oauth2\": {\n            \"scopes\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"provider_id\": \"<string>\",\n          \"provider_type\": \"<string>\",\n          \"status\": \"disabled\",\n          \"status_reason\": \"<string>\",\n          \"token_status\": \"pending\"\n        },\n        \"met\": false,\n        \"secrets\": [\n          {\n            \"key\": \"<string>\",\n            \"met\": false,\n            \"status_reason\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"met\": false,\n            \"status_reason\": \"<string>\"\n          }\n        ]\n      }\n    },\n    {\n      \"fully_qualified_name\": \"<string>\",\n      \"input\": {\n        \"parameters\": [\n          {\n            \"name\": \"<string>\",\n            \"value_schema\": {\n              \"val_type\": \"<string>\",\n              \"enum\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"inner_val_type\": \"<string>\"\n            },\n            \"description\": \"<string>\",\n            \"inferrable\": true,\n            \"required\": \"<boolean>\"\n          },\n          {\n            \"name\": \"<string>\",\n            \"value_schema\": {\n              \"val_type\": \"<string>\",\n              \"enum\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"inner_val_type\": \"<string>\"\n            },\n            \"description\": \"<string>\",\n            \"inferrable\": true,\n            \"required\": \"<boolean>\"\n          }\n        ]\n      },\n      \"name\": \"<string>\",\n      \"qualified_name\": \"<string>\",\n      \"toolkit\": {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"version\": \"<string>\"\n      },\n      \"description\": \"<string>\",\n      \"formatted_schema\": {\n        \"nisi7e\": {},\n        \"ut76\": {}\n      },\n      \"metadata\": {\n        \"behavior\": {\n          \"destructive\": \"<boolean>\",\n          \"idempotent\": \"<boolean>\",\n          \"open_world\": \"<boolean>\",\n          \"operations\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"read_only\": \"<boolean>\"\n        },\n        \"classification\": {\n          \"service_domains\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        \"extras\": {\n          \"enim___6\": {},\n          \"ea2\": {}\n        }\n      },\n      \"output\": {\n        \"available_modes\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"description\": \"<string>\",\n        \"value_schema\": {\n          \"val_type\": \"<string>\",\n          \"enum\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"inner_val_type\": \"<string>\"\n        }\n      },\n      \"requirements\": {\n        \"authorization\": {\n          \"id\": \"<string>\",\n          \"oauth2\": {\n            \"scopes\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          \"provider_id\": \"<string>\",\n          \"provider_type\": \"<string>\",\n          \"status\": \"disabled\",\n          \"status_reason\": \"<string>\",\n          \"token_status\": \"pending\"\n        },\n        \"met\": false,\n        \"secrets\": [\n          {\n            \"key\": \"<string>\",\n            \"met\": false,\n            \"status_reason\": \"<string>\"\n          },\n          {\n            \"key\": \"<string>\",\n            \"met\": false,\n            \"status_reason\": \"<string>\"\n          }\n        ]\n      }\n    }\n  ],\n  \"limit\": \"<integer>\",\n  \"offset\": \"<integer>\",\n  \"page_count\": \"<integer>\",\n  \"total_count\": \"<integer>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-0f4dac3a-25b2-4b2e-b2fe-23cf927618f9"
+                },
+                {
+                  "id": "52de6b3b-fb5c-45fe-bd52-7dcc841d2a23",
+                  "name": "Bad Request",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-52de6b3b-fb5c-45fe-bd52-7dcc841d2a23"
+                },
+                {
+                  "id": "57a65ae4-6272-4955-b040-142d7f3533d4",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-57a65ae4-6272-4955-b040-142d7f3533d4"
+                },
+                {
+                  "id": "86fb953a-de86-4df4-9b0b-baaf9de5621c",
+                  "name": "Unsupported Media Type",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-86fb953a-de86-4df4-9b0b-baaf9de5621c"
+                },
+                {
+                  "id": "2f5d3ff9-ffd2-402e-83ec-96a3f8c31756",
+                  "name": "Internal Server Error",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/v1/tools?toolkit=<string>&limit=<integer>&offset=<integer>&include_format=openai,openai&user_id=<string>&include_all_versions=<boolean>&filter=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "v1",
+                        "tools"
+                      ],
+                      "query": [
+                        {
+                          "description": "Toolkit name",
+                          "key": "toolkit",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Number of items to return (default: 25, max: 100)",
+                          "key": "limit",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Offset from the start of the list (default: 0)",
+                          "key": "offset",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Comma separated tool formats that will be included in the response.",
+                          "key": "include_format",
+                          "value": "openai,openai"
+                        },
+                        {
+                          "description": "User ID",
+                          "key": "user_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Include all versions of each tool",
+                          "key": "include_all_versions",
+                          "value": "<boolean>"
+                        },
+                        {
+                          "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match.",
+                          "key": "filter",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\",\n  \"name\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:04:03.000Z",
+                  "updatedAt": "2026-07-28T01:04:03.000Z",
+                  "uid": "35240-2f5d3ff9-ffd2-402e-83ec-96a3f8c31756"
+                }
+              ],
+              "createdAt": "2026-07-28T01:04:03.000Z",
+              "updatedAt": "2026-07-28T01:04:03.000Z",
+              "uid": "35240-ed8f8df3-0b4a-4e84-8b39-ac6e0804aa55"
+            }
+          ],
+          "id": "17b47355-b0a7-4623-a057-6c1698efbcd4",
+          "createdAt": "2026-07-28T01:04:03.000Z",
+          "updatedAt": "2026-07-28T01:04:03.000Z",
+          "uid": "35240-17b47355-b0a7-4623-a057-6c1698efbcd4"
+        }
+      ],
+      "id": "23ef058d-0e8d-41d5-8caf-281a08325a7c",
+      "createdAt": "2026-07-28T01:04:03.000Z",
+      "updatedAt": "2026-07-28T01:04:03.000Z",
+      "uid": "35240-23ef058d-0e8d-41d5-8caf-281a08325a7c"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.arcade.dev"
+    }
+  ]
+}
