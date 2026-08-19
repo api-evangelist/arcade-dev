@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin Hooks API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Hooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/hooks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset"
+              },
+              {
+                "name": "hook_point",
+                "value": "",
+                "type": "query",
+                "description": "Filter by hook point"
+              },
+              {
+                "name": "plugin_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by plugin ID"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all hooks for the current binding with optional filtering"
+        },
+        {
+          "info": {
+            "name": "Create a Hook",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/hooks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new hook configuration"
+        },
+        {
+          "info": {
+            "name": "Bulk Upsert Hooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/hooks/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates or updates multiple hooks at once. The operation is transactional."
+        },
+        {
+          "info": {
+            "name": "Get a Hook",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/hooks/:hook_id",
+            "params": [
+              {
+                "name": "hook_id",
+                "value": "",
+                "type": "path",
+                "description": "Hook ID"
+              },
+              {
+                "name": "binding_type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by binding type (tenant or project)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single hook by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Hook",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/hooks/:hook_id",
+            "params": [
+              {
+                "name": "hook_id",
+                "value": "",
+                "type": "path",
+                "description": "Hook ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing hook configuration"
+        },
+        {
+          "info": {
+            "name": "Delete a Hook",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/hooks/:hook_id",
+            "params": [
+              {
+                "name": "hook_id",
+                "value": "",
+                "type": "path",
+                "description": "Hook ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a hook by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

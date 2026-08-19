@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin LLM API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "LLM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Language Model Chat",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/chat/completions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Interact with language models via OpenAI's chat completions API"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,333 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin Tools API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tools",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Formatted Static Tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/formatted_tools",
+            "params": [
+              {
+                "name": "toolkit",
+                "value": "",
+                "type": "query",
+                "description": "Toolkit name"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Provider format"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              },
+              {
+                "name": "include_all_versions",
+                "value": "",
+                "type": "query",
+                "description": "Include all versions of each tool"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a page of tools from the engine configuration, optionally filtered by toolkit, formatted for a specific provider"
+        },
+        {
+          "info": {
+            "name": "Get Formatted Tool Specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/formatted_tools/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Tool name"
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Provider format"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the formatted tool specification for a specific tool, given a provider"
+        },
+        {
+          "info": {
+            "name": "List Scheduled Tool Executions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/scheduled_tools",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a page of scheduled tool executions"
+        },
+        {
+          "info": {
+            "name": "Get Scheduled Tool Execution Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/scheduled_tools/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Scheduled execution ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the details for a specific scheduled tool execution"
+        },
+        {
+          "info": {
+            "name": "List Static Tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/tools",
+            "params": [
+              {
+                "name": "toolkit",
+                "value": "",
+                "type": "query",
+                "description": "Toolkit name"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              },
+              {
+                "name": "include_format",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated tool formats that will be included in the response."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              },
+              {
+                "name": "include_all_versions",
+                "value": "",
+                "type": "query",
+                "description": "Include all versions of each tool"
+              },
+              {
+                "name": "filter",
+                "value": "",
+                "type": "query",
+                "description": "JSON metadata filter. Array fields (service_domains, operations): shorthand array or object with any_of/all_of/none_of operators (case-insensitive). Boolean fields: read_only, destructive, idempotent, open_world. Extras: case-sensitive key-value subset match."
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a page of tools from the engine configuration, optionally filtered by toolkit and/or metadata"
+        },
+        {
+          "info": {
+            "name": "Authorize Tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/tools/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Authorizes a user for a specific tool by name"
+        },
+        {
+          "info": {
+            "name": "Execute Tool",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/tools/execute",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Executes a tool by name and arguments"
+        },
+        {
+          "info": {
+            "name": "Check Tool Requirements",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/tools/requirements",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Checks authorization and secret requirements for multiple tools. Optionally starts OAuth flows for unmet auth requirements."
+        },
+        {
+          "info": {
+            "name": "Get Arcade Tool Specification",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/tools/:name",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "path",
+                "description": "Tool name"
+              },
+              {
+                "name": "include_format",
+                "value": "",
+                "type": "query",
+                "description": "Comma separated tool formats that will be included in the response."
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns the arcade tool specification for a specific tool"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

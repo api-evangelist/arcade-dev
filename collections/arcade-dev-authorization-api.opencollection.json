@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin Authorization API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authorization",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Initiate Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/auth/authorize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Starts the authorization process for given authorization requirements"
+        },
+        {
+          "info": {
+            "name": "Confirm User Authorization",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/auth/confirm_user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Confirms a user's details during an authorization flow"
+        },
+        {
+          "info": {
+            "name": "Check Authorization Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/auth/status",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "Authorization ID"
+              },
+              {
+                "name": "wait",
+                "value": "",
+                "type": "query",
+                "description": "Timeout in seconds (max 59)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Checks the status of an ongoing authorization process for a specific tool.\nIf 'wait' param is present, does not respond until either the auth status becomes completed or the timeout is reached."
+        },
+        {
+          "info": {
+            "name": "Test Authorization Flow",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/auth/validate_custom_verifier",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Starts a test authorization flow"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

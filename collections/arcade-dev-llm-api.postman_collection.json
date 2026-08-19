@@ -1,0 +1,363 @@
+{
+  "item": [
+    {
+      "id": "906f9fbf-e717-46fa-86b5-f9516787281f",
+      "name": "LLM",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e184c13-ebfa-40d8-aa0e-b56d010ddf77",
+          "name": "Language Model Chat",
+          "request": {
+            "name": "Language Model Chat",
+            "description": {
+              "content": "Interact with language models via OpenAI's chat completions API",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "chat",
+                "completions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "Authorization"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b7bd604-35f1-48d3-a7de-a6491cb48564",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"choices\": [\n    {\n      \"finish_reason\": \"string\",\n      \"index\": 7717,\n      \"logprobs\": \"\",\n      \"message\": {\n        \"content\": \"<string>\",\n        \"role\": \"<string>\",\n        \"name\": \"<string>\",\n        \"tool_call_id\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"<string>\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"<string>\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"tool_authorizations\": [\n        {\n          \"context\": {\n            \"token\": \"string\",\n            \"user_info\": {\n              \"key_0\": \"string\",\n              \"key_1\": 4264.317347501628\n            }\n          },\n          \"id\": \"string\",\n          \"provider_id\": \"string\",\n          \"scopes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"string\",\n          \"user_id\": \"string\"\n        },\n        {\n          \"context\": {\n            \"token\": \"string\",\n            \"user_info\": {\n              \"key_0\": 885.3051553406821\n            }\n          },\n          \"id\": \"string\",\n          \"provider_id\": \"string\",\n          \"scopes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"string\",\n          \"user_id\": \"string\"\n        }\n      ],\n      \"tool_messages\": [\n        {\n          \"content\": \"<string>\",\n          \"role\": \"<string>\",\n          \"name\": \"<string>\",\n          \"tool_call_id\": \"<string>\",\n          \"tool_calls\": [\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"content\": \"<string>\",\n          \"role\": \"<string>\",\n          \"name\": \"<string>\",\n          \"tool_call_id\": \"<string>\",\n          \"tool_calls\": [\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    },\n    {\n      \"finish_reason\": \"string\",\n      \"index\": 9895,\n      \"logprobs\": \"\",\n      \"message\": {\n        \"content\": \"<string>\",\n        \"role\": \"<string>\",\n        \"name\": \"<string>\",\n        \"tool_call_id\": \"<string>\",\n        \"tool_calls\": [\n          {\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"<string>\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          },\n          {\n            \"function\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            },\n            \"id\": \"<string>\",\n            \"type\": {\n              \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n            }\n          }\n        ]\n      },\n      \"tool_authorizations\": [\n        {\n          \"context\": {\n            \"token\": \"string\",\n            \"user_info\": {\n              \"key_0\": 824.9429920329532,\n              \"key_1\": 3949.126631626482,\n              \"key_2\": false\n            }\n          },\n          \"id\": \"string\",\n          \"provider_id\": \"string\",\n          \"scopes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"string\",\n          \"user_id\": \"string\"\n        },\n        {\n          \"context\": {\n            \"token\": \"string\",\n            \"user_info\": {\n              \"key_0\": \"string\"\n            }\n          },\n          \"id\": \"string\",\n          \"provider_id\": \"string\",\n          \"scopes\": [\n            \"string\",\n            \"string\"\n          ],\n          \"status\": \"pending\",\n          \"url\": \"string\",\n          \"user_id\": \"string\"\n        }\n      ],\n      \"tool_messages\": [\n        {\n          \"content\": \"<string>\",\n          \"role\": \"<string>\",\n          \"name\": \"<string>\",\n          \"tool_call_id\": \"<string>\",\n          \"tool_calls\": [\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        },\n        {\n          \"content\": \"<string>\",\n          \"role\": \"<string>\",\n          \"name\": \"<string>\",\n          \"tool_call_id\": \"<string>\",\n          \"tool_calls\": [\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"function\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"id\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"type\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ]\n        }\n      ]\n    }\n  ],\n  \"created\": 2690,\n  \"id\": \"string\",\n  \"model\": \"string\",\n  \"object\": \"string\",\n  \"system_fingerprint\": \"string\",\n  \"usage\": {\n    \"completion_tokens\": 4754,\n    \"prompt_tokens\": 108,\n    \"total_tokens\": 1114\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9488e18-2429-4b0e-aaf4-879bc5b91e22",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88ab3547-097b-4607-a4f7-1f087a64ab7a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62e2c34d-19c8-4952-95bd-60df100d6ef4",
+              "name": "Unsupported Media Type",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb4ac507-7598-4a4f-add9-7a9eb538b73e",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "chat",
+                    "completions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"frequency_penalty\": \"<number>\",\n  \"logit_bias\": {\n    \"key_0\": \"<integer>\"\n  },\n  \"logprobs\": \"<boolean>\",\n  \"max_tokens\": \"<integer>\",\n  \"messages\": [\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"content\": \"<string>\",\n      \"role\": \"<string>\",\n      \"name\": \"<string>\",\n      \"tool_call_id\": \"<string>\",\n      \"tool_calls\": [\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        },\n        {\n          \"function\": {\n            \"arguments\": \"<string>\",\n            \"name\": \"<string>\"\n          },\n          \"id\": \"<string>\",\n          \"type\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"model\": \"<string>\",\n  \"n\": \"<integer>\",\n  \"parallel_tool_calls\": \"<boolean>\",\n  \"presence_penalty\": \"<number>\",\n  \"response_format\": {\n    \"type\": \"<string>\"\n  },\n  \"seed\": \"<integer>\",\n  \"stop\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"stream\": \"<boolean>\",\n  \"stream_options\": {\n    \"include_usage\": \"<boolean>\"\n  },\n  \"temperature\": \"<number>\",\n  \"tool_choice\": {},\n  \"tools\": \"\",\n  \"top_logprobs\": \"<integer>\",\n  \"top_p\": \"<number>\",\n  \"user\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"name\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.arcade.dev",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "73d86313-916d-40ee-9012-b5ff6b4718fd",
+    "name": "Arcade Admin LLM API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.\n\nContact Support:\n Name: Arcade\n Email: contact@arcade.dev",
+      "type": "text/plain"
+    }
+  }
+}

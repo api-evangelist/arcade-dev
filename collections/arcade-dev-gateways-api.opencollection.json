@@ -1,0 +1,287 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin Gateways API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gateways",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Gateways",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a paginated list of gateways for the current project"
+        },
+        {
+          "info": {
+            "name": "Create a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new gateway in the current project"
+        },
+        {
+          "info": {
+            "name": "Check Gateway Slug Availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways/slug",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Checks whether a gateway slug is available for use"
+        },
+        {
+          "info": {
+            "name": "Get a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              },
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "Gateway ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single gateway by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              },
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "Gateway ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Replaces the full configuration of an existing gateway"
+        },
+        {
+          "info": {
+            "name": "Patch a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              },
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "Gateway ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Partially updates an existing gateway configuration"
+        },
+        {
+          "info": {
+            "name": "Delete a Gateway",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/orgs/:org_id/projects/:project_id/gateways/:gateway_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "Organization ID"
+              },
+              {
+                "name": "project_id",
+                "value": "",
+                "type": "path",
+                "description": "Project ID"
+              },
+              {
+                "name": "gateway_id",
+                "value": "",
+                "type": "path",
+                "description": "Gateway ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a gateway by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

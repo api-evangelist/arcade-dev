@@ -1,0 +1,543 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Auth Providers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/admin/auth_providers",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List a page of auth providers that are available to the caller"
+        },
+        {
+          "info": {
+            "name": "Create an Auth Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/admin/auth_providers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a new auth provider"
+        },
+        {
+          "info": {
+            "name": "Get an Auth Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/admin/auth_providers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the auth provider to get"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the details of a specific auth provider"
+        },
+        {
+          "info": {
+            "name": "Patch an Auth Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/admin/auth_providers/:id",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Patch an existing auth provider"
+        },
+        {
+          "info": {
+            "name": "Delete an Auth Provider",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/admin/auth_providers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the auth provider to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a specific auth provider"
+        },
+        {
+          "info": {
+            "name": "List Secrets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/admin/secrets",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all secrets that are visible to the caller"
+        },
+        {
+          "info": {
+            "name": "Delete Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/admin/secrets/:secret_id",
+            "params": [
+              {
+                "name": "secret_id",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the secret to delete"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a secret by its ID"
+        },
+        {
+          "info": {
+            "name": "Upsert Secret",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/admin/secrets/:secret_key",
+            "params": [
+              {
+                "name": "secret_key",
+                "value": "",
+                "type": "path",
+                "description": "The key of the secret to upsert"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a secret"
+        },
+        {
+          "info": {
+            "name": "Get Session Verification Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/admin/settings/session_verification",
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the current session verification settings for the caller"
+        },
+        {
+          "info": {
+            "name": "Update Session Verification Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.arcade.dev/v1/admin/settings/session_verification",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update session verification settings for the caller"
+        },
+        {
+          "info": {
+            "name": "List Auth Connections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/admin/user_connections",
+            "params": [
+              {
+                "name": "provider_id",
+                "value": "",
+                "type": "query",
+                "description": "Provider ID"
+              },
+              {
+                "name": "user_id",
+                "value": "",
+                "type": "query",
+                "description": "User ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Page size"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Page offset"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all auth connections"
+        },
+        {
+          "info": {
+            "name": "Delete Auth Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/admin/user_connections/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Connection ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a user/auth provider connection"
+        },
+        {
+          "info": {
+            "name": "List All Workers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/workers",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List all workers with their definitions"
+        },
+        {
+          "info": {
+            "name": "Create a Worker",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/workers",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create a worker"
+        },
+        {
+          "info": {
+            "name": "Test a Worker Connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/workers/test",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Test a worker connection before adding it to the system"
+        },
+        {
+          "info": {
+            "name": "Get a Worker by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/workers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a worker by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Worker",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/workers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update a worker"
+        },
+        {
+          "info": {
+            "name": "Delete a Worker",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/workers/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete a worker"
+        },
+        {
+          "info": {
+            "name": "Authorize a Worker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/workers/:id/authorize",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Authorize a worker"
+        },
+        {
+          "info": {
+            "name": "Get the Health of a Worker",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/workers/:id/health",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the health of a worker"
+        },
+        {
+          "info": {
+            "name": "List Tools",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/workers/:id/tools",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Worker ID"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of items to return (default: 25, max: 100)"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset from the start of the list (default: 0)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a page of tools"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

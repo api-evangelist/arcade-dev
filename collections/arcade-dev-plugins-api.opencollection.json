@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Arcade Admin Plugins API",
+    "version": "0.1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Plugins",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Plugins",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/plugins",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Limit"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Offset"
+              },
+              {
+                "name": "binding_type",
+                "value": "",
+                "type": "query",
+                "description": "Binding type filter (e.g., 'tenant')"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns all plugins for the current binding"
+        },
+        {
+          "info": {
+            "name": "Create a Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.arcade.dev/v1/plugins",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Creates a new plugin with optional inline hooks"
+        },
+        {
+          "info": {
+            "name": "Get a Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.arcade.dev/v1/plugins/:plugin_id",
+            "params": [
+              {
+                "name": "plugin_id",
+                "value": "",
+                "type": "path",
+                "description": "Plugin ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Returns a single plugin by ID"
+        },
+        {
+          "info": {
+            "name": "Update a Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.arcade.dev/v1/plugins/:plugin_id",
+            "params": [
+              {
+                "name": "plugin_id",
+                "value": "",
+                "type": "path",
+                "description": "Plugin ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Updates an existing plugin configuration"
+        },
+        {
+          "info": {
+            "name": "Delete a Plugin",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.arcade.dev/v1/plugins/:plugin_id",
+            "params": [
+              {
+                "name": "plugin_id",
+                "value": "",
+                "type": "path",
+                "description": "Plugin ID"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "Authorization",
+              "value": "{{Authorization}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Deletes a plugin by ID"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
