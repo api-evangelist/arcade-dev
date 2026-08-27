@@ -1,4 +1,5 @@
 aid: arcade-dev
+name: "Arcade.dev"
 accessModel:
   pricing: freemium
   onboarding: self-serve
