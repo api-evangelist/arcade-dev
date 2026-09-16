@@ -1,5 +1,5 @@
 aid: arcade-dev
-name: "Arcade.dev"
+name: Arcade.dev
 deliveryModel:
   model: saas
   open_source: false
@@ -519,165 +519,167 @@ apis:
   - type: Examples
     url: examples/arcade-operations-health-example.json
 common:
-  - type: Website
-    url: https://www.arcade.dev/
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/arcade-dev/overview
-  - type: AgenticAccess
-    url: agentic-access/arcade-dev-agentic-access.yml
-  - type: DomainSecurity
-    url: security/arcade-dev-domain-security.yml
-  - type: Authentication
-    url: authentication/arcade-dev-authentication.yml
-  - type: Portal
-    url: https://arcade.dev
-  - type: Documentation
-    url: https://docs.arcade.dev
-  - type: GettingStarted
-    url: https://docs.arcade.dev/home
-  - type: Signup
-    url: https://api.arcade.dev/dashboard/auth/login
-  - type: Pricing
-    url: https://arcade.dev/pricing
-  - type: Blog
-    url: https://arcade.dev/blog
-  - type: ChangeLog
-    url: https://docs.arcade.dev/home/release-notes
-  - url: https://github.com/ArcadeAI
-    type: GitHubOrganization
-  - url: https://github.com/ArcadeAI/arcade-py
-    name: Python SDK (arcadepy)
-    type: SDKs
-  - url: https://github.com/ArcadeAI/arcade-js
-    name: TypeScript / JavaScript SDK
-    type: SDKs
-  - url: https://github.com/ArcadeAI/arcade-go
-    name: Go SDK
-    type: SDKs
-  - url: https://github.com/ArcadeAI/arcade-java
-    name: Java / Kotlin SDK
-    type: SDKs
-  - url: https://github.com/ArcadeAI/arcade-dotnet
-    name: .NET SDK
-    type: SDKs
-  - url: https://github.com/ArcadeAI/arcade-mcp
-    name: arcade-mcp — MCP Server Framework and Tool Development library
-    type: SDKs
-  - url: https://github.com/ArcadeAI/agent-templates
-    name: Agent Templates
-    type: CodeExamples
-  - url: https://github.com/ArcadeAI/blueprint-mcp
-    name: blueprint-mcp (codebase diagramming MCP server)
-    type: Tools
-  - url: https://github.com/ArcadeAI/agent-library
-    name: agent-library (personal knowledge MCP)
-    type: Tools
-  - url: https://github.com/ArcadeAI/safeword
-    name: safeword — personal AI agent guides and templates
-    type: CodeExamples
-  - url: https://github.com/ArcadeAI/docs
-    name: Arcade Documentation Source
-    type: Documentation
-  - url: https://modelcontextprotocol.io
-    name: Model Context Protocol
-    type: Documentation
-  - url: https://docs.arcade.dev/references/api
-    type: Documentation
-    name: API Reference
-  - url: https://docs.arcade.dev/home/install/cli
-    type: SDKs
-    name: arcade CLI
-  - url: https://docs.arcade.dev/home/auth-providers
-    type: Documentation
-    name: Auth Providers (40+)
-  - url: https://docs.arcade.dev/home/tools
-    type: Documentation
-    name: Pre-built Tools (7,000+ integrations)
-  - url: https://docs.arcade.dev/home/build-tools
-    type: Documentation
-    name: Build Custom Tools
-  - url: https://docs.arcade.dev/guides/mcp-gateways
-    type: Documentation
-    name: MCP Gateways
-  - url: https://docs.arcade.dev/guides/audit-logs
-    type: Documentation
-    name: Audit Logs
-  - url: https://docs.arcade.dev/guides/contextual-access
-    type: Documentation
-    name: Contextual Access
-  - url: https://docs.arcade.dev/guides/deployment
-    type: Documentation
-    name: Deployment (Cloud / VPC / On-Prem / Air-Gapped)
-  - url: https://docs.arcade.dev/home/security
-    type: Documentation
-    name: Security Program
-  - url: https://arcade.dev/registry
-    type: Documentation
-    name: Arcade Registry (Beta)
-  - url: https://discord.gg/arcadedev
-    type: Forums
-  - url: https://x.com/TryArcade
-    type: X
-  - url: plans/arcade-dev-plans-pricing.yml
-    type: Plans
-  - url: rate-limits/arcade-dev-rate-limits.yml
-    type: RateLimits
-  - url: finops/arcade-dev-finops.yml
-    type: FinOps
-  - url: rules/arcade-dev-rules.yml
-    type: SpectralRules
-  - url: json-ld/arcade-dev-context.jsonld
-    type: JSONLD
-  - url: vocabulary/arcade-dev-vocabulary.yml
-    type: Vocabulary
-  - type: Features
-    data:
-      - MCP runtime engine for secure, multi-user AI agent tool calling
-      - 7,000+ pre-built tool integrations across SaaS apps
-      - >-
-        Agent-optimized toolkits for Gmail, Google Calendar, Google Drive, Slack, Microsoft 365, Salesforce, HubSpot,
-        GitHub, Jira, Asana, LinkedIn, Stripe, MongoDB, Postgres, and more
-      - >-
-        User-scoped authorization (not service accounts) — agents act as the end-user with OAuth and API-key tokens
-        managed by Arcade
-      - 40+ auth providers including Google, Microsoft, Slack, GitHub, Salesforce, HubSpot
-      - OpenAI-compatible chat completions endpoint with attached tools
-      - Self-hosted workers for executing tools inside the customer perimeter
-      - MCP gateways scoped per organization and project for MCP-client routing
-      - Audit logs and tool-execution hooks for SIEM and governance pipelines
-      - Tool authorization, tool execution, scheduled tools, formatted tools, and tool requirement inspection APIs
-      - Python (arcadepy), TypeScript (arcadejs), Go, Java/Kotlin, and .NET SDKs
-      - arcade-mcp MCP Server Framework and Tool Development library for custom toolkits
-      - >-
-        Integrations with AG2, CrewAI, Google ADK, LangChain (Python / TypeScript), Mastra, OpenAI Agents, Spring AI,
-        TanStack AI, and Vercel AI SDK
-      - 'Supported MCP clients: Cursor, Claude Desktop, Claude Code, VS Code, Microsoft Copilot Studio, GitHub Copilot'
-      - Cloud, VPC, on-premises, and air-gapped deployment options
-      - Usage-based pricing — Hobby free, Growth $25/mo plus overage, Enterprise custom
-      - Arcade Registry (Beta) for publishing, sharing, and monetizing agentic tools
-      - SSO/SAML, RBAC, and tenant isolation on Enterprise
-    sources:
-      - https://arcade.dev
-      - https://arcade.dev/pricing
-      - https://docs.arcade.dev
-      - https://api.arcade.dev/v1/swagger
-      - https://github.com/ArcadeAI
-    updated: '2026-05-25'
+- type: Website
+  url: https://www.arcade.dev/
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/arcade-dev/overview
+- type: AgenticAccess
+  url: agentic-access/arcade-dev-agentic-access.yml
+- type: DomainSecurity
+  url: security/arcade-dev-domain-security.yml
+- type: Authentication
+  url: authentication/arcade-dev-authentication.yml
+- type: Portal
+  url: https://arcade.dev
+- type: Documentation
+  url: https://docs.arcade.dev
+- type: GettingStarted
+  url: https://docs.arcade.dev/home
+- type: Signup
+  url: https://api.arcade.dev/dashboard/auth/login
+- type: Pricing
+  url: https://arcade.dev/pricing
+- type: Blog
+  url: https://arcade.dev/blog
+- type: ChangeLog
+  url: https://docs.arcade.dev/home/release-notes
+- url: https://github.com/ArcadeAI
+  type: GitHubOrganization
+- url: https://github.com/ArcadeAI/arcade-py
+  name: Python SDK (arcadepy)
+  type: SDKs
+- url: https://github.com/ArcadeAI/arcade-js
+  name: TypeScript / JavaScript SDK
+  type: SDKs
+- url: https://github.com/ArcadeAI/arcade-go
+  name: Go SDK
+  type: SDKs
+- url: https://github.com/ArcadeAI/arcade-java
+  name: Java / Kotlin SDK
+  type: SDKs
+- url: https://github.com/ArcadeAI/arcade-dotnet
+  name: .NET SDK
+  type: SDKs
+- url: https://github.com/ArcadeAI/arcade-mcp
+  name: arcade-mcp — MCP Server Framework and Tool Development library
+  type: SDKs
+- url: https://github.com/ArcadeAI/agent-templates
+  name: Agent Templates
+  type: CodeExamples
+- url: https://github.com/ArcadeAI/blueprint-mcp
+  name: blueprint-mcp (codebase diagramming MCP server)
+  type: Tools
+- url: https://github.com/ArcadeAI/agent-library
+  name: agent-library (personal knowledge MCP)
+  type: Tools
+- url: https://github.com/ArcadeAI/safeword
+  name: safeword — personal AI agent guides and templates
+  type: CodeExamples
+- url: https://github.com/ArcadeAI/docs
+  name: Arcade Documentation Source
+  type: Documentation
+- url: https://modelcontextprotocol.io
+  name: Model Context Protocol
+  type: Documentation
+- url: https://docs.arcade.dev/references/api
+  type: Documentation
+  name: API Reference
+- url: https://docs.arcade.dev/home/install/cli
+  type: SDKs
+  name: arcade CLI
+- url: https://docs.arcade.dev/home/auth-providers
+  type: Documentation
+  name: Auth Providers (40+)
+- url: https://docs.arcade.dev/home/tools
+  type: Documentation
+  name: Pre-built Tools (7,000+ integrations)
+- url: https://docs.arcade.dev/home/build-tools
+  type: Documentation
+  name: Build Custom Tools
+- url: https://docs.arcade.dev/guides/mcp-gateways
+  type: Documentation
+  name: MCP Gateways
+- url: https://docs.arcade.dev/guides/audit-logs
+  type: Documentation
+  name: Audit Logs
+- url: https://docs.arcade.dev/guides/contextual-access
+  type: Documentation
+  name: Contextual Access
+- url: https://docs.arcade.dev/guides/deployment
+  type: Documentation
+  name: Deployment (Cloud / VPC / On-Prem / Air-Gapped)
+- url: https://docs.arcade.dev/home/security
+  type: Documentation
+  name: Security Program
+- url: https://arcade.dev/registry
+  type: Documentation
+  name: Arcade Registry (Beta)
+- url: https://discord.gg/arcadedev
+  type: Forums
+- url: https://x.com/TryArcade
+  type: X
+- url: plans/arcade-dev-plans-pricing.yml
+  type: Plans
+- url: rate-limits/arcade-dev-rate-limits.yml
+  type: RateLimits
+- url: finops/arcade-dev-finops.yml
+  type: FinOps
+- url: rules/arcade-dev-rules.yml
+  type: SpectralRules
+- url: json-ld/arcade-dev-context.jsonld
+  type: JSONLD
+- url: vocabulary/arcade-dev-vocabulary.yml
+  type: Vocabulary
+- type: Features
+  data:
+  - MCP runtime engine for secure, multi-user AI agent tool calling
+  - 7,000+ pre-built tool integrations across SaaS apps
+  - Agent-optimized toolkits for Gmail, Google Calendar, Google Drive, Slack, Microsoft 365, Salesforce,
+    HubSpot, GitHub, Jira, Asana, LinkedIn, Stripe, MongoDB, Postgres, and more
+  - User-scoped authorization (not service accounts) — agents act as the end-user with OAuth and API-key
+    tokens managed by Arcade
+  - 40+ auth providers including Google, Microsoft, Slack, GitHub, Salesforce, HubSpot
+  - OpenAI-compatible chat completions endpoint with attached tools
+  - Self-hosted workers for executing tools inside the customer perimeter
+  - MCP gateways scoped per organization and project for MCP-client routing
+  - Audit logs and tool-execution hooks for SIEM and governance pipelines
+  - Tool authorization, tool execution, scheduled tools, formatted tools, and tool requirement inspection
+    APIs
+  - Python (arcadepy), TypeScript (arcadejs), Go, Java/Kotlin, and .NET SDKs
+  - arcade-mcp MCP Server Framework and Tool Development library for custom toolkits
+  - Integrations with AG2, CrewAI, Google ADK, LangChain (Python / TypeScript), Mastra, OpenAI Agents,
+    Spring AI, TanStack AI, and Vercel AI SDK
+  - 'Supported MCP clients: Cursor, Claude Desktop, Claude Code, VS Code, Microsoft Copilot Studio, GitHub
+    Copilot'
+  - Cloud, VPC, on-premises, and air-gapped deployment options
+  - Usage-based pricing — Hobby free, Growth $25/mo plus overage, Enterprise custom
+  - Arcade Registry (Beta) for publishing, sharing, and monetizing agentic tools
+  - SSO/SAML, RBAC, and tenant isolation on Enterprise
+  sources:
+  - https://arcade.dev
+  - https://arcade.dev/pricing
+  - https://docs.arcade.dev
+  - https://api.arcade.dev/v1/swagger
+  - https://github.com/ArcadeAI
+  updated: '2026-05-25'
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-09-16'
 position: Producing
-description: >-
-  Arcade.dev (formerly Arcade AI) is the MCP runtime for production AI agents — a platform that lets agents safely take
-  real-world actions across SaaS apps with per-user authorization, governed tool execution, and audit logging. The
-  Arcade Engine exposes a Tools API for listing / authorizing / executing agent tools, an Authorization API that brokers
-  OAuth and API-key grants across 40+ providers, an OpenAI-compatible LLM endpoint, Workers and MCP Gateways for
-  routing, Hooks for governance, and an Admin API for control-plane configuration. Arcade ships with 7,000+ pre-built
-  integrations across Google, Microsoft, Slack, GitHub, Salesforce, HubSpot, and more, plus an MCP server framework
-  (arcade-mcp) and SDKs in Python, TypeScript, Go, Java/Kotlin, and .NET. Available as Arcade Cloud, VPC, on-prem, or
-  air-gapped.
+description: Arcade.dev (formerly Arcade AI) is the MCP runtime for production AI agents — a platform
+  that lets agents safely take real-world actions across SaaS apps with per-user authorization, governed
+  tool execution, and audit logging. The Arcade Engine exposes a Tools API for listing / authorizing /
+  executing agent tools, an Authorization API that brokers OAuth and API-key grants across 40+ providers,
+  an OpenAI-compatible LLM endpoint, Workers and MCP Gateways for routing, Hooks for governance, and an
+  Admin API for control-plane configuration. Arcade ships with 7,000+ pre-built integrations across Google,
+  Microsoft, Slack, GitHub, Salesforce, HubSpot, and more, plus an MCP server framework (arcade-mcp) and
+  SDKs in Python, TypeScript, Go, Java/Kotlin, and .NET. Available as Arcade Cloud, VPC, on-prem, or air-gapped.
 maintainers:
-  - FN: Kin Lane
-    email: info@apievangelist.com
-    X: apievangelist
-    url: https://apievangelist.com
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
 specificationVersion: '0.23'
+tags:
+- Authorization
+- LLM
+- Plugins
