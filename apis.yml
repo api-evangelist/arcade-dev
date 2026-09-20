@@ -28,6 +28,9 @@ accessModel:
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/arcade-dev.png
 url: https://raw.githubusercontent.com/api-evangelist/arcade-dev/refs/heads/main/apis.yml
+x-docs-platform: nextra
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-19
 apis:
 - aid: arcade-dev:arcade-dev-admin-api
   name: arcade-dev Admin API
