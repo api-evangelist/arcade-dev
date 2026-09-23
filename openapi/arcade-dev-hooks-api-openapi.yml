@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
-  title: Arcade Admin Hooks API
+  description: Manage lifecycle hooks that fire on tool authorization and execution events, including bulk hook updates.
+  title: Arcade Hooks API
   contact:
     name: Arcade
     url: https://arcade.dev
@@ -278,6 +278,76 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
+    plugins.Phase:
+      type: string
+      enum:
+      - before
+      - after
+      x-enum-varnames:
+      - PhaseBefore
+      - PhaseAfter
+    schemas.BulkUpsertHooksResponse:
+      type: object
+      properties:
+        failed:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.BulkHookResult'
+        success:
+          type: integer
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.OffsetPage-schemas_HookResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.HookResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.PatchHookRequest:
+      type: object
+      properties:
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+          maximum: 30000
+          minimum: 100
     schemas.CreateHookRequest:
       type: object
       required:
@@ -324,13 +394,54 @@ components:
           type: integer
           maximum: 30000
           minimum: 100
-    schemas.Error:
+    schemas.BulkHookResult:
       type: object
       properties:
-        message:
+        action:
+          type: string
+        error:
+          type: string
+        hook_id:
+          type: string
+        hook_point:
+          type: string
+        plugin_id:
+          type: string
+    schemas.HookResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        created_at:
+          type: string
+        failure_mode:
+          $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+        id:
           type: string
         name:
           type: string
+        phase:
+          $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+        updated_at:
+          type: string
+        version:
+          type: integer
     schemas.BulkUpsertHooksRequest:
       type: object
       required:
@@ -340,14 +451,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/schemas.BulkHookConfig'
-    plugins.HookPointStatus:
+    plugins.FailureMode:
       type: string
       enum:
-      - inactive
-      - active
+      - fail_closed
+      - fail_open
       x-enum-varnames:
-      - HookPointStatusInactive
-      - HookPointStatusActive
+      - FailureModeClosed
+      - FailureModeOpen
     schemas.BulkHookConfig:
       type: object
       required:
@@ -384,125 +495,14 @@ components:
           - inactive
           allOf:
           - $ref: '#/components/schemas/plugins.HookPointStatus'
-    plugins.FailureMode:
+    plugins.HookPointStatus:
       type: string
       enum:
-      - fail_closed
-      - fail_open
+      - inactive
+      - active
       x-enum-varnames:
-      - FailureModeClosed
-      - FailureModeOpen
-    plugins.Phase:
-      type: string
-      enum:
-      - before
-      - after
-      x-enum-varnames:
-      - PhaseBefore
-      - PhaseAfter
-    schemas.OffsetPage-schemas_HookResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.HookResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.PatchHookRequest:
-      type: object
-      properties:
-        failure_mode:
-          enum:
-          - fail_closed
-          - fail_open
-          allOf:
-          - $ref: '#/components/schemas/plugins.FailureMode'
-        phase:
-          enum:
-          - before
-          - after
-          allOf:
-          - $ref: '#/components/schemas/plugins.Phase'
-        priority:
-          type: integer
-          maximum: 1000
-          minimum: 0
-        status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          type: integer
-          maximum: 30000
-          minimum: 100
-    schemas.HookResponse:
-      type: object
-      properties:
-        cache_enabled:
-          type: boolean
-        cache_ttl_ms:
-          type: integer
-        created_at:
-          type: string
-        failure_mode:
-          $ref: '#/components/schemas/plugins.FailureMode'
-        hook_point:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        phase:
-          $ref: '#/components/schemas/plugins.Phase'
-        plugin_id:
-          type: string
-        priority:
-          type: integer
-        status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          type: integer
-        updated_at:
-          type: string
-        version:
-          type: integer
-    schemas.BulkUpsertHooksResponse:
-      type: object
-      properties:
-        failed:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.BulkHookResult'
-        success:
-          type: integer
-    schemas.BulkHookResult:
-      type: object
-      properties:
-        action:
-          type: string
-        error:
-          type: string
-        hook_id:
-          type: string
-        hook_point:
-          type: string
-        plugin_id:
-          type: string
+      - HookPointStatusInactive
+      - HookPointStatusActive
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

@@ -1,14 +1,15 @@
 {
   "provider": "arcade-dev",
   "sources": [
-    "arcade-dev-admin-api-openapi.yml",
-    "arcade-dev-authorization-api-openapi.yml",
-    "arcade-dev-gateways-api-openapi.yml",
-    "arcade-dev-hooks-api-openapi.yml",
-    "arcade-dev-llm-api-openapi.yml",
-    "arcade-dev-operations-api-openapi.yml",
-    "arcade-dev-plugins-api-openapi.yml",
-    "arcade-dev-tools-api-openapi.yml"
+    "_original/arcade-admin-api-openapi.yml",
+    "_original/arcade-auth-api-openapi.yml",
+    "_original/arcade-gateways-api-openapi.yml",
+    "_original/arcade-hooks-api-openapi.yml",
+    "_original/arcade-llm-api-openapi.yml",
+    "_original/arcade-operations-api-openapi.yml",
+    "_original/arcade-plugins-api-openapi.yml",
+    "_original/arcade-tools-api-openapi.yml",
+    "_original/arcade-workers-api-openapi.yml"
   ],
   "outputs": [
     "arcade-dev-admin-api-openapi.yml",
@@ -23,6 +24,37 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (9 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "arcade-admin-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-admin-api-openapi.yml: declared missing tag: Admin",
+    "arcade-auth-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-auth-api-openapi.yml: declared missing tag: Authorization",
+    "arcade-gateways-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-gateways-api-openapi.yml: declared missing tag: Gateways",
+    "arcade-hooks-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-hooks-api-openapi.yml: declared missing tag: Hooks",
+    "arcade-llm-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-llm-api-openapi.yml: declared missing tag: LLM",
+    "arcade-operations-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-operations-api-openapi.yml: declared missing tag: Operations",
+    "arcade-plugins-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-plugins-api-openapi.yml: declared missing tag: Plugins",
+    "arcade-tools-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-tools-api-openapi.yml: declared missing tag: Tools",
+    "arcade-workers-api-openapi.yml: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "arcade-workers-api-openapi.yml: declared missing tag: Admin",
+    "tag 'Admin' spans 2 source specs (arcade-admin-api-openapi.yml, arcade-workers-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "arcade-dev-admin-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-authorization-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-gateways-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-hooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-llm-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-plugins-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "arcade-dev-tools-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

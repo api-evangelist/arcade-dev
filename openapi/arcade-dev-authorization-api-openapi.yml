@@ -1,7 +1,7 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
-  title: Arcade Admin Authorization API
+  description: Authorize end-users for third-party providers (OAuth, API key, custom). Check authorization status and confirm users to obtain user-scoped tokens for tools.
+  title: Arcade Authorization API
   contact:
     name: Arcade
     url: https://arcade.dev
@@ -219,6 +219,38 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    auth.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    auth.AuthorizationContext:
+      type: object
+      properties:
+        token:
+          type: string
+        user_info:
+          type: object
+          additionalProperties: true
+    schemas.ValidateCustomVerifierRequest:
+      type: object
+      required:
+      - user_id
+      - verifier_url
+      properties:
+        user_id:
+          type: string
+        verifier_url:
+          type: string
     schemas.AuthorizationInitiationRequest:
       type: object
       required:
@@ -232,60 +264,6 @@ components:
           type: string
         user_id:
           type: string
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
-    schemas.ValidateCustomVerifierResponse:
-      type: object
-      properties:
-        flow_id:
-          type: string
-        next_uri:
-          type: string
-    schemas.ValidateCustomVerifierRequest:
-      type: object
-      required:
-      - user_id
-      - verifier_url
-      properties:
-        user_id:
-          type: string
-        verifier_url:
-          type: string
-    auth.AuthorizationContext:
-      type: object
-      properties:
-        token:
-          type: string
-        user_info:
-          type: object
-          additionalProperties: true
-    schemas.AuthorizationConfirmUserRequest:
-      type: object
-      required:
-      - flow_id
-      - user_id
-      properties:
-        flow_id:
-          type: string
-        user_id:
-          type: string
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
     auth.AuthorizationRequirement:
       type: object
       properties:
@@ -298,22 +276,6 @@ components:
           description: one of ID or ProviderID must be set
           type: string
         provider_type:
-          type: string
-    auth.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
-    schemas.AuthorizationConfirmUserResponse:
-      type: object
-      required:
-      - auth_id
-      properties:
-        auth_id:
-          type: string
-        next_uri:
           type: string
     auth.AuthorizationResponse:
       type: object
@@ -335,6 +297,44 @@ components:
         url:
           type: string
         user_id:
+          type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    schemas.ValidateCustomVerifierResponse:
+      type: object
+      properties:
+        flow_id:
+          type: string
+        next_uri:
+          type: string
+    schemas.AuthorizationConfirmUserRequest:
+      type: object
+      required:
+      - flow_id
+      - user_id
+      properties:
+        flow_id:
+          type: string
+        user_id:
+          type: string
+    schemas.AuthorizationConfirmUserResponse:
+      type: object
+      required:
+      - auth_id
+      properties:
+        auth_id:
+          type: string
+        next_uri:
           type: string
   securitySchemes:
     Bearer:
