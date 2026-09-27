@@ -427,63 +427,6 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
-    identity.BindingType:
-      type: string
-      enum:
-      - static
-      - tenant
-      - project
-      - account
-      x-enum-varnames:
-      - StaticBindingType
-      - TenantBindingType
-      - ProjectBindingType
-      - AccountBindingType
-    schemas.CreateDiscoveryRequest:
-      type: object
-      properties:
-        allowed_classes:
-          type: array
-          maxItems: 10
-          items:
-            type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          maxItems: 500
-          items:
-            type: string
-    schemas.UpdateDiscoveryRequest:
-      type: object
-      properties:
-        allowed_classes:
-          type: array
-          maxItems: 10
-          items:
-            type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          maxItems: 500
-          items:
-            type: string
-    schemas.SlugInfoRequest:
-      type: object
-      required:
-      - slug
-      properties:
-        slug:
-          type: string
-          maxLength: 256
     schemas.PatchDiscoveryRequest:
       type: object
       properties:
@@ -499,39 +442,6 @@ components:
           maxItems: 500
           items:
             type: string
-    schemas.PatchToolFilterRequest:
-      type: object
-      properties:
-        allowed_tools:
-          type: array
-          maxItems: 500
-          uniqueItems: true
-          items:
-            type: string
-        discovery:
-          $ref: '#/components/schemas/schemas.PatchDiscoveryRequest'
-    schemas.OffsetPage-schemas_GatewayResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.GatewayResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.BindingResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          $ref: '#/components/schemas/identity.BindingType'
     schemas.CreateGatewayRequest:
       type: object
       required:
@@ -573,22 +483,105 @@ components:
           $ref: '#/components/schemas/schemas.CreateToolFilterRequest'
         user_source_id:
           type: string
-    schemas.UpdateToolFilterRequest:
+    schemas.OffsetPage-schemas_GatewayResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.GatewayResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.DiscoveryResponse:
+      type: object
+      properties:
+        allowed_classes:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+        pinned_asset_keys:
+          type: array
+          items:
+            type: string
+    schemas.UpdateDiscoveryRequest:
+      type: object
+      properties:
+        allowed_classes:
+          type: array
+          maxItems: 10
+          items:
+            type: string
+        enabled:
+          type: boolean
+        pinned_asset_keys:
+          type: array
+          maxItems: 500
+          items:
+            type: string
+    schemas.PatchToolFilterRequest:
       type: object
       properties:
         allowed_tools:
-          description: 'Qualified tool names allowed through this gateway. Each entry must be in the
-
-            "Provider.ToolName" form (for example, "Google.SendEmail"). Versioned tool
-
-            names are not yet supported.'
           type: array
           maxItems: 500
           uniqueItems: true
           items:
             type: string
         discovery:
-          $ref: '#/components/schemas/schemas.UpdateDiscoveryRequest'
+          $ref: '#/components/schemas/schemas.PatchDiscoveryRequest'
+    schemas.PatchGatewayRequest:
+      type: object
+      properties:
+        allowed_passthrough_headers:
+          type: array
+          maxItems: 100
+          uniqueItems: true
+          items:
+            type: string
+        auth_type:
+          type: string
+          enum:
+          - arcade
+          - arcade_header
+          - user_source
+        consent_skip_client_ids:
+          type: array
+          maxItems: 64
+          uniqueItems: true
+          items:
+            type: string
+        description:
+          type: string
+          maxLength: 1000
+        instructions:
+          type: string
+          maxLength: 5000
+        name:
+          type: string
+          maxLength: 256
+          minLength: 1
+        slug:
+          type: string
+          maxLength: 256
+        status:
+          type: string
+        tool_filter:
+          $ref: '#/components/schemas/schemas.PatchToolFilterRequest'
+        user_source_id:
+          type: string
+    schemas.SlugInfoResponse:
+      type: object
+      properties:
+        available:
+          type: boolean
     schemas.UpdateGatewayRequest:
       type: object
       required:
@@ -633,19 +626,41 @@ components:
           $ref: '#/components/schemas/schemas.UpdateToolFilterRequest'
         user_source_id:
           type: string
-    schemas.DiscoveryResponse:
+    schemas.BindingResponse:
       type: object
       properties:
-        allowed_classes:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.ToolFilterResponse:
+      type: object
+      properties:
+        allowed_tools:
           type: array
           items:
             type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          items:
-            type: string
+        discovery:
+          $ref: '#/components/schemas/schemas.DiscoveryResponse'
+    identity.BindingType:
+      type: string
+      enum:
+      - static
+      - tenant
+      - project
+      - account
+      x-enum-varnames:
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
     schemas.CreateToolFilterRequest:
       type: object
       properties:
@@ -662,15 +677,29 @@ components:
             type: string
         discovery:
           $ref: '#/components/schemas/schemas.CreateDiscoveryRequest'
-    schemas.ToolFilterResponse:
+    schemas.SlugInfoRequest:
+      type: object
+      required:
+      - slug
+      properties:
+        slug:
+          type: string
+          maxLength: 256
+    schemas.CreateDiscoveryRequest:
       type: object
       properties:
-        allowed_tools:
+        allowed_classes:
           type: array
+          maxItems: 10
           items:
             type: string
-        discovery:
-          $ref: '#/components/schemas/schemas.DiscoveryResponse'
+        enabled:
+          type: boolean
+        pinned_asset_keys:
+          type: array
+          maxItems: 500
+          items:
+            type: string
     schemas.GatewayResponse:
       type: object
       properties:
@@ -706,51 +735,22 @@ components:
           type: string
         user_source_id:
           type: string
-    schemas.SlugInfoResponse:
+    schemas.UpdateToolFilterRequest:
       type: object
       properties:
-        available:
-          type: boolean
-    schemas.PatchGatewayRequest:
-      type: object
-      properties:
-        allowed_passthrough_headers:
+        allowed_tools:
+          description: 'Qualified tool names allowed through this gateway. Each entry must be in the
+
+            "Provider.ToolName" form (for example, "Google.SendEmail"). Versioned tool
+
+            names are not yet supported.'
           type: array
-          maxItems: 100
+          maxItems: 500
           uniqueItems: true
           items:
             type: string
-        auth_type:
-          type: string
-          enum:
-          - arcade
-          - arcade_header
-          - user_source
-        consent_skip_client_ids:
-          type: array
-          maxItems: 64
-          uniqueItems: true
-          items:
-            type: string
-        description:
-          type: string
-          maxLength: 1000
-        instructions:
-          type: string
-          maxLength: 5000
-        name:
-          type: string
-          maxLength: 256
-          minLength: 1
-        slug:
-          type: string
-          maxLength: 256
-        status:
-          type: string
-        tool_filter:
-          $ref: '#/components/schemas/schemas.PatchToolFilterRequest'
-        user_source_id:
-          type: string
+        discovery:
+          $ref: '#/components/schemas/schemas.UpdateDiscoveryRequest'
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

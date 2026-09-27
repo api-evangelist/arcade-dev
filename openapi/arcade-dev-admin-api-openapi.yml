@@ -755,55 +755,13 @@ paths:
     - url: https://api.arcade.dev
 components:
   schemas:
-    schemas.OAuth2RequestConfigResponse:
-      type: object
-      properties:
-        auth_header_value_format:
-          type: string
-        auth_method:
-          type: string
-        endpoint:
-          type: string
-        expiration_format:
-          type: string
-        method:
-          type: string
-        params:
-          type: object
-          additionalProperties:
-            type: string
-        request_content_type:
-          type: string
-        response_content_type:
-          type: string
-        response_map:
-          type: object
-          additionalProperties:
-            type: string
-    schemas.StoredSecretResponse:
-      type: object
-      properties:
-        binding:
-          $ref: '#/components/schemas/schemas.BindingResponse'
-        created_at:
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-        key:
-          type: string
-        last_accessed_at:
-          type: string
-        updated_at:
-          type: string
-    schemas.OffsetPage-schemas_StoredSecretResponse:
+    schemas.OffsetPage-schemas_UserAuthProviderConnectionResponse:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/schemas.StoredSecretResponse'
+            $ref: '#/components/schemas/schemas.UserAuthProviderConnectionResponse'
         limit:
           type: integer
         offset:
@@ -812,12 +770,41 @@ components:
           type: integer
         total_count:
           type: integer
-    schemas.TokenIntrospectionTriggersCreateRequest:
+    schemas.UpdateSessionVerificationSettingsRequest:
       type: object
       properties:
-        on_token_grant:
+        unsafe_skip_verification:
           type: boolean
-        on_token_refresh:
+        verifier_url:
+          type: string
+    schemas.OffsetPage-schemas_AuthProviderResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.PKCEConfigResponse:
+      type: object
+      properties:
+        code_challenge_method:
+          type: string
+        enabled:
           type: boolean
     schemas.OAuth2ConfigResponse:
       type: object
@@ -843,6 +830,13 @@ components:
           $ref: '#/components/schemas/schemas.OAuth2RequestConfigResponse'
         user_info_request:
           $ref: '#/components/schemas/schemas.UserInfoRequestConfigResponse'
+    schemas.TokenIntrospectionRequestTriggersResponse:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
     schemas.AuthProviderResponse:
       type: object
       properties:
@@ -864,20 +858,16 @@ components:
           type: string
         updated_at:
           type: string
-    schemas.UserInfoRequestTriggersResponse:
+    schemas.UpsertStoredSecretRequest:
       type: object
+      required:
+      - value
       properties:
-        on_token_grant:
-          type: boolean
-        on_token_refresh:
-          type: boolean
-    schemas.PKCEConfigPatchRequest:
-      type: object
-      properties:
-        code_challenge_method:
+        description:
           type: string
-        enabled:
-          type: boolean
+        value:
+          type: string
+          maxLength: 5000
     schemas.SecretResponse:
       type: object
       properties:
@@ -889,13 +879,6 @@ components:
           type: boolean
         value:
           type: string
-    schemas.PKCEConfigCreateRequest:
-      type: object
-      properties:
-        code_challenge_method:
-          type: string
-        enabled:
-          type: boolean
     schemas.AuthProviderPatchRequest:
       type: object
       properties:
@@ -913,6 +896,86 @@ components:
           type: string
         type:
           type: string
+    schemas.TokenIntrospectionTriggersPatchRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.PKCEConfigPatchRequest:
+      type: object
+      properties:
+        code_challenge_method:
+          type: string
+        enabled:
+          type: boolean
+    schemas.TokenIntrospectionRequestConfigResponse:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        enabled:
+          type: boolean
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionRequestTriggersResponse'
+    schemas.UserAuthProviderConnectionResponse:
+      type: object
+      properties:
+        connection_id:
+          type: string
+        connection_status:
+          type: string
+        id:
+          type: string
+        provider_description:
+          type: string
+        provider_id:
+          type: string
+        provider_type:
+          type: string
+        provider_user_info: {}
+        scopes:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: string
+    schemas.OffsetPage-schemas_StoredSecretResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.StoredSecretResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
     identity.BindingType:
       type: string
       enum:
@@ -925,6 +988,13 @@ components:
       - TenantBindingType
       - ProjectBindingType
       - AccountBindingType
+    schemas.TokenIntrospectionTriggersCreateRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
     schemas.TokenIntrospectionPatchRequest:
       type: object
       properties:
@@ -958,6 +1028,163 @@ components:
             type: string
         triggers:
           $ref: '#/components/schemas/schemas.TokenIntrospectionTriggersPatchRequest'
+    schemas.BindingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.StoredSecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        key:
+          type: string
+        last_accessed_at:
+          type: string
+        updated_at:
+          type: string
+    schemas.UserInfoRequestTriggersCreateRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.OAuth2ConfigCreateRequest:
+      type: object
+      required:
+      - client_id
+      properties:
+        authorize_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        pkce:
+          $ref: '#/components/schemas/schemas.PKCEConfigCreateRequest'
+        refresh_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        scope_delimiter:
+          type: string
+          enum:
+          - ','
+          - ' '
+        token_introspection_request:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionCreateRequest'
+        token_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        user_info_request:
+          $ref: '#/components/schemas/schemas.UserInfoRequestConfigCreateRequest'
+    schemas.UserInfoRequestTriggersResponse:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.UserInfoRequestConfigPatchRequest:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersPatchRequest'
+    schemas.OAuth2RequestConfigPatchRequest:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+    schemas.UserInfoRequestConfigResponse:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersResponse'
     schemas.TokenIntrospectionCreateRequest:
       type: object
       required:
@@ -994,268 +1221,13 @@ components:
             type: string
         triggers:
           $ref: '#/components/schemas/schemas.TokenIntrospectionTriggersCreateRequest'
-    schemas.OAuth2RequestConfigCreateRequest:
-      type: object
-      required:
-      - endpoint
-      properties:
-        auth_header_value_format:
-          type: string
-          maxLength: 200
-        auth_method:
-          type: string
-        endpoint:
-          type: string
-          maxLength: 1000
-        method:
-          type: string
-        params:
-          type: object
-          additionalProperties:
-            type: string
-        request_content_type:
-          type: string
-          enum:
-          - application/x-www-form-urlencoded
-          - application/json
-        response_content_type:
-          type: string
-          enum:
-          - application/x-www-form-urlencoded
-          - application/json
-        response_map:
-          type: object
-          additionalProperties:
-            type: string
-    schemas.SessionVerificationSettingsResponse:
+    schemas.UserInfoRequestTriggersPatchRequest:
       type: object
       properties:
-        unsafe_skip_verification:
+        on_token_grant:
           type: boolean
-        unsafe_skip_verification_choice_allowed:
+        on_token_refresh:
           type: boolean
-        verifier_url:
-          description: not omitempty because we want to show null values
-          type: string
-    schemas.UserInfoRequestConfigPatchRequest:
-      type: object
-      properties:
-        auth_header_value_format:
-          type: string
-          maxLength: 200
-        auth_method:
-          type: string
-        endpoint:
-          type: string
-          maxLength: 1000
-        method:
-          type: string
-        params:
-          type: object
-          additionalProperties:
-            type: string
-        request_content_type:
-          type: string
-          enum:
-          - application/x-www-form-urlencoded
-          - application/json
-        response_content_type:
-          type: string
-          enum:
-          - application/x-www-form-urlencoded
-          - application/json
-        response_map:
-          type: object
-          additionalProperties:
-            type: string
-        triggers:
-          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersPatchRequest'
-    schemas.UpsertStoredSecretRequest:
-      type: object
-      required:
-      - value
-      properties:
-        description:
-          type: string
-        value:
-          type: string
-          maxLength: 5000
-    schemas.UserInfoRequestConfigResponse:
-      type: object
-      properties:
-        auth_header_value_format:
-          type: string
-        auth_method:
-          type: string
-        endpoint:
-          type: string
-        expiration_format:
-          type: string
-        method:
-          type: string
-        params:
-          type: object
-          additionalProperties:
-            type: string
-        request_content_type:
-          type: string
-        response_content_type:
-          type: string
-        response_map:
-          type: object
-          additionalProperties:
-            type: string
-        triggers:
-          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersResponse'
-    schemas.TokenIntrospectionRequestConfigResponse:
-      type: object
-      properties:
-        auth_header_value_format:
-          type: string
-        auth_method:
-          type: string
-        enabled:
-          type: boolean
-        endpoint:
-          type: string
-        expiration_format:
-          type: string
-        method:
-          type: string
-        params:
-          type: object
-          additionalProperties:
-            type: string
-        request_content_type:
-          type: string
-        response_content_type:
-          type: string
-        response_map:
-          type: object
-          additionalProperties:
-            type: string
-        triggers:
-          $ref: '#/components/schemas/schemas.TokenIntrospectionRequestTriggersResponse'
-    schemas.UpdateSessionVerificationSettingsRequest:
-      type: object
-      properties:
-        unsafe_skip_verification:
-          type: boolean
-        verifier_url:
-          type: string
-    schemas.UserAuthProviderConnectionResponse:
-      type: object
-      properties:
-        connection_id:
-          type: string
-        connection_status:
-          type: string
-        id:
-          type: string
-        provider_description:
-          type: string
-        provider_id:
-          type: string
-        provider_type:
-          type: string
-        provider_user_info: {}
-        scopes:
-          type: array
-          items:
-            type: string
-        user_id:
-          type: string
-    schemas.BindingResponse:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          $ref: '#/components/schemas/identity.BindingType'
-    schemas.AuthProviderCreateRequest:
-      type: object
-      required:
-      - id
-      properties:
-        description:
-          type: string
-          maxLength: 1000
-        external_id:
-          description: The unique external ID for the auth provider
-          type: string
-          maxLength: 50
-        id:
-          type: string
-          maxLength: 100
-        oauth2:
-          $ref: '#/components/schemas/schemas.OAuth2ConfigCreateRequest'
-        provider_id:
-          type: string
-        status:
-          type: string
-        type:
-          type: string
-    schemas.OAuth2ConfigCreateRequest:
-      type: object
-      required:
-      - client_id
-      properties:
-        authorize_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
-        client_id:
-          type: string
-          maxLength: 1000
-        client_secret:
-          type: string
-          maxLength: 1000
-        pkce:
-          $ref: '#/components/schemas/schemas.PKCEConfigCreateRequest'
-        refresh_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
-        scope_delimiter:
-          type: string
-          enum:
-          - ','
-          - ' '
-        token_introspection_request:
-          $ref: '#/components/schemas/schemas.TokenIntrospectionCreateRequest'
-        token_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
-        user_info_request:
-          $ref: '#/components/schemas/schemas.UserInfoRequestConfigCreateRequest'
-    schemas.OAuth2ConfigPatchRequest:
-      type: object
-      properties:
-        authorize_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
-        client_id:
-          type: string
-          maxLength: 1000
-        client_secret:
-          type: string
-          maxLength: 1000
-        pkce:
-          $ref: '#/components/schemas/schemas.PKCEConfigPatchRequest'
-        refresh_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
-        scope_delimiter:
-          type: string
-          enum:
-          - ','
-          - ' '
-        token_introspection_request:
-          $ref: '#/components/schemas/schemas.TokenIntrospectionPatchRequest'
-        token_request:
-          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
-        user_info_request:
-          $ref: '#/components/schemas/schemas.UserInfoRequestConfigPatchRequest'
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
     schemas.UserInfoRequestConfigCreateRequest:
       type: object
       required:
@@ -1292,59 +1264,78 @@ components:
             type: string
         triggers:
           $ref: '#/components/schemas/schemas.UserInfoRequestTriggersCreateRequest'
-    schemas.TokenIntrospectionRequestTriggersResponse:
+    schemas.PKCEConfigCreateRequest:
       type: object
       properties:
-        on_token_grant:
+        code_challenge_method:
+          type: string
+        enabled:
           type: boolean
-        on_token_refresh:
-          type: boolean
-    schemas.UserInfoRequestTriggersPatchRequest:
+    schemas.OAuth2ConfigPatchRequest:
       type: object
       properties:
-        on_token_grant:
-          type: boolean
-        on_token_refresh:
-          type: boolean
-    schemas.UserInfoRequestTriggersCreateRequest:
+        authorize_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        pkce:
+          $ref: '#/components/schemas/schemas.PKCEConfigPatchRequest'
+        refresh_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        scope_delimiter:
+          type: string
+          enum:
+          - ','
+          - ' '
+        token_introspection_request:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionPatchRequest'
+        token_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        user_info_request:
+          $ref: '#/components/schemas/schemas.UserInfoRequestConfigPatchRequest'
+    schemas.SessionVerificationSettingsResponse:
       type: object
       properties:
-        on_token_grant:
+        unsafe_skip_verification:
           type: boolean
-        on_token_refresh:
+        unsafe_skip_verification_choice_allowed:
           type: boolean
-    schemas.OffsetPage-schemas_UserAuthProviderConnectionResponse:
+        verifier_url:
+          description: not omitempty because we want to show null values
+          type: string
+    schemas.OAuth2RequestConfigResponse:
       type: object
       properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.UserAuthProviderConnectionResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.OffsetPage-schemas_AuthProviderResponse:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+    schemas.OAuth2RequestConfigCreateRequest:
       type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.AuthProviderResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.OAuth2RequestConfigPatchRequest:
-      type: object
+      required:
+      - endpoint
       properties:
         auth_header_value_format:
           type: string
@@ -1374,52 +1365,48 @@ components:
           type: object
           additionalProperties:
             type: string
-    schemas.PKCEConfigResponse:
-      type: object
-      properties:
-        code_challenge_method:
-          type: string
-        enabled:
-          type: boolean
-    schemas.TokenIntrospectionTriggersPatchRequest:
-      type: object
-      properties:
-        on_token_grant:
-          type: boolean
-        on_token_refresh:
-          type: boolean
-    schemas.SecretRequirement:
+    schemas.AuthProviderCreateRequest:
       type: object
       required:
-      - key
+      - id
       properties:
-        key:
+        description:
           type: string
-        met:
-          type: boolean
-          default: false
-        status_reason:
+          maxLength: 1000
+        external_id:
+          description: The unique external ID for the auth provider
           type: string
-    schemas.HTTPWorkerConfigRequest:
-      type: object
-      required:
-      - retry
-      - secret
-      - timeout
-      - uri
-      properties:
-        retry:
-          type: integer
-          maximum: 10
-          minimum: 0
-        secret:
+          maxLength: 50
+        id:
           type: string
           maxLength: 100
-        timeout:
-          type: integer
-        uri:
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2ConfigCreateRequest'
+        provider_id:
           type: string
-          maxLength: 2048
+        status:
+          type: string
+        type:
+          type: string
+    schemas.AuthorizationRequirement:
+      type: object
+      properties:
+        id:
+          type: string
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirement'
+        provider_id:
+          type: string
+        provider_type:
+          type: string
+        status:
+          default: disabled
+          allOf:
+          - $ref: '#/components/schemas/auth.Status'
+        status_reason:
+          type: string
+        token_status:
+          $ref: '#/components/schemas/auth.AuthorizationStatus'
     schemas.WorkerTestResponse:
       type: object
       properties:
@@ -1429,99 +1416,45 @@ components:
           $ref: '#/components/schemas/schemas.ServerInfoResponse'
         success:
           type: boolean
-    schemas.MCPOAuth2ConfigResponse:
+    schemas.MCPWorkerTestConfig:
+      type: object
+      required:
+      - uri
+      properties:
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.WorkerAuthorizationRequirementResponse:
       type: object
       properties:
-        authorization_url:
-          type: string
-        client_id:
-          type: string
-        client_secret:
-          $ref: '#/components/schemas/schemas.SecretResponse'
-        external_id:
-          type: string
-        redirect_uri:
-          type: string
-        supported_scopes:
+        met:
+          type: boolean
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirementResponse'
+    tool.Classification:
+      type: object
+      properties:
+        service_domains:
           type: array
           items:
             type: string
-    auth.AuthorizationStatus:
+    auth.Status:
       type: string
       enum:
-      - not_started
-      - pending
-      - completed
-      - failed
+      - active
+      - inactive
       x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
-    tool.ToolMetadata:
+      - StatusActive
+      - StatusInactive
+    schemas.ServerInfoResponse:
       type: object
       properties:
-        behavior:
-          $ref: '#/components/schemas/tool.Behavior'
-        classification:
-          $ref: '#/components/schemas/tool.Classification'
-        extras:
-          type: object
-          additionalProperties: {}
-    schemas.CreateWorkerRequest:
-      type: object
-      required:
-      - id
-      properties:
-        enabled:
-          type: boolean
-        http:
-          $ref: '#/components/schemas/schemas.HTTPWorkerConfigRequest'
-        id:
+        description:
           type: string
-          maxLength: 100
-        mcp:
-          $ref: '#/components/schemas/schemas.MCPWorkerConfigCreateRequest'
-        type:
+        name:
           type: string
-    schemas.OffsetPage-schemas_ToolResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.ToolResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.WorkerResponse:
-      type: object
-      properties:
-        binding:
-          $ref: '#/components/schemas/schemas.BindingResponse'
-        enabled:
-          type: boolean
-        http:
-          $ref: '#/components/schemas/schemas.HTTPWorkerConfigResponse'
-        id:
+        version:
           type: string
-        managed:
-          type: boolean
-        mcp:
-          $ref: '#/components/schemas/schemas.MCPWorkerConfigResponse'
-        requirements:
-          $ref: '#/components/schemas/schemas.WorkerRequirementsResponse'
-        type:
-          $ref: '#/components/schemas/schemas.WorkerType'
-    schemas.MCPWorkerHeadersResponse:
-      type: object
-      additionalProperties:
-        type: string
     schemas.MCPWorkerHeadersCreateRequest:
       type: object
       additionalProperties:
@@ -1548,32 +1481,22 @@ components:
           type: string
         worker_id:
           type: string
-    schemas.HTTPWorkerTestConfig:
+    schemas.CreateWorkerRequest:
       type: object
       required:
-      - uri
+      - id
       properties:
-        uri:
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigRequest'
+        id:
           type: string
-          maxLength: 2048
-    schemas.HTTPWorkerConfigResponse:
-      type: object
-      properties:
-        retry:
-          type: integer
-        secret:
-          $ref: '#/components/schemas/schemas.SecretResponse'
-        timeout:
-          type: integer
-        uri:
+          maxLength: 100
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigCreateRequest'
+        type:
           type: string
-    schemas.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
     schemas.ValueSchema:
       type: object
       required:
@@ -1587,14 +1510,6 @@ components:
           type: string
         val_type:
           type: string
-    schemas.MCPWorkerTestConfig:
-      type: object
-      required:
-      - uri
-      properties:
-        uri:
-          type: string
-          maxLength: 2048
     schemas.MCPWorkerConfigPatchRequest:
       type: object
       properties:
@@ -1615,26 +1530,7 @@ components:
         uri:
           type: string
           maxLength: 2048
-    schemas.Input:
-      type: object
-      properties:
-        parameters:
-          type: array
-          minItems: 0
-          items:
-            $ref: '#/components/schemas/schemas.Parameter'
-    schemas.ToolkitResponse:
-      type: object
-      required:
-      - name
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        version:
-          type: string
-    schemas.MCPWorkerSecretsCreateRequest:
+    schemas.MCPWorkerHeadersResponse:
       type: object
       additionalProperties:
         type: string
@@ -1653,61 +1549,22 @@ components:
         uri:
           type: string
           maxLength: 2048
-    schemas.Output:
+    schemas.HTTPWorkerTestConfig:
+      type: object
+      required:
+      - uri
+      properties:
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.Input:
       type: object
       properties:
-        available_modes:
+        parameters:
           type: array
+          minItems: 0
           items:
-            type: string
-        description:
-          type: string
-        value_schema:
-          $ref: '#/components/schemas/schemas.ValueSchema'
-    schemas.UpdateWorkerRequest:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-        http:
-          $ref: '#/components/schemas/schemas.HTTPWorkerConfigUpdate'
-        mcp:
-          $ref: '#/components/schemas/schemas.MCPWorkerConfigPatchRequest'
-    schemas.WorkerAuthorizationRequirementResponse:
-      type: object
-      properties:
-        met:
-          type: boolean
-        oauth2:
-          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirementResponse'
-    schemas.Parameter:
-      type: object
-      required:
-      - name
-      - value_schema
-      properties:
-        description:
-          type: string
-        inferrable:
-          type: boolean
-          default: true
-        name:
-          type: string
-        required:
-          type: boolean
-        value_schema:
-          $ref: '#/components/schemas/schemas.ValueSchema'
-    schemas.WorkerTestRequest:
-      type: object
-      required:
-      - type
-      properties:
-        http:
-          $ref: '#/components/schemas/schemas.HTTPWorkerTestConfig'
-        mcp:
-          $ref: '#/components/schemas/schemas.MCPWorkerTestConfig'
-        type:
-          type: string
+            $ref: '#/components/schemas/schemas.Parameter'
     schemas.MCPOAuth2ConfigUpdateRequest:
       type: object
       properties:
@@ -1720,89 +1577,65 @@ components:
         client_secret:
           type: string
           maxLength: 1000
-    schemas.WorkerRequirementsResponse:
-      type: object
-      properties:
-        authorization:
-          $ref: '#/components/schemas/schemas.WorkerAuthorizationRequirementResponse'
-        met:
-          type: boolean
-    schemas.AuthorizationRequirement:
-      type: object
-      properties:
-        id:
-          type: string
-        oauth2:
-          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirement'
-        provider_id:
-          type: string
-        provider_type:
-          type: string
-        status:
-          default: disabled
-          allOf:
-          - $ref: '#/components/schemas/auth.Status'
-        status_reason:
-          type: string
-        token_status:
-          $ref: '#/components/schemas/auth.AuthorizationStatus'
-    schemas.OAuth2AuthorizationRequirementResponse:
-      type: object
-      properties:
-        met:
-          type: boolean
-    tool.Classification:
-      type: object
-      properties:
-        service_domains:
-          type: array
-          items:
-            type: string
-    schemas.Requirements:
-      type: object
-      properties:
-        authorization:
-          $ref: '#/components/schemas/schemas.AuthorizationRequirement'
-        met:
-          type: boolean
-          default: false
-        secrets:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.SecretRequirement'
-    auth.Status:
-      type: string
-      enum:
-      - active
-      - inactive
-      x-enum-varnames:
-      - StatusActive
-      - StatusInactive
-    schemas.WorkerType:
-      type: string
-      enum:
-      - http
-      - mcp
-      - unknown
-      x-enum-varnames:
-      - WorkerTypeHTTP
-      - WorkerTypeMCP
-      - WorkerTypeUnknown
-    schemas.MCPOAuth2ConfigCreateRequest:
+    schemas.MCPOAuth2ConfigResponse:
       type: object
       properties:
         authorization_url:
           type: string
-          maxLength: 2048
         client_id:
           type: string
-          maxLength: 1000
         client_secret:
-          type: string
-          maxLength: 1000
+          $ref: '#/components/schemas/schemas.SecretResponse'
         external_id:
           type: string
+        redirect_uri:
+          type: string
+        supported_scopes:
+          type: array
+          items:
+            type: string
+    schemas.MCPWorkerConfigCreateRequest:
+      type: object
+      required:
+      - retry
+      - timeout
+      - uri
+      properties:
+        headers:
+          $ref: '#/components/schemas/schemas.MCPWorkerHeadersCreateRequest'
+        oauth2:
+          $ref: '#/components/schemas/schemas.MCPOAuth2ConfigCreateRequest'
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secrets:
+          $ref: '#/components/schemas/schemas.MCPWorkerSecretsCreateRequest'
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.HTTPWorkerConfigRequest:
+      type: object
+      required:
+      - retry
+      - secret
+      - timeout
+      - uri
+      properties:
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secret:
+          type: string
           maxLength: 100
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
     schemas.ToolResponse:
       type: object
       required:
@@ -1833,52 +1666,33 @@ components:
           $ref: '#/components/schemas/schemas.Requirements'
         toolkit:
           $ref: '#/components/schemas/schemas.ToolkitResponse'
-    schemas.MCPWorkerConfigCreateRequest:
+    schemas.Parameter:
       type: object
       required:
-      - retry
-      - timeout
-      - uri
-      properties:
-        headers:
-          $ref: '#/components/schemas/schemas.MCPWorkerHeadersCreateRequest'
-        oauth2:
-          $ref: '#/components/schemas/schemas.MCPOAuth2ConfigCreateRequest'
-        retry:
-          type: integer
-          maximum: 10
-          minimum: 0
-        secrets:
-          $ref: '#/components/schemas/schemas.MCPWorkerSecretsCreateRequest'
-        timeout:
-          type: integer
-        uri:
-          type: string
-          maxLength: 2048
-    tool.Behavior:
-      type: object
-      properties:
-        destructive:
-          type: boolean
-        idempotent:
-          type: boolean
-        open_world:
-          type: boolean
-        operations:
-          type: array
-          items:
-            type: string
-        read_only:
-          type: boolean
-    schemas.ServerInfoResponse:
-      type: object
+      - name
+      - value_schema
       properties:
         description:
           type: string
+        inferrable:
+          type: boolean
+          default: true
         name:
           type: string
-        version:
-          type: string
+        required:
+          type: boolean
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
+    tool.ToolMetadata:
+      type: object
+      properties:
+        behavior:
+          $ref: '#/components/schemas/tool.Behavior'
+        classification:
+          $ref: '#/components/schemas/tool.Classification'
+        extras:
+          type: object
+          additionalProperties: {}
     schemas.OffsetPage-schemas_WorkerResponse:
       type: object
       properties:
@@ -1894,6 +1708,105 @@ components:
           type: integer
         total_count:
           type: integer
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    schemas.HTTPWorkerConfigResponse:
+      type: object
+      properties:
+        retry:
+          type: integer
+        secret:
+          $ref: '#/components/schemas/schemas.SecretResponse'
+        timeout:
+          type: integer
+        uri:
+          type: string
+    schemas.Output:
+      type: object
+      properties:
+        available_modes:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
+    schemas.MCPOAuth2ConfigCreateRequest:
+      type: object
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2048
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        external_id:
+          type: string
+          maxLength: 100
+    schemas.WorkerRequirementsResponse:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.WorkerAuthorizationRequirementResponse'
+        met:
+          type: boolean
+    schemas.UpdateWorkerRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigUpdate'
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigPatchRequest'
+    schemas.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    tool.Behavior:
+      type: object
+      properties:
+        destructive:
+          type: boolean
+        idempotent:
+          type: boolean
+        open_world:
+          type: boolean
+        operations:
+          type: array
+          items:
+            type: string
+        read_only:
+          type: boolean
+    schemas.SecretRequirement:
+      type: object
+      required:
+      - key
+      properties:
+        key:
+          type: string
+        met:
+          type: boolean
+          default: false
+        status_reason:
+          type: string
     schemas.MCPWorkerConfigResponse:
       type: object
       properties:
@@ -1915,6 +1828,70 @@ components:
           type: integer
         uri:
           type: string
+    schemas.WorkerTestRequest:
+      type: object
+      required:
+      - type
+      properties:
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerTestConfig'
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerTestConfig'
+        type:
+          type: string
+    schemas.MCPWorkerSecretsCreateRequest:
+      type: object
+      additionalProperties:
+        type: string
+    schemas.WorkerType:
+      type: string
+      enum:
+      - http
+      - mcp
+      - unknown
+      x-enum-varnames:
+      - WorkerTypeHTTP
+      - WorkerTypeMCP
+      - WorkerTypeUnknown
+    schemas.WorkerResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigResponse'
+        id:
+          type: string
+        managed:
+          type: boolean
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigResponse'
+        requirements:
+          $ref: '#/components/schemas/schemas.WorkerRequirementsResponse'
+        type:
+          $ref: '#/components/schemas/schemas.WorkerType'
+    schemas.OAuth2AuthorizationRequirementResponse:
+      type: object
+      properties:
+        met:
+          type: boolean
+    schemas.OffsetPage-schemas_ToolResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.ToolResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
     schemas.WorkerHealthResponse:
       type: object
       properties:
@@ -1926,6 +1903,29 @@ components:
           type: string
         message:
           type: string
+    schemas.ToolkitResponse:
+      type: object
+      required:
+      - name
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        version:
+          type: string
+    schemas.Requirements:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.AuthorizationRequirement'
+        met:
+          type: boolean
+          default: false
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.SecretRequirement'
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

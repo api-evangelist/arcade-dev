@@ -63,24 +63,11 @@ paths:
                 additionalProperties: true
 components:
   schemas:
-    schemas.HealthSchema:
-      type: object
-      properties:
-        healthy:
-          type: boolean
-        reason:
-          description: 'Optional: explains why unhealthy'
-          type: string
     schemas.EngineServersConfig:
       type: object
       properties:
         timeout_max_seconds:
           type: integer
-    schemas.EngineOAuth2ConfigResponse:
-      type: object
-      properties:
-        callback_url_template:
-          type: string
     schemas.EngineConfigResponse:
       type: object
       properties:
@@ -90,6 +77,14 @@ components:
           $ref: '#/components/schemas/schemas.EngineOAuth2ConfigResponse'
         servers:
           $ref: '#/components/schemas/schemas.EngineServersConfig'
+    schemas.HealthSchema:
+      type: object
+      properties:
+        healthy:
+          type: boolean
+        reason:
+          description: 'Optional: explains why unhealthy'
+          type: string
     schemas.DashboardConfigResponse:
       type: object
       properties:
@@ -98,6 +93,11 @@ components:
         clientId:
           type: string
         coordinatorUri:
+          type: string
+    schemas.EngineOAuth2ConfigResponse:
+      type: object
+      properties:
+        callback_url_template:
           type: string
   securitySchemes:
     Bearer:

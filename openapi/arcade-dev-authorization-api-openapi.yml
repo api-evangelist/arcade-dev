@@ -219,28 +219,6 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
-    auth.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
-    auth.AuthorizationContext:
-      type: object
-      properties:
-        token:
-          type: string
-        user_info:
-          type: object
-          additionalProperties: true
     schemas.ValidateCustomVerifierRequest:
       type: object
       required:
@@ -250,6 +228,58 @@ components:
         user_id:
           type: string
         verifier_url:
+          type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    auth.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    schemas.AuthorizationConfirmUserRequest:
+      type: object
+      required:
+      - flow_id
+      - user_id
+      properties:
+        flow_id:
+          type: string
+        user_id:
+          type: string
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.AuthorizationConfirmUserResponse:
+      type: object
+      required:
+      - auth_id
+      properties:
+        auth_id:
+          type: string
+        next_uri:
+          type: string
+    schemas.ValidateCustomVerifierResponse:
+      type: object
+      properties:
+        flow_id:
+          type: string
+        next_uri:
           type: string
     schemas.AuthorizationInitiationRequest:
       type: object
@@ -264,19 +294,14 @@ components:
           type: string
         user_id:
           type: string
-    auth.AuthorizationRequirement:
+    auth.AuthorizationContext:
       type: object
       properties:
-        id:
-          description: one of ID or ProviderID must be set
+        token:
           type: string
-        oauth2:
-          $ref: '#/components/schemas/auth.OAuth2AuthorizationRequirement'
-        provider_id:
-          description: one of ID or ProviderID must be set
-          type: string
-        provider_type:
-          type: string
+        user_info:
+          type: object
+          additionalProperties: true
     auth.AuthorizationResponse:
       type: object
       properties:
@@ -298,43 +323,18 @@ components:
           type: string
         user_id:
           type: string
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
-    schemas.ValidateCustomVerifierResponse:
+    auth.AuthorizationRequirement:
       type: object
       properties:
-        flow_id:
+        id:
+          description: one of ID or ProviderID must be set
           type: string
-        next_uri:
+        oauth2:
+          $ref: '#/components/schemas/auth.OAuth2AuthorizationRequirement'
+        provider_id:
+          description: one of ID or ProviderID must be set
           type: string
-    schemas.AuthorizationConfirmUserRequest:
-      type: object
-      required:
-      - flow_id
-      - user_id
-      properties:
-        flow_id:
-          type: string
-        user_id:
-          type: string
-    schemas.AuthorizationConfirmUserResponse:
-      type: object
-      required:
-      - auth_id
-      properties:
-        auth_id:
-          type: string
-        next_uri:
+        provider_type:
           type: string
   securitySchemes:
     Bearer:

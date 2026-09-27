@@ -286,6 +286,14 @@ components:
       x-enum-varnames:
       - PhaseBefore
       - PhaseAfter
+    plugins.HookPointStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - HookPointStatusInactive
+      - HookPointStatusActive
     schemas.BulkUpsertHooksResponse:
       type: object
       properties:
@@ -297,57 +305,19 @@ components:
             $ref: '#/components/schemas/schemas.BulkHookResult'
         success:
           type: integer
-    schemas.Error:
+    schemas.BulkHookResult:
       type: object
       properties:
-        message:
+        action:
           type: string
-        name:
+        error:
           type: string
-    schemas.OffsetPage-schemas_HookResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.HookResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.PatchHookRequest:
-      type: object
-      properties:
-        failure_mode:
-          enum:
-          - fail_closed
-          - fail_open
-          allOf:
-          - $ref: '#/components/schemas/plugins.FailureMode'
-        phase:
-          enum:
-          - before
-          - after
-          allOf:
-          - $ref: '#/components/schemas/plugins.Phase'
-        priority:
-          type: integer
-          maximum: 1000
-          minimum: 0
-        status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          type: integer
-          maximum: 30000
-          minimum: 100
+        hook_id:
+          type: string
+        hook_point:
+          type: string
+        plugin_id:
+          type: string
     schemas.CreateHookRequest:
       type: object
       required:
@@ -394,71 +364,6 @@ components:
           type: integer
           maximum: 30000
           minimum: 100
-    schemas.BulkHookResult:
-      type: object
-      properties:
-        action:
-          type: string
-        error:
-          type: string
-        hook_id:
-          type: string
-        hook_point:
-          type: string
-        plugin_id:
-          type: string
-    schemas.HookResponse:
-      type: object
-      properties:
-        cache_enabled:
-          type: boolean
-        cache_ttl_ms:
-          type: integer
-        created_at:
-          type: string
-        failure_mode:
-          $ref: '#/components/schemas/plugins.FailureMode'
-        hook_point:
-          type: string
-        id:
-          type: string
-        name:
-          type: string
-        phase:
-          $ref: '#/components/schemas/plugins.Phase'
-        plugin_id:
-          type: string
-        priority:
-          type: integer
-        status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          type: integer
-        updated_at:
-          type: string
-        version:
-          type: integer
-    schemas.BulkUpsertHooksRequest:
-      type: object
-      required:
-      - configs
-      properties:
-        configs:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.BulkHookConfig'
-    plugins.FailureMode:
-      type: string
-      enum:
-      - fail_closed
-      - fail_open
-      x-enum-varnames:
-      - FailureModeClosed
-      - FailureModeOpen
     schemas.BulkHookConfig:
       type: object
       required:
@@ -495,14 +400,109 @@ components:
           - inactive
           allOf:
           - $ref: '#/components/schemas/plugins.HookPointStatus'
-    plugins.HookPointStatus:
+    schemas.OffsetPage-schemas_HookResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.HookResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.HookResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        created_at:
+          type: string
+        failure_mode:
+          $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        phase:
+          $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+        updated_at:
+          type: string
+        version:
+          type: integer
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.BulkUpsertHooksRequest:
+      type: object
+      required:
+      - configs
+      properties:
+        configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.BulkHookConfig'
+    plugins.FailureMode:
       type: string
       enum:
-      - inactive
-      - active
+      - fail_closed
+      - fail_open
       x-enum-varnames:
-      - HookPointStatusInactive
-      - HookPointStatusActive
+      - FailureModeClosed
+      - FailureModeOpen
+    schemas.PatchHookRequest:
+      type: object
+      properties:
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+          maximum: 30000
+          minimum: 100
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'
