@@ -278,14 +278,6 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
-    plugins.Phase:
-      type: string
-      enum:
-      - before
-      - after
-      x-enum-varnames:
-      - PhaseBefore
-      - PhaseAfter
     plugins.HookPointStatus:
       type: string
       enum:
@@ -294,30 +286,14 @@ components:
       x-enum-varnames:
       - HookPointStatusInactive
       - HookPointStatusActive
-    schemas.BulkUpsertHooksResponse:
-      type: object
-      properties:
-        failed:
-          type: integer
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.BulkHookResult'
-        success:
-          type: integer
-    schemas.BulkHookResult:
-      type: object
-      properties:
-        action:
-          type: string
-        error:
-          type: string
-        hook_id:
-          type: string
-        hook_point:
-          type: string
-        plugin_id:
-          type: string
+    plugins.Phase:
+      type: string
+      enum:
+      - before
+      - after
+      x-enum-varnames:
+      - PhaseBefore
+      - PhaseAfter
     schemas.CreateHookRequest:
       type: object
       required:
@@ -400,6 +376,19 @@ components:
           - inactive
           allOf:
           - $ref: '#/components/schemas/plugins.HookPointStatus'
+    schemas.BulkHookResult:
+      type: object
+      properties:
+        action:
+          type: string
+        error:
+          type: string
+        hook_id:
+          type: string
+        hook_point:
+          type: string
+        plugin_id:
+          type: string
     schemas.OffsetPage-schemas_HookResponse:
       type: object
       properties:
@@ -414,6 +403,24 @@ components:
         page_count:
           type: integer
         total_count:
+          type: integer
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.BulkUpsertHooksResponse:
+      type: object
+      properties:
+        failed:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.BulkHookResult'
+        success:
           type: integer
     schemas.HookResponse:
       type: object
@@ -450,13 +457,6 @@ components:
           type: string
         version:
           type: integer
-    schemas.Error:
-      type: object
-      properties:
-        message:
-          type: string
-        name:
-          type: string
     schemas.BulkUpsertHooksRequest:
       type: object
       required:
@@ -466,14 +466,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/schemas.BulkHookConfig'
-    plugins.FailureMode:
-      type: string
-      enum:
-      - fail_closed
-      - fail_open
-      x-enum-varnames:
-      - FailureModeClosed
-      - FailureModeOpen
     schemas.PatchHookRequest:
       type: object
       properties:
@@ -503,6 +495,14 @@ components:
           type: integer
           maximum: 30000
           minimum: 100
+    plugins.FailureMode:
+      type: string
+      enum:
+      - fail_closed
+      - fail_open
+      x-enum-varnames:
+      - FailureModeClosed
+      - FailureModeOpen
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

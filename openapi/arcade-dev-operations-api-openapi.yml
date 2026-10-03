@@ -68,15 +68,6 @@ components:
       properties:
         timeout_max_seconds:
           type: integer
-    schemas.EngineConfigResponse:
-      type: object
-      properties:
-        dashboard:
-          $ref: '#/components/schemas/schemas.DashboardConfigResponse'
-        oauth2:
-          $ref: '#/components/schemas/schemas.EngineOAuth2ConfigResponse'
-        servers:
-          $ref: '#/components/schemas/schemas.EngineServersConfig'
     schemas.HealthSchema:
       type: object
       properties:
@@ -94,6 +85,15 @@ components:
           type: string
         coordinatorUri:
           type: string
+    schemas.EngineConfigResponse:
+      type: object
+      properties:
+        dashboard:
+          $ref: '#/components/schemas/schemas.DashboardConfigResponse'
+        oauth2:
+          $ref: '#/components/schemas/schemas.EngineOAuth2ConfigResponse'
+        servers:
+          $ref: '#/components/schemas/schemas.EngineServersConfig'
     schemas.EngineOAuth2ConfigResponse:
       type: object
       properties:

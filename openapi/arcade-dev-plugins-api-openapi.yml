@@ -228,6 +228,84 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
+    plugins.PluginStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - PluginStatusInactive
+      - PluginStatusActive
+    schemas.PluginResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        created_by:
+          type: string
+        description:
+          type: string
+        health_status:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        plugin_type:
+          type: string
+        retry:
+          $ref: '#/components/schemas/schemas.RetryConfigResponse'
+        status:
+          $ref: '#/components/schemas/plugins.PluginStatus'
+        updated_at:
+          type: string
+        updated_by:
+          type: string
+        version:
+          type: integer
+        webhook_config:
+          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
+    schemas.OffsetPage-schemas_PluginResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.PluginResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    plugins.FailureMode:
+      type: string
+      enum:
+      - fail_closed
+      - fail_open
+      x-enum-varnames:
+      - FailureModeClosed
+      - FailureModeOpen
+    schemas.PatchPluginRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 1000
+        name:
+          type: string
+          maxLength: 256
+          minLength: 1
+        retry:
+          $ref: '#/components/schemas/schemas.PatchRetryConfigRequest'
+        status:
+          $ref: '#/components/schemas/plugins.PluginStatus'
+        webhook_config:
+          $ref: '#/components/schemas/schemas.PatchWebhookConfigRequest'
     schemas.WebhookAuthResponse:
       type: object
       properties:
@@ -241,66 +319,70 @@ components:
           $ref: '#/components/schemas/schemas.SecretResponse'
         type:
           type: string
-    schemas.HookResponse:
+    schemas.BindingResponse:
       type: object
       properties:
-        cache_enabled:
-          type: boolean
-        cache_ttl_ms:
-          type: integer
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.CreatePluginResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
         created_at:
           type: string
-        failure_mode:
-          $ref: '#/components/schemas/plugins.FailureMode'
-        hook_point:
+        created_by:
           type: string
+        description:
+          type: string
+        health_status:
+          type: string
+        hooks:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.HookResponse'
         id:
           type: string
         name:
           type: string
-        phase:
-          $ref: '#/components/schemas/plugins.Phase'
-        plugin_id:
+        plugin_type:
           type: string
-        priority:
-          type: integer
+        retry:
+          $ref: '#/components/schemas/schemas.RetryConfigResponse'
         status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          type: integer
+          $ref: '#/components/schemas/plugins.PluginStatus'
         updated_at:
+          type: string
+        updated_by:
           type: string
         version:
           type: integer
-    schemas.WebhookEndpointsResponse:
+        webhook_config:
+          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
+    schemas.CreateRetryConfigRequest:
       type: object
       properties:
-        access:
-          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
-        post:
-          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
-        pre:
-          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
-    schemas.Error:
-      type: object
-      properties:
-        message:
+        backoff:
           type: string
-        name:
-          type: string
-    schemas.CreateWebhookEndpointsRequest:
-      type: object
-      properties:
-        access:
-          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
-        post:
-          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
-        pre:
-          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
+          enum:
+          - fixed
+          - exponential
+        base_delay_ms:
+          type: integer
+          maximum: 10000
+          minimum: 10
+        enabled:
+          type: boolean
+        max_attempts:
+          type: integer
+          maximum: 10
+          minimum: 1
+        retry_on:
+          type: array
+          items:
+            type: string
     schemas.RetryConfigResponse:
       type: object
       properties:
@@ -355,203 +437,18 @@ components:
           minimum: 100
         url:
           type: string
-    plugins.Phase:
+    identity.BindingType:
       type: string
       enum:
-      - before
-      - after
+      - static
+      - tenant
+      - project
+      - account
       x-enum-varnames:
-      - PhaseBefore
-      - PhaseAfter
-    plugins.HookPointStatus:
-      type: string
-      enum:
-      - inactive
-      - active
-      x-enum-varnames:
-      - HookPointStatusInactive
-      - HookPointStatusActive
-    schemas.SecretResponse:
-      type: object
-      properties:
-        binding:
-          $ref: '#/components/schemas/identity.BindingType'
-        editable:
-          type: boolean
-        exists:
-          type: boolean
-        value:
-          type: string
-    schemas.PatchRetryConfigRequest:
-      type: object
-      properties:
-        backoff:
-          type: string
-          enum:
-          - fixed
-          - exponential
-        base_delay_ms:
-          type: integer
-          maximum: 10000
-          minimum: 10
-        enabled:
-          type: boolean
-        max_attempts:
-          type: integer
-          maximum: 10
-          minimum: 1
-        retry_on:
-          type: array
-          items:
-            type: string
-    plugins.FailureMode:
-      type: string
-      enum:
-      - fail_closed
-      - fail_open
-      x-enum-varnames:
-      - FailureModeClosed
-      - FailureModeOpen
-    schemas.WebhookConfigResponse:
-      type: object
-      properties:
-        auth:
-          $ref: '#/components/schemas/schemas.WebhookAuthResponse'
-        endpoints:
-          $ref: '#/components/schemas/schemas.WebhookEndpointsResponse'
-        health_check_path:
-          type: string
-    schemas.CreateRetryConfigRequest:
-      type: object
-      properties:
-        backoff:
-          type: string
-          enum:
-          - fixed
-          - exponential
-        base_delay_ms:
-          type: integer
-          maximum: 10000
-          minimum: 10
-        enabled:
-          type: boolean
-        max_attempts:
-          type: integer
-          maximum: 10
-          minimum: 1
-        retry_on:
-          type: array
-          items:
-            type: string
-    schemas.CreatePluginResponse:
-      type: object
-      properties:
-        binding:
-          $ref: '#/components/schemas/schemas.BindingResponse'
-        created_at:
-          type: string
-        created_by:
-          type: string
-        description:
-          type: string
-        health_status:
-          type: string
-        hooks:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.HookResponse'
-        id:
-          type: string
-        name:
-          type: string
-        plugin_type:
-          type: string
-        retry:
-          $ref: '#/components/schemas/schemas.RetryConfigResponse'
-        status:
-          $ref: '#/components/schemas/plugins.PluginStatus'
-        updated_at:
-          type: string
-        updated_by:
-          type: string
-        version:
-          type: integer
-        webhook_config:
-          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
-    schemas.PatchPluginRequest:
-      type: object
-      properties:
-        description:
-          type: string
-          maxLength: 1000
-        name:
-          type: string
-          maxLength: 256
-          minLength: 1
-        retry:
-          $ref: '#/components/schemas/schemas.PatchRetryConfigRequest'
-        status:
-          $ref: '#/components/schemas/plugins.PluginStatus'
-        webhook_config:
-          $ref: '#/components/schemas/schemas.PatchWebhookConfigRequest'
-    schemas.WebhookEndpointRequest:
-      type: object
-      required:
-      - failure_mode
-      - phase
-      - url
-      properties:
-        cache_enabled:
-          type: boolean
-        cache_ttl_ms:
-          description: 1s to 1 week
-          type: integer
-          maximum: 604800000
-          minimum: 1000
-        failure_mode:
-          enum:
-          - fail_closed
-          - fail_open
-          allOf:
-          - $ref: '#/components/schemas/plugins.FailureMode'
-        phase:
-          enum:
-          - before
-          - after
-          allOf:
-          - $ref: '#/components/schemas/plugins.Phase'
-        priority:
-          type: integer
-          maximum: 1000
-          minimum: 0
-        status:
-          enum:
-          - active
-          - inactive
-          allOf:
-          - $ref: '#/components/schemas/plugins.HookPointStatus'
-        timeout_ms:
-          description: 100ms to 2 minutes
-          type: integer
-          maximum: 120000
-          minimum: 100
-        url:
-          type: string
-    schemas.OffsetPage-schemas_PluginResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.PluginResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
     schemas.WebhookAuthRequest:
       type: object
       properties:
@@ -595,93 +492,22 @@ components:
           - $ref: '#/components/schemas/plugins.PluginStatus'
         webhook_config:
           $ref: '#/components/schemas/schemas.CreateWebhookConfigRequest'
-    schemas.BindingResponse:
+    schemas.Error:
       type: object
       properties:
-        id:
-          type: string
-        type:
-          $ref: '#/components/schemas/identity.BindingType'
-    schemas.PluginResponse:
-      type: object
-      properties:
-        binding:
-          $ref: '#/components/schemas/schemas.BindingResponse'
-        created_at:
-          type: string
-        created_by:
-          type: string
-        description:
-          type: string
-        health_status:
-          type: string
-        id:
+        message:
           type: string
         name:
           type: string
-        plugin_type:
-          type: string
-        retry:
-          $ref: '#/components/schemas/schemas.RetryConfigResponse'
-        status:
-          $ref: '#/components/schemas/plugins.PluginStatus'
-        updated_at:
-          type: string
-        updated_by:
-          type: string
-        version:
-          type: integer
-        webhook_config:
-          $ref: '#/components/schemas/schemas.WebhookConfigResponse'
-    plugins.PluginStatus:
-      type: string
-      enum:
-      - inactive
-      - active
-      x-enum-varnames:
-      - PluginStatusInactive
-      - PluginStatusActive
-    schemas.CreateWebhookConfigRequest:
-      type: object
-      required:
-      - endpoints
-      properties:
-        auth:
-          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
-        endpoints:
-          $ref: '#/components/schemas/schemas.CreateWebhookEndpointsRequest'
-        health_check_path:
-          type: string
-    schemas.PatchWebhookEndpointsRequest:
+    schemas.CreateWebhookEndpointsRequest:
       type: object
       properties:
         access:
-          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
         post:
-          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
         pre:
-          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
-    identity.BindingType:
-      type: string
-      enum:
-      - static
-      - tenant
-      - project
-      - account
-      x-enum-varnames:
-      - StaticBindingType
-      - TenantBindingType
-      - ProjectBindingType
-      - AccountBindingType
-    schemas.PatchWebhookConfigRequest:
-      type: object
-      properties:
-        auth:
-          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
-        endpoints:
-          $ref: '#/components/schemas/schemas.PatchWebhookEndpointsRequest'
-        health_check_path:
-          type: string
+          $ref: '#/components/schemas/schemas.WebhookEndpointRequest'
     schemas.WebhookEndpointResponse:
       type: object
       properties:
@@ -693,6 +519,180 @@ components:
           type: integer
         url:
           type: string
+    schemas.CreateWebhookConfigRequest:
+      type: object
+      required:
+      - endpoints
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
+        endpoints:
+          $ref: '#/components/schemas/schemas.CreateWebhookEndpointsRequest'
+        health_check_path:
+          type: string
+    plugins.HookPointStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - HookPointStatusInactive
+      - HookPointStatusActive
+    schemas.WebhookEndpointsResponse:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
+        post:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
+        pre:
+          $ref: '#/components/schemas/schemas.WebhookEndpointResponse'
+    plugins.Phase:
+      type: string
+      enum:
+      - before
+      - after
+      x-enum-varnames:
+      - PhaseBefore
+      - PhaseAfter
+    schemas.WebhookEndpointRequest:
+      type: object
+      required:
+      - failure_mode
+      - phase
+      - url
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          description: 1s to 1 week
+          type: integer
+          maximum: 604800000
+          minimum: 1000
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          description: 100ms to 2 minutes
+          type: integer
+          maximum: 120000
+          minimum: 100
+        url:
+          type: string
+    schemas.PatchWebhookConfigRequest:
+      type: object
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthRequest'
+        endpoints:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointsRequest'
+        health_check_path:
+          type: string
+    schemas.PatchRetryConfigRequest:
+      type: object
+      properties:
+        backoff:
+          type: string
+          enum:
+          - fixed
+          - exponential
+        base_delay_ms:
+          type: integer
+          maximum: 10000
+          minimum: 10
+        enabled:
+          type: boolean
+        max_attempts:
+          type: integer
+          maximum: 10
+          minimum: 1
+        retry_on:
+          type: array
+          items:
+            type: string
+    schemas.WebhookConfigResponse:
+      type: object
+      properties:
+        auth:
+          $ref: '#/components/schemas/schemas.WebhookAuthResponse'
+        endpoints:
+          $ref: '#/components/schemas/schemas.WebhookEndpointsResponse'
+        health_check_path:
+          type: string
+    schemas.SecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/identity.BindingType'
+        editable:
+          type: boolean
+        exists:
+          type: boolean
+        value:
+          type: string
+    schemas.HookResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        created_at:
+          type: string
+        failure_mode:
+          $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        phase:
+          $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+        updated_at:
+          type: string
+        version:
+          type: integer
+    schemas.PatchWebhookEndpointsRequest:
+      type: object
+      properties:
+        access:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+        post:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
+        pre:
+          $ref: '#/components/schemas/schemas.PatchWebhookEndpointRequest'
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

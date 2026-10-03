@@ -427,116 +427,6 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
-    schemas.PatchDiscoveryRequest:
-      type: object
-      properties:
-        allowed_classes:
-          type: array
-          maxItems: 10
-          items:
-            type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          maxItems: 500
-          items:
-            type: string
-    schemas.CreateGatewayRequest:
-      type: object
-      required:
-      - name
-      properties:
-        allowed_passthrough_headers:
-          type: array
-          maxItems: 100
-          uniqueItems: true
-          items:
-            type: string
-        auth_type:
-          type: string
-          enum:
-          - arcade
-          - arcade_header
-          - user_source
-        consent_skip_client_ids:
-          type: array
-          maxItems: 64
-          uniqueItems: true
-          items:
-            type: string
-        description:
-          type: string
-          maxLength: 1000
-        instructions:
-          type: string
-          maxLength: 5000
-        name:
-          type: string
-          maxLength: 256
-        slug:
-          type: string
-          maxLength: 256
-        status:
-          type: string
-        tool_filter:
-          $ref: '#/components/schemas/schemas.CreateToolFilterRequest'
-        user_source_id:
-          type: string
-    schemas.OffsetPage-schemas_GatewayResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.GatewayResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.DiscoveryResponse:
-      type: object
-      properties:
-        allowed_classes:
-          type: array
-          items:
-            type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          items:
-            type: string
-    schemas.UpdateDiscoveryRequest:
-      type: object
-      properties:
-        allowed_classes:
-          type: array
-          maxItems: 10
-          items:
-            type: string
-        enabled:
-          type: boolean
-        pinned_asset_keys:
-          type: array
-          maxItems: 500
-          items:
-            type: string
-    schemas.PatchToolFilterRequest:
-      type: object
-      properties:
-        allowed_tools:
-          type: array
-          maxItems: 500
-          uniqueItems: true
-          items:
-            type: string
-        discovery:
-          $ref: '#/components/schemas/schemas.PatchDiscoveryRequest'
     schemas.PatchGatewayRequest:
       type: object
       properties:
@@ -577,11 +467,52 @@ components:
           $ref: '#/components/schemas/schemas.PatchToolFilterRequest'
         user_source_id:
           type: string
-    schemas.SlugInfoResponse:
+    schemas.PatchToolFilterRequest:
       type: object
       properties:
-        available:
-          type: boolean
+        allowed_tools:
+          type: array
+          maxItems: 500
+          uniqueItems: true
+          items:
+            type: string
+        discovery:
+          $ref: '#/components/schemas/schemas.PatchDiscoveryRequest'
+    schemas.GatewayResponse:
+      type: object
+      properties:
+        allowed_passthrough_headers:
+          type: array
+          items:
+            type: string
+        auth_type:
+          type: string
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        consent_skip_client_ids:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        instructions:
+          type: string
+        name:
+          type: string
+        slug:
+          type: string
+        status:
+          type: string
+        tool_filter:
+          $ref: '#/components/schemas/schemas.ToolFilterResponse'
+        updated_at:
+          type: string
+        user_source_id:
+          type: string
     schemas.UpdateGatewayRequest:
       type: object
       required:
@@ -626,6 +557,34 @@ components:
           $ref: '#/components/schemas/schemas.UpdateToolFilterRequest'
         user_source_id:
           type: string
+    schemas.PatchDiscoveryRequest:
+      type: object
+      properties:
+        allowed_classes:
+          type: array
+          maxItems: 10
+          items:
+            type: string
+        enabled:
+          type: boolean
+        pinned_asset_keys:
+          type: array
+          maxItems: 500
+          items:
+            type: string
+    schemas.DiscoveryResponse:
+      type: object
+      properties:
+        allowed_classes:
+          type: array
+          items:
+            type: string
+        enabled:
+          type: boolean
+        pinned_asset_keys:
+          type: array
+          items:
+            type: string
     schemas.BindingResponse:
       type: object
       properties:
@@ -633,58 +592,21 @@ components:
           type: string
         type:
           $ref: '#/components/schemas/identity.BindingType'
-    schemas.Error:
+    schemas.UpdateDiscoveryRequest:
       type: object
       properties:
-        message:
-          type: string
-        name:
-          type: string
-    schemas.ToolFilterResponse:
-      type: object
-      properties:
-        allowed_tools:
+        allowed_classes:
           type: array
+          maxItems: 10
           items:
             type: string
-        discovery:
-          $ref: '#/components/schemas/schemas.DiscoveryResponse'
-    identity.BindingType:
-      type: string
-      enum:
-      - static
-      - tenant
-      - project
-      - account
-      x-enum-varnames:
-      - StaticBindingType
-      - TenantBindingType
-      - ProjectBindingType
-      - AccountBindingType
-    schemas.CreateToolFilterRequest:
-      type: object
-      properties:
-        allowed_tools:
-          description: 'Qualified tool names allowed through this gateway. Each entry must be in the
-
-            "Provider.ToolName" form (for example, "Google.SendEmail"). Versioned tool
-
-            names are not yet supported.'
+        enabled:
+          type: boolean
+        pinned_asset_keys:
           type: array
           maxItems: 500
-          uniqueItems: true
           items:
             type: string
-        discovery:
-          $ref: '#/components/schemas/schemas.CreateDiscoveryRequest'
-    schemas.SlugInfoRequest:
-      type: object
-      required:
-      - slug
-      properties:
-        slug:
-          type: string
-          maxLength: 256
     schemas.CreateDiscoveryRequest:
       type: object
       properties:
@@ -700,40 +622,12 @@ components:
           maxItems: 500
           items:
             type: string
-    schemas.GatewayResponse:
+    schemas.Error:
       type: object
       properties:
-        allowed_passthrough_headers:
-          type: array
-          items:
-            type: string
-        auth_type:
-          type: string
-        binding:
-          $ref: '#/components/schemas/schemas.BindingResponse'
-        consent_skip_client_ids:
-          type: array
-          items:
-            type: string
-        created_at:
-          type: string
-        description:
-          type: string
-        id:
-          type: string
-        instructions:
+        message:
           type: string
         name:
-          type: string
-        slug:
-          type: string
-        status:
-          type: string
-        tool_filter:
-          $ref: '#/components/schemas/schemas.ToolFilterResponse'
-        updated_at:
-          type: string
-        user_source_id:
           type: string
     schemas.UpdateToolFilterRequest:
       type: object
@@ -751,6 +645,112 @@ components:
             type: string
         discovery:
           $ref: '#/components/schemas/schemas.UpdateDiscoveryRequest'
+    schemas.OffsetPage-schemas_GatewayResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.GatewayResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.CreateGatewayRequest:
+      type: object
+      required:
+      - name
+      properties:
+        allowed_passthrough_headers:
+          type: array
+          maxItems: 100
+          uniqueItems: true
+          items:
+            type: string
+        auth_type:
+          type: string
+          enum:
+          - arcade
+          - arcade_header
+          - user_source
+        consent_skip_client_ids:
+          type: array
+          maxItems: 64
+          uniqueItems: true
+          items:
+            type: string
+        description:
+          type: string
+          maxLength: 1000
+        instructions:
+          type: string
+          maxLength: 5000
+        name:
+          type: string
+          maxLength: 256
+        slug:
+          type: string
+          maxLength: 256
+        status:
+          type: string
+        tool_filter:
+          $ref: '#/components/schemas/schemas.CreateToolFilterRequest'
+        user_source_id:
+          type: string
+    schemas.SlugInfoRequest:
+      type: object
+      required:
+      - slug
+      properties:
+        slug:
+          type: string
+          maxLength: 256
+    schemas.CreateToolFilterRequest:
+      type: object
+      properties:
+        allowed_tools:
+          description: 'Qualified tool names allowed through this gateway. Each entry must be in the
+
+            "Provider.ToolName" form (for example, "Google.SendEmail"). Versioned tool
+
+            names are not yet supported.'
+          type: array
+          maxItems: 500
+          uniqueItems: true
+          items:
+            type: string
+        discovery:
+          $ref: '#/components/schemas/schemas.CreateDiscoveryRequest'
+    schemas.SlugInfoResponse:
+      type: object
+      properties:
+        available:
+          type: boolean
+    identity.BindingType:
+      type: string
+      enum:
+      - static
+      - tenant
+      - project
+      - account
+      x-enum-varnames:
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
+    schemas.ToolFilterResponse:
+      type: object
+      properties:
+        allowed_tools:
+          type: array
+          items:
+            type: string
+        discovery:
+          $ref: '#/components/schemas/schemas.DiscoveryResponse'
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'
