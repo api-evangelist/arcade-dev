@@ -522,6 +522,9 @@ apis:
   - type: Examples
     url: examples/arcade-operations-health-example.json
 common:
+- type: CapabilityMap
+  url: capabilities/arcade-dev-capability-edges.yml
+  name: Arcade.dev Business Capability Map
 - type: Website
   url: https://www.arcade.dev/
 - type: PostmanWorkspace

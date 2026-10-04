@@ -1,0 +1,37 @@
+slug: arcade-dev
+provider: Arcade.dev
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Authorization
+  spec_file: arcade-dev-authorization-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.78
+  evidence: '"Authorize end-users for third-party providers (OAuth, API key, custom). Check authorization
+    status and confirm users to obtain user-scoped tokens"; auth.OAuth2AuthorizationRequirement'
+  reason: Brokering OAuth/API-key grants and issuing user-scoped tokens is federation and access management.
+    Some chance the intended reading is developer credential management on a platform (BC-4270.40), but
+    the operations target end-user authorization, so IAM fits best.
+- tag: Admin
+  spec_file: arcade-dev-admin-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.72
+  evidence: GET /v1/admin/auth_providers auth-providers-list "List Auth Providers"; GET /v1/admin/user_connections
+    auth-connections-list "List Auth Connections"; schemas.UserAuthProviderConnectionResponse
+  reason: The dominant surface administers identity/auth providers and per-user auth provider connections
+    plus session verification settings — identity and access administration. Secondary secrets endpoints
+    (secrets-upsert) blur it slightly toward configuration & secrets management, hence moderate confidence.
