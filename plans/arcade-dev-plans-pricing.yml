@@ -1,192 +1,80 @@
-specification: API Commons Plans
-specificationVersion: '0.1'
-schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
-provider: Arcade.dev
-providerId: arcade-dev
-created: '2026-05-25'
-modified: '2026-05-25'
-reconciled: true
-tags:
-  - AI Agents
-  - Tools
-  - MCP
-  - Agent Runtime
-description: 'Reconciled plans and pricing for Arcade.dev — the agent tool / MCP runtime platform. Sourced
-  from arcade.dev/pricing.'
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://www.arcade.dev/pricing/
 sources:
-  - https://arcade.dev/pricing
-  - https://docs.arcade.dev
+- https://www.arcade.dev/pricing/
+- https://arcade.dev/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: developer-api
+pricing_basis: per-call
+delivery:
+  delivery: managed+licensed
+  method: page
+  read: '2026-10-07'
+  evidence: Flexible deployment options on Arcade Cloud, in your VPC, or fully air-gapped
+  managed_tier: Team
+published: true
+note: Platform fee plus per-auth-event and per-tool-call usage pricing; Enterprise is custom with VPC/air-gapped
+  deployment options.
+plan_count: 3
+currency: USD
 plans:
-  - id: arcade-hobby
-    name: Hobby
-    type: free
-    description: Free tier for building and prototyping AI agents on Arcade. Community support via GitHub.
-    entries:
-      - label: Monthly base price
-        name: base
-        type: fixed
-        metric: month
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: User challenges included
-        name: user_challenges_included
-        type: included
-        metric: challenge
-        limit: 100
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Standard tool executions included
-        name: standard_tool_executions_included
-        type: included
-        metric: execution
-        limit: 1000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Pro tool executions included
-        name: pro_tool_executions_included
-        type: included
-        metric: execution
-        limit: 50
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Arcade-hosted MCP servers (24/7)
-        name: hosted_mcp_servers
-        type: included
-        metric: server
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-  - id: arcade-growth
-    name: Growth
-    type: subscription
-    description: Production usage-based plan with email support and SLA. Monthly base fee plus per-use overage.
-    entries:
-      - label: Monthly base price
-        name: base
-        type: fixed
-        metric: month
-        limit: 1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '25.00'
-        userMultiplied: false
-      - label: User challenges included
-        name: user_challenges_included
-        type: included
-        metric: challenge
-        limit: 600
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Standard tool executions included
-        name: standard_tool_executions_included
-        type: included
-        metric: execution
-        limit: 2000
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Pro tool executions included
-        name: pro_tool_executions_included
-        type: included
-        metric: execution
-        limit: 100
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: User challenges overage
-        name: user_challenges_overage
-        type: metered
-        metric: challenge
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.05'
-        userMultiplied: false
-      - label: Standard tool execution overage
-        name: standard_execution_overage
-        type: metered
-        metric: execution
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.01'
-        userMultiplied: false
-      - label: Pro tool execution overage
-        name: pro_execution_overage
-        type: metered
-        metric: execution
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.50'
-        userMultiplied: false
-      - label: Arcade-hosted MCP server runtime
-        name: hosted_mcp_server_runtime
-        type: metered
-        metric: hour
-        limit: -1
-        timeFrame: usage
-        geo: global
-        unit: 1
-        price: '0.05'
-        userMultiplied: false
-  - id: arcade-enterprise
-    name: Enterprise
-    type: custom
-    description: Dedicated infrastructure, tenant isolation, audit logs, RBAC, SSO/SAML, custom SLA, and dedicated
-      account representative. Custom pricing on all metrics.
-    entries:
-      - label: Base price
-        name: base
-        type: custom
-        metric: month
-        limit: -1
-        timeFrame: month
-        geo: global
-        unit: 1
-        price: 'custom'
-        userMultiplied: false
-features:
-  free:
-    - Community support via GitHub
-    - 1 Arcade-hosted MCP server, 24/7
-    - 7,000+ pre-built integrations and toolkits
-    - Python, TypeScript, Go, Java/Kotlin, and .NET SDKs
-  growth:
-    - Email support with SLA
-    - Usage-based overage on challenges, executions, and hosted MCP server runtime
-    - Startup program available for companies under 100 employees
-  enterprise:
-    - Tenant isolation
-    - Audit logs forwarded via hooks
-    - Role-based access control (RBAC)
-    - SSO / SAML
-    - Self-hosted and air-gapped deployment options (Cloud, VPC, on-prem)
-    - Custom SLA
+- name: Free
+  price_text: $0 /month
+  price: 0
+  currency: USD
+  period: month
+  unit: platform fee
+  included_quota: 2,000 auth events / month to connect agents to user accounts; 2,000 tool calls / month
+    to take real actions; Fully managed on Arcade Cloud; Community support on Discord and GitHub
+- name: Team
+  price_text: $25 /month + usage
+  price: 25
+  currency: USD
+  period: month
+  unit: platform fee + usage
+  included_quota: Fully managed on Arcade Cloud; Next-business-day email support
+  overage: Auth events at $0.10 each; Tool calls at $0.01 each
+- name: Enterprise
+  price_text: Custom
+  period: none
+  included_quota: Platform pricing includes annual bundles of auth events and tool calls; Flexible deployment
+    options on Arcade Cloud, in your VPC, or fully air-gapped; 24/7 SLA-backed support; Dedicated FDE
+    & account team; SSO, RBAC, audit logs, and private registry access
+  overage: Discounted additional auth event and tool call rates as you scale
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  - metered
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Team
+    access: other
+    model: hybrid
+    model_how: derived
+    units:
+    - other
+    periods:
+    - month
+  - name: Enterprise
+    access: other
+    model: metered
+    model_how: derived
+    units: []
+    periods:
+    - none
