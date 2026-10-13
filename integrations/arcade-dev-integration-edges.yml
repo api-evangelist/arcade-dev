@@ -1,0 +1,23 @@
+edges:
+- partner_name: OpenAI
+  partner: openai
+  partner_match: domain
+  type: contract
+  channel: provider-built
+  relationship: compatible
+  direction: provider-built
+  evidence: https://github.com/api-evangelist/arcade-dev/blob/main/openapi/arcade-dev-llm-api-openapi.yml#L3
+  contract_reference:
+    repo: arcade-dev
+    spec_file: arcade-dev-llm-api-openapi.yml
+    property: description
+    value: OpenAI-compatible
+    note: 'arcade-dev declares OpenAI compatibility: ''description: OpenAI-compatible chat completions endpoint
+      that lets agents call LLMs with Arcade tools attached and execute them with user-scoped authorization.'''
+    detected_by: sweep-model-routing.py
+    detected: '2026-10-13'
+  detected_by: sweep-model-routing.py
+  first_seen: '2026-10-13'
+generated: '2026-10-13'
+method: searched
+checked: []
