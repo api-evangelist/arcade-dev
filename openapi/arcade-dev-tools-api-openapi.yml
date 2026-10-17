@@ -545,64 +545,50 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
-    schemas.Error:
+    schemas.AuthorizeToolRequest:
+      type: object
+      required:
+      - tool_name
+      properties:
+        next_uri:
+          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
+          type: string
+        tool_name:
+          type: string
+        tool_version:
+          description: 'Optional: if not provided, any version is used'
+          type: string
+        user_id:
+          description: Required only when calling with an API key
+          type: string
+    schemas.AuthorizationRequirement:
       type: object
       properties:
-        message:
+        id:
           type: string
-        name:
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirement'
+        provider_id:
           type: string
-    tool.Classification:
-      type: object
-      properties:
-        service_domains:
-          type: array
-          items:
-            type: string
-    schemas.SecretRequirementsInfo:
+        provider_type:
+          type: string
+        status:
+          default: disabled
+          allOf:
+          - $ref: '#/components/schemas/auth.Status'
+        status_reason:
+          type: string
+        token_status:
+          $ref: '#/components/schemas/auth.AuthorizationStatus'
+    schemas.AuthorizationRequirementsInfo:
       type: object
       properties:
         items:
           type: object
           additionalProperties:
-            $ref: '#/components/schemas/schemas.SecretRequirementResult'
+            $ref: '#/components/schemas/schemas.AuthorizationRequirementResult'
         met:
           type: boolean
-    schemas.ToolRequirementsResponse:
-      type: object
-      properties:
-        authorization:
-          $ref: '#/components/schemas/schemas.AuthorizationRequirementsInfo'
-        met:
-          type: boolean
-        secrets:
-          $ref: '#/components/schemas/schemas.SecretRequirementsInfo'
-    tool.Error:
-      type: object
-      required:
-      - can_retry
-      - kind
-      - message
-      properties:
-        additional_prompt_content:
-          type: string
-        can_retry:
-          type: boolean
-        developer_message:
-          type: string
-        extra:
-          type: object
-          additionalProperties: {}
-        kind:
-          $ref: '#/components/schemas/tool.ErrorKind'
-        message:
-          type: string
-        retry_after_ms:
-          type: integer
-        stacktrace:
-          type: string
-        status_code:
-          type: integer
     schemas.ToolExecutionDetailResponse:
       type: object
       properties:
@@ -636,6 +622,196 @@ components:
           type: string
         user_id:
           type: string
+    schemas.ValueSchema:
+      type: object
+      required:
+      - val_type
+      properties:
+        enum:
+          type: array
+          items:
+            type: string
+        inner_val_type:
+          type: string
+        val_type:
+          type: string
+    schemas.SecretRequirementsInfo:
+      type: object
+      properties:
+        items:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/schemas.SecretRequirementResult'
+        met:
+          type: boolean
+    tool.Behavior:
+      type: object
+      properties:
+        destructive:
+          type: boolean
+        idempotent:
+          type: boolean
+        open_world:
+          type: boolean
+        operations:
+          type: array
+          items:
+            type: string
+        read_only:
+          type: boolean
+    schemas.SecretRequirement:
+      type: object
+      required:
+      - key
+      properties:
+        key:
+          type: string
+        met:
+          type: boolean
+          default: false
+        status_reason:
+          type: string
+    schemas.ToolExecutionAttemptResponse:
+      type: object
+      properties:
+        finished_at:
+          type: string
+        id:
+          type: string
+        output:
+          $ref: '#/components/schemas/tool.ResponseOutput'
+        started_at:
+          type: string
+        success:
+          type: boolean
+        system_error_message:
+          type: string
+    schemas.SecretRequirementResult:
+      type: object
+      properties:
+        met:
+          type: boolean
+        status_reason:
+          type: string
+        tool_names:
+          type: array
+          items:
+            type: string
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    auth.Status:
+      type: string
+      enum:
+      - active
+      - inactive
+      x-enum-varnames:
+      - StatusActive
+      - StatusInactive
+    schemas.ExecuteToolResponse:
+      type: object
+      properties:
+        duration:
+          type: number
+        execution_id:
+          type: string
+        execution_type:
+          type: string
+        finished_at:
+          type: string
+        id:
+          type: string
+        output:
+          $ref: '#/components/schemas/tool.ResponseOutput'
+        run_at:
+          type: string
+        status:
+          type: string
+        success:
+          description: 'Whether the request was successful.
+
+            For immediately-executed requests, this will be true if the tool call succeeded.
+
+            For scheduled requests, this will be true if the request was scheduled successfully.'
+          type: boolean
+    schemas.OffsetPage-schemas_ArbitraryObject:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.ArbitraryObject'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    tool.Error:
+      type: object
+      required:
+      - can_retry
+      - kind
+      - message
+      properties:
+        additional_prompt_content:
+          type: string
+        can_retry:
+          type: boolean
+        developer_message:
+          type: string
+        extra:
+          type: object
+          additionalProperties: {}
+        kind:
+          $ref: '#/components/schemas/tool.ErrorKind'
+        message:
+          type: string
+        retry_after_ms:
+          type: integer
+        stacktrace:
+          type: string
+        status_code:
+          type: integer
+    schemas.ToolkitResponse:
+      type: object
+      required:
+      - name
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        version:
+          type: string
+    schemas.ExecuteToolRequest:
+      type: object
+      required:
+      - tool_name
+      properties:
+        include_error_stacktrace:
+          description: Whether to include the error stacktrace in the response. If not provided, the error stacktrace is not included.
+          type: boolean
+        input:
+          description: JSON input to the tool, if any
+          allOf:
+          - $ref: '#/components/schemas/tool.RawInputs'
+        run_at:
+          description: 'The time at which the tool should be run (optional). If not provided, the tool is run immediately. Format ISO 8601: YYYY-MM-DDTHH:MM:SS'
+          type: string
+        tool_name:
+          type: string
+        tool_version:
+          description: The tool version to use (optional). If not provided, any version is used
+          type: string
+        user_id:
+          type: string
     schemas.ToolExecutionListResponse:
       type: object
       properties:
@@ -663,6 +839,31 @@ components:
           type: string
         user_id:
           type: string
+    schemas.ToolRef:
+      type: object
+      required:
+      - tool_name
+      properties:
+        tool_name:
+          type: string
+        tool_version:
+          type: string
+    tool.Classification:
+      type: object
+      properties:
+        service_domains:
+          type: array
+          items:
+            type: string
+    schemas.ToolRequirementsResponse:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.AuthorizationRequirementsInfo'
+        met:
+          type: boolean
+        secrets:
+          $ref: '#/components/schemas/schemas.SecretRequirementsInfo'
     tool.ToolMetadata:
       type: object
       properties:
@@ -673,42 +874,25 @@ components:
         extras:
           type: object
           additionalProperties: {}
-    schemas.Parameter:
+    tool.Log:
       type: object
       required:
-      - name
-      - value_schema
+      - level
+      - message
       properties:
-        description:
+        level:
           type: string
-        inferrable:
-          type: boolean
-          default: true
-        name:
+        message:
           type: string
-        required:
-          type: boolean
-        value_schema:
-          $ref: '#/components/schemas/schemas.ValueSchema'
-    schemas.SecretRequirement:
-      type: object
-      required:
-      - key
-      properties:
-        key:
+        subtype:
           type: string
-        met:
-          type: boolean
-          default: false
-        status_reason:
-          type: string
-    schemas.OffsetPage-schemas_ArbitraryObject:
+    schemas.OffsetPage-schemas_ToolResponse:
       type: object
       properties:
         items:
           type: array
           items:
-            $ref: '#/components/schemas/schemas.ArbitraryObject'
+            $ref: '#/components/schemas/schemas.ToolResponse'
         limit:
           type: integer
         offset:
@@ -717,117 +901,6 @@ components:
           type: integer
         total_count:
           type: integer
-    schemas.SecretRequirementResult:
-      type: object
-      properties:
-        met:
-          type: boolean
-        status_reason:
-          type: string
-        tool_names:
-          type: array
-          items:
-            type: string
-    schemas.ToolkitResponse:
-      type: object
-      required:
-      - name
-      properties:
-        description:
-          type: string
-        name:
-          type: string
-        version:
-          type: string
-    schemas.AuthorizeToolRequest:
-      type: object
-      required:
-      - tool_name
-      properties:
-        next_uri:
-          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
-          type: string
-        tool_name:
-          type: string
-        tool_version:
-          description: 'Optional: if not provided, any version is used'
-          type: string
-        user_id:
-          description: Required only when calling with an API key
-          type: string
-    schemas.ValueSchema:
-      type: object
-      required:
-      - val_type
-      properties:
-        enum:
-          type: array
-          items:
-            type: string
-        inner_val_type:
-          type: string
-        val_type:
-          type: string
-    schemas.Output:
-      type: object
-      properties:
-        available_modes:
-          type: array
-          items:
-            type: string
-        description:
-          type: string
-        value_schema:
-          $ref: '#/components/schemas/schemas.ValueSchema'
-    schemas.AuthorizationRequirementsInfo:
-      type: object
-      properties:
-        items:
-          type: object
-          additionalProperties:
-            $ref: '#/components/schemas/schemas.AuthorizationRequirementResult'
-        met:
-          type: boolean
-    schemas.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
-    schemas.ToolResponse:
-      type: object
-      required:
-      - fully_qualified_name
-      - input
-      - name
-      - qualified_name
-      - toolkit
-      properties:
-        description:
-          type: string
-        formatted_schema:
-          type: object
-          additionalProperties: {}
-        fully_qualified_name:
-          type: string
-        input:
-          $ref: '#/components/schemas/schemas.Input'
-        metadata:
-          $ref: '#/components/schemas/tool.ToolMetadata'
-        name:
-          type: string
-        output:
-          $ref: '#/components/schemas/schemas.Output'
-        qualified_name:
-          type: string
-        requirements:
-          $ref: '#/components/schemas/schemas.Requirements'
-        toolkit:
-          $ref: '#/components/schemas/schemas.ToolkitResponse'
-    schemas.ArbitraryObject:
-      type: object
-      additionalProperties: true
     schemas.OffsetPage-schemas_ToolExecutionListResponse:
       type: object
       properties:
@@ -864,6 +937,101 @@ components:
           type: string
         user_id:
           type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    schemas.Requirements:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.AuthorizationRequirement'
+        met:
+          type: boolean
+          default: false
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.SecretRequirement'
+    schemas.Output:
+      type: object
+      properties:
+        available_modes:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
+    schemas.ArbitraryObject:
+      type: object
+      additionalProperties: true
+    schemas.ToolResponse:
+      type: object
+      required:
+      - fully_qualified_name
+      - input
+      - name
+      - qualified_name
+      - toolkit
+      properties:
+        description:
+          type: string
+        formatted_schema:
+          type: object
+          additionalProperties: {}
+        fully_qualified_name:
+          type: string
+        input:
+          $ref: '#/components/schemas/schemas.Input'
+        metadata:
+          $ref: '#/components/schemas/tool.ToolMetadata'
+        name:
+          type: string
+        output:
+          $ref: '#/components/schemas/schemas.Output'
+        qualified_name:
+          type: string
+        requirements:
+          $ref: '#/components/schemas/schemas.Requirements'
+        toolkit:
+          $ref: '#/components/schemas/schemas.ToolkitResponse'
+    schemas.Input:
+      type: object
+      properties:
+        parameters:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/schemas.Parameter'
+    tool.ResponseOutput:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/auth.AuthorizationResponse'
+        error:
+          $ref: '#/components/schemas/tool.Error'
+        logs:
+          type: array
+          items:
+            $ref: '#/components/schemas/tool.Log'
+        value: {}
+    schemas.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
     tool.ErrorKind:
       type: string
       enum:
@@ -914,50 +1082,23 @@ components:
       - ErrorKindNetworkTransportRuntimeUnreachable
       - ErrorKindNetworkTransportRuntimeUnmapped
       - ErrorKindUnknown
-    schemas.ToolExecutionAttemptResponse:
-      type: object
-      properties:
-        finished_at:
-          type: string
-        id:
-          type: string
-        output:
-          $ref: '#/components/schemas/tool.ResponseOutput'
-        started_at:
-          type: string
-        success:
-          type: boolean
-        system_error_message:
-          type: string
-    schemas.ToolRef:
+    schemas.Parameter:
       type: object
       required:
-      - tool_name
+      - name
+      - value_schema
       properties:
-        tool_name:
+        description:
           type: string
-        tool_version:
+        inferrable:
+          type: boolean
+          default: true
+        name:
           type: string
-    schemas.Input:
-      type: object
-      properties:
-        parameters:
-          type: array
-          minItems: 0
-          items:
-            $ref: '#/components/schemas/schemas.Parameter'
-    tool.ResponseOutput:
-      type: object
-      properties:
-        authorization:
-          $ref: '#/components/schemas/auth.AuthorizationResponse'
-        error:
-          $ref: '#/components/schemas/tool.Error'
-        logs:
-          type: array
-          items:
-            $ref: '#/components/schemas/tool.Log'
-        value: {}
+        required:
+          type: boolean
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
     auth.AuthorizationContext:
       type: object
       properties:
@@ -966,78 +1107,24 @@ components:
         user_info:
           type: object
           additionalProperties: true
-    tool.Behavior:
+    schemas.ToolRequirementsRequest:
       type: object
       properties:
-        destructive:
+        authorize:
           type: boolean
-        idempotent:
-          type: boolean
-        open_world:
-          type: boolean
-        operations:
+        tool_names:
           type: array
           items:
             type: string
-        read_only:
-          type: boolean
+        tools:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.ToolRef'
+        user_id:
+          type: string
     tool.RawInputs:
       type: object
       additionalProperties: true
-    schemas.ExecuteToolRequest:
-      type: object
-      required:
-      - tool_name
-      properties:
-        include_error_stacktrace:
-          description: Whether to include the error stacktrace in the response. If not provided, the error stacktrace is not included.
-          type: boolean
-        input:
-          description: JSON input to the tool, if any
-          allOf:
-          - $ref: '#/components/schemas/tool.RawInputs'
-        run_at:
-          description: 'The time at which the tool should be run (optional). If not provided, the tool is run immediately. Format ISO 8601: YYYY-MM-DDTHH:MM:SS'
-          type: string
-        tool_name:
-          type: string
-        tool_version:
-          description: The tool version to use (optional). If not provided, any version is used
-          type: string
-        user_id:
-          type: string
-    tool.Log:
-      type: object
-      required:
-      - level
-      - message
-      properties:
-        level:
-          type: string
-        message:
-          type: string
-        subtype:
-          type: string
-    schemas.Requirements:
-      type: object
-      properties:
-        authorization:
-          $ref: '#/components/schemas/schemas.AuthorizationRequirement'
-        met:
-          type: boolean
-          default: false
-        secrets:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.SecretRequirement'
-    auth.Status:
-      type: string
-      enum:
-      - active
-      - inactive
-      x-enum-varnames:
-      - StatusActive
-      - StatusInactive
     schemas.AuthorizationRequirementResult:
       type: object
       properties:
@@ -1063,93 +1150,6 @@ components:
             type: string
         url:
           type: string
-    schemas.ToolRequirementsRequest:
-      type: object
-      properties:
-        authorize:
-          type: boolean
-        tool_names:
-          type: array
-          items:
-            type: string
-        tools:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.ToolRef'
-        user_id:
-          type: string
-    schemas.ExecuteToolResponse:
-      type: object
-      properties:
-        duration:
-          type: number
-        execution_id:
-          type: string
-        execution_type:
-          type: string
-        finished_at:
-          type: string
-        id:
-          type: string
-        output:
-          $ref: '#/components/schemas/tool.ResponseOutput'
-        run_at:
-          type: string
-        status:
-          type: string
-        success:
-          description: 'Whether the request was successful.
-
-            For immediately-executed requests, this will be true if the tool call succeeded.
-
-            For scheduled requests, this will be true if the request was scheduled successfully.'
-          type: boolean
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
-    schemas.OffsetPage-schemas_ToolResponse:
-      type: object
-      properties:
-        items:
-          type: array
-          items:
-            $ref: '#/components/schemas/schemas.ToolResponse'
-        limit:
-          type: integer
-        offset:
-          type: integer
-        page_count:
-          type: integer
-        total_count:
-          type: integer
-    schemas.AuthorizationRequirement:
-      type: object
-      properties:
-        id:
-          type: string
-        oauth2:
-          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirement'
-        provider_id:
-          type: string
-        provider_type:
-          type: string
-        status:
-          default: disabled
-          allOf:
-          - $ref: '#/components/schemas/auth.Status'
-        status_reason:
-          type: string
-        token_status:
-          $ref: '#/components/schemas/auth.AuthorizationStatus'
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'

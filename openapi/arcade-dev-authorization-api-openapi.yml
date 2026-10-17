@@ -219,12 +219,42 @@ paths:
                 $ref: '#/components/schemas/schemas.Error'
 components:
   schemas:
+    schemas.AuthorizationInitiationRequest:
+      type: object
+      required:
+      - auth_requirement
+      - user_id
+      properties:
+        auth_requirement:
+          $ref: '#/components/schemas/auth.AuthorizationRequirement'
+        next_uri:
+          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
+          type: string
+        user_id:
+          type: string
     schemas.Error:
       type: object
       properties:
         message:
           type: string
         name:
+          type: string
+    schemas.ValidateCustomVerifierResponse:
+      type: object
+      properties:
+        flow_id:
+          type: string
+        next_uri:
+          type: string
+    schemas.ValidateCustomVerifierRequest:
+      type: object
+      required:
+      - user_id
+      - verifier_url
+      properties:
+        user_id:
+          type: string
+        verifier_url:
           type: string
     auth.AuthorizationResponse:
       type: object
@@ -247,44 +277,13 @@ components:
           type: string
         user_id:
           type: string
-    schemas.ValidateCustomVerifierResponse:
+    auth.OAuth2AuthorizationRequirement:
       type: object
       properties:
-        flow_id:
-          type: string
-        next_uri:
-          type: string
-    schemas.ValidateCustomVerifierRequest:
-      type: object
-      required:
-      - user_id
-      - verifier_url
-      properties:
-        user_id:
-          type: string
-        verifier_url:
-          type: string
-    auth.AuthorizationContext:
-      type: object
-      properties:
-        token:
-          type: string
-        user_info:
-          type: object
-          additionalProperties: true
-    schemas.AuthorizationInitiationRequest:
-      type: object
-      required:
-      - auth_requirement
-      - user_id
-      properties:
-        auth_requirement:
-          $ref: '#/components/schemas/auth.AuthorizationRequirement'
-        next_uri:
-          description: 'Optional: if provided, the user will be redirected to this URI after authorization'
-          type: string
-        user_id:
-          type: string
+        scopes:
+          type: array
+          items:
+            type: string
     schemas.AuthorizationConfirmUserRequest:
       type: object
       required:
@@ -294,6 +293,35 @@ components:
         flow_id:
           type: string
         user_id:
+          type: string
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    auth.AuthorizationContext:
+      type: object
+      properties:
+        token:
+          type: string
+        user_info:
+          type: object
+          additionalProperties: true
+    schemas.AuthorizationConfirmUserResponse:
+      type: object
+      required:
+      - auth_id
+      properties:
+        auth_id:
+          type: string
+        next_uri:
           type: string
     auth.AuthorizationRequirement:
       type: object
@@ -308,34 +336,6 @@ components:
           type: string
         provider_type:
           type: string
-    auth.AuthorizationStatus:
-      type: string
-      enum:
-      - not_started
-      - pending
-      - completed
-      - failed
-      x-enum-varnames:
-      - StatusNotStarted
-      - StatusPending
-      - StatusCompleted
-      - StatusFailed
-    schemas.AuthorizationConfirmUserResponse:
-      type: object
-      required:
-      - auth_id
-      properties:
-        auth_id:
-          type: string
-        next_uri:
-          type: string
-    auth.OAuth2AuthorizationRequirement:
-      type: object
-      properties:
-        scopes:
-          type: array
-          items:
-            type: string
   securitySchemes:
     Bearer:
       description: 'Enter your API key or API token in the format: Bearer <token>'
