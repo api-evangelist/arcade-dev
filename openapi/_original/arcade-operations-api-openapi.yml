@@ -1,0 +1,109 @@
+openapi: 3.0.0
+info:
+  description: Operational endpoints for service health, runtime configuration, and the OpenAPI / swagger description of the
+    Arcade Engine.
+  title: Arcade Operations API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/config:
+    get:
+      description: Get the Engine configuration
+      tags:
+      - Operations
+      summary: Get Engine Config
+      operationId: engine-config
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.EngineConfigResponse'
+  /v1/health:
+    get:
+      description: Check if Arcade Engine is healthy
+      tags:
+      - Operations
+      summary: Engine Health Check
+      operationId: arcade-health
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.HealthSchema'
+        '503':
+          description: Service Unavailable
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.HealthSchema'
+  /v1/swagger:
+    get:
+      description: Get the OpenAPI 3.0 specification in JSON format
+      tags:
+      - Operations
+      summary: Get OpenAPI Specification
+      operationId: swagger
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    schemas.DashboardConfigResponse:
+      type: object
+      properties:
+        authority:
+          type: string
+        clientId:
+          type: string
+        coordinatorUri:
+          type: string
+    schemas.EngineConfigResponse:
+      type: object
+      properties:
+        dashboard:
+          $ref: '#/components/schemas/schemas.DashboardConfigResponse'
+        oauth2:
+          $ref: '#/components/schemas/schemas.EngineOAuth2ConfigResponse'
+        servers:
+          $ref: '#/components/schemas/schemas.EngineServersConfig'
+    schemas.EngineOAuth2ConfigResponse:
+      type: object
+      properties:
+        callback_url_template:
+          type: string
+    schemas.EngineServersConfig:
+      type: object
+      properties:
+        timeout_max_seconds:
+          type: integer
+    schemas.HealthSchema:
+      type: object
+      properties:
+        healthy:
+          type: boolean
+        reason:
+          description: 'Optional: explains why unhealthy'
+          type: string

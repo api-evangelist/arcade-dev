@@ -1,0 +1,1076 @@
+openapi: 3.0.0
+info:
+  description: Administer auth providers, secrets, user connections, and session verification settings for an Arcade organization.
+  title: Arcade Admin API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/admin/auth_providers:
+    get:
+      security:
+      - Bearer: []
+      description: List a page of auth providers that are available to the caller
+      tags:
+      - Admin
+      summary: List Auth Providers
+      operationId: auth-providers-list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_AuthProviderResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    post:
+      security:
+      - Bearer: []
+      description: Create a new auth provider
+      tags:
+      - Admin
+      summary: Create an Auth Provider
+      operationId: auth-providers-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.AuthProviderCreateRequest'
+        description: The auth provider to create
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/auth_providers/{id}:
+    get:
+      security:
+      - Bearer: []
+      description: Get the details of a specific auth provider
+      tags:
+      - Admin
+      summary: Get an Auth Provider
+      operationId: auth-providers-get
+      parameters:
+      - description: The ID of the auth provider to get
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    delete:
+      security:
+      - Bearer: []
+      description: Delete a specific auth provider
+      tags:
+      - Admin
+      summary: Delete an Auth Provider
+      operationId: auth-providers-delete
+      parameters:
+      - description: The ID of the auth provider to delete
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    patch:
+      security:
+      - Bearer: []
+      description: Patch an existing auth provider
+      tags:
+      - Admin
+      summary: Patch an Auth Provider
+      operationId: auth-providers-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.AuthProviderPatchRequest'
+        description: The auth provider to update
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/secrets:
+    get:
+      security:
+      - Bearer: []
+      description: List all secrets that are visible to the caller
+      tags:
+      - Admin
+      summary: List Secrets
+      operationId: secrets-list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_StoredSecretResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/secrets/{secret_id}:
+    delete:
+      security:
+      - Bearer: []
+      description: Delete a secret by its ID
+      tags:
+      - Admin
+      summary: Delete Secret
+      operationId: secrets-delete
+      parameters:
+      - description: The ID of the secret to delete
+        name: secret_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/secrets/{secret_key}:
+    post:
+      security:
+      - Bearer: []
+      description: Create or update a secret
+      tags:
+      - Admin
+      summary: Upsert Secret
+      operationId: secrets-upsert
+      parameters:
+      - description: The key of the secret to upsert
+        name: secret_key
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.UpsertStoredSecretRequest'
+        description: The secret to upsert
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.StoredSecretResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/settings/session_verification:
+    get:
+      security:
+      - Bearer: []
+      description: Get the current session verification settings for the caller
+      tags:
+      - Admin
+      summary: Get Session Verification Settings
+      operationId: session-verification-settings-get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.SessionVerificationSettingsResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    put:
+      security:
+      - Bearer: []
+      description: Update session verification settings for the caller
+      tags:
+      - Admin
+      summary: Update Session Verification Settings
+      operationId: session-verification-settings-update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.UpdateSessionVerificationSettingsRequest'
+        description: The settings to update
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.SessionVerificationSettingsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/user_connections:
+    get:
+      security:
+      - Bearer: []
+      description: List all auth connections
+      tags:
+      - Admin
+      summary: List Auth Connections
+      operationId: auth-connections-list
+      parameters:
+      - description: Provider ID
+        name: provider_id
+        in: query
+        schema:
+          type: string
+      - description: User ID
+        name: user_id
+        in: query
+        schema:
+          type: string
+      - description: Page size
+        name: limit
+        in: query
+        schema:
+          type: integer
+      - description: Page offset
+        name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_UserAuthProviderConnectionResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/admin/user_connections/{id}:
+    delete:
+      security:
+      - Bearer: []
+      description: Delete a user/auth provider connection
+      tags:
+      - Admin
+      summary: Delete Auth Connection
+      operationId: auth-connections-delete
+      parameters:
+      - description: Connection ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    identity.BindingType:
+      type: string
+      enum:
+      - static
+      - tenant
+      - project
+      - account
+      x-enum-varnames:
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
+    schemas.AuthProviderCreateRequest:
+      type: object
+      required:
+      - id
+      properties:
+        description:
+          type: string
+          maxLength: 1000
+        external_id:
+          description: The unique external ID for the auth provider
+          type: string
+          maxLength: 50
+        id:
+          type: string
+          maxLength: 100
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2ConfigCreateRequest'
+        provider_id:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+    schemas.AuthProviderPatchRequest:
+      type: object
+      properties:
+        description:
+          type: string
+          maxLength: 1000
+        id:
+          type: string
+          maxLength: 100
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2ConfigPatchRequest'
+        provider_id:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+    schemas.AuthProviderResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2ConfigResponse'
+        provider_id:
+          type: string
+        status:
+          type: string
+        type:
+          type: string
+        updated_at:
+          type: string
+    schemas.BindingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.OAuth2ConfigCreateRequest:
+      type: object
+      required:
+      - client_id
+      properties:
+        authorize_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        pkce:
+          $ref: '#/components/schemas/schemas.PKCEConfigCreateRequest'
+        refresh_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        scope_delimiter:
+          type: string
+          enum:
+          - ','
+          - ' '
+        token_introspection_request:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionCreateRequest'
+        token_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigCreateRequest'
+        user_info_request:
+          $ref: '#/components/schemas/schemas.UserInfoRequestConfigCreateRequest'
+    schemas.OAuth2ConfigPatchRequest:
+      type: object
+      properties:
+        authorize_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        pkce:
+          $ref: '#/components/schemas/schemas.PKCEConfigPatchRequest'
+        refresh_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        scope_delimiter:
+          type: string
+          enum:
+          - ','
+          - ' '
+        token_introspection_request:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionPatchRequest'
+        token_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigPatchRequest'
+        user_info_request:
+          $ref: '#/components/schemas/schemas.UserInfoRequestConfigPatchRequest'
+    schemas.OAuth2ConfigResponse:
+      type: object
+      properties:
+        authorize_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigResponse'
+        client_id:
+          type: string
+        client_secret:
+          $ref: '#/components/schemas/schemas.SecretResponse'
+        pkce:
+          $ref: '#/components/schemas/schemas.PKCEConfigResponse'
+        redirect_uri:
+          description: The redirect URI required for this provider.
+          type: string
+        refresh_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigResponse'
+        scope_delimiter:
+          type: string
+        token_introspection_request:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionRequestConfigResponse'
+        token_request:
+          $ref: '#/components/schemas/schemas.OAuth2RequestConfigResponse'
+        user_info_request:
+          $ref: '#/components/schemas/schemas.UserInfoRequestConfigResponse'
+    schemas.OAuth2RequestConfigCreateRequest:
+      type: object
+      required:
+      - endpoint
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+    schemas.OAuth2RequestConfigPatchRequest:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+    schemas.OAuth2RequestConfigResponse:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+    schemas.OffsetPage-schemas_AuthProviderResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.AuthProviderResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.OffsetPage-schemas_StoredSecretResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.StoredSecretResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.OffsetPage-schemas_UserAuthProviderConnectionResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.UserAuthProviderConnectionResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.PKCEConfigCreateRequest:
+      type: object
+      properties:
+        code_challenge_method:
+          type: string
+        enabled:
+          type: boolean
+    schemas.PKCEConfigPatchRequest:
+      type: object
+      properties:
+        code_challenge_method:
+          type: string
+        enabled:
+          type: boolean
+    schemas.PKCEConfigResponse:
+      type: object
+      properties:
+        code_challenge_method:
+          type: string
+        enabled:
+          type: boolean
+    schemas.SecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/identity.BindingType'
+        editable:
+          type: boolean
+        exists:
+          type: boolean
+        value:
+          type: string
+    schemas.SessionVerificationSettingsResponse:
+      type: object
+      properties:
+        unsafe_skip_verification:
+          type: boolean
+        unsafe_skip_verification_choice_allowed:
+          type: boolean
+        verifier_url:
+          description: not omitempty because we want to show null values
+          type: string
+    schemas.StoredSecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        created_at:
+          type: string
+        description:
+          type: string
+        id:
+          type: string
+        key:
+          type: string
+        last_accessed_at:
+          type: string
+        updated_at:
+          type: string
+    schemas.TokenIntrospectionCreateRequest:
+      type: object
+      required:
+      - endpoint
+      - triggers
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionTriggersCreateRequest'
+    schemas.TokenIntrospectionPatchRequest:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionTriggersPatchRequest'
+    schemas.TokenIntrospectionRequestConfigResponse:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        enabled:
+          type: boolean
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.TokenIntrospectionRequestTriggersResponse'
+    schemas.TokenIntrospectionRequestTriggersResponse:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.TokenIntrospectionTriggersCreateRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.TokenIntrospectionTriggersPatchRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.UpdateSessionVerificationSettingsRequest:
+      type: object
+      properties:
+        unsafe_skip_verification:
+          type: boolean
+        verifier_url:
+          type: string
+    schemas.UpsertStoredSecretRequest:
+      type: object
+      required:
+      - value
+      properties:
+        description:
+          type: string
+        value:
+          type: string
+          maxLength: 5000
+    schemas.UserAuthProviderConnectionResponse:
+      type: object
+      properties:
+        connection_id:
+          type: string
+        connection_status:
+          type: string
+        id:
+          type: string
+        provider_description:
+          type: string
+        provider_id:
+          type: string
+        provider_type:
+          type: string
+        provider_user_info: {}
+        scopes:
+          type: array
+          items:
+            type: string
+        user_id:
+          type: string
+    schemas.UserInfoRequestConfigCreateRequest:
+      type: object
+      required:
+      - endpoint
+      - triggers
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersCreateRequest'
+    schemas.UserInfoRequestConfigPatchRequest:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+          maxLength: 200
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+          maxLength: 1000
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_content_type:
+          type: string
+          enum:
+          - application/x-www-form-urlencoded
+          - application/json
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersPatchRequest'
+    schemas.UserInfoRequestConfigResponse:
+      type: object
+      properties:
+        auth_header_value_format:
+          type: string
+        auth_method:
+          type: string
+        endpoint:
+          type: string
+        expiration_format:
+          type: string
+        method:
+          type: string
+        params:
+          type: object
+          additionalProperties:
+            type: string
+        request_content_type:
+          type: string
+        response_content_type:
+          type: string
+        response_map:
+          type: object
+          additionalProperties:
+            type: string
+        triggers:
+          $ref: '#/components/schemas/schemas.UserInfoRequestTriggersResponse'
+    schemas.UserInfoRequestTriggersCreateRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.UserInfoRequestTriggersPatchRequest:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean
+    schemas.UserInfoRequestTriggersResponse:
+      type: object
+      properties:
+        on_token_grant:
+          type: boolean
+        on_token_refresh:
+          type: boolean

@@ -1,0 +1,891 @@
+openapi: 3.0.0
+info:
+  description: Register, manage, health-check, and authorize workers that host MCP tools and toolkits behind the Arcade Engine.
+  title: Arcade Workers API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/workers:
+    get:
+      security:
+      - Bearer: []
+      description: List all workers with their definitions
+      tags:
+      - Admin
+      summary: List All Workers
+      operationId: workers-list
+      parameters:
+      - description: 'Number of items to return (default: 25, max: 100)'
+        name: limit
+        in: query
+        schema:
+          type: integer
+      - description: 'Offset from the start of the list (default: 0)'
+        name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_WorkerResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    post:
+      security:
+      - Bearer: []
+      description: Create a worker
+      tags:
+      - Admin
+      summary: Create a Worker
+      operationId: workers-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.CreateWorkerRequest'
+        description: Worker configuration to create
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/workers/test:
+    post:
+      security:
+      - Bearer: []
+      description: Test a worker connection before adding it to the system
+      tags:
+      - Admin
+      summary: Test a Worker Connection
+      operationId: workers-test
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.WorkerTestRequest'
+        description: Minimal worker configuration to test
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerTestResponse'
+        '400':
+          description: Invalid request body or URI
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/workers/{id}:
+    get:
+      security:
+      - Bearer: []
+      description: Get a worker by ID
+      tags:
+      - Admin
+      summary: Get a Worker by ID
+      operationId: workers-get
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    delete:
+      security:
+      - Bearer: []
+      description: Delete a worker
+      tags:
+      - Admin
+      summary: Delete a Worker
+      operationId: workers-delete
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    patch:
+      security:
+      - Bearer: []
+      description: Update a worker
+      tags:
+      - Admin
+      summary: Update a Worker
+      operationId: workers-update
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.UpdateWorkerRequest'
+        description: Worker configuration to update
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerResponse'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/workers/{id}/authorize:
+    get:
+      security:
+      - Bearer: []
+      description: Authorize a worker
+      tags:
+      - Admin
+      summary: Authorize a Worker
+      operationId: workers-authorize
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerAuthorizeResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/workers/{id}/health:
+    get:
+      security:
+      - Bearer: []
+      description: Get the health of a worker
+      tags:
+      - Admin
+      summary: Get the Health of a Worker
+      operationId: workers-health
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.WorkerHealthResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/workers/{id}/tools:
+    get:
+      security:
+      - Bearer: []
+      description: Returns a page of tools
+      tags:
+      - Admin
+      summary: List Tools
+      operationId: tools-list
+      parameters:
+      - description: Worker ID
+        name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: 'Number of items to return (default: 25, max: 100)'
+        name: limit
+        in: query
+        schema:
+          type: integer
+      - description: 'Offset from the start of the list (default: 0)'
+        name: offset
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_ToolResponse'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    auth.AuthorizationStatus:
+      type: string
+      enum:
+      - not_started
+      - pending
+      - completed
+      - failed
+      x-enum-varnames:
+      - StatusNotStarted
+      - StatusPending
+      - StatusCompleted
+      - StatusFailed
+    auth.Status:
+      type: string
+      enum:
+      - active
+      - inactive
+      x-enum-varnames:
+      - StatusActive
+      - StatusInactive
+    identity.BindingType:
+      type: string
+      enum:
+      - static
+      - tenant
+      - project
+      - account
+      x-enum-varnames:
+      - StaticBindingType
+      - TenantBindingType
+      - ProjectBindingType
+      - AccountBindingType
+    schemas.AuthorizationRequirement:
+      type: object
+      properties:
+        id:
+          type: string
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirement'
+        provider_id:
+          type: string
+        provider_type:
+          type: string
+        status:
+          default: disabled
+          allOf:
+          - $ref: '#/components/schemas/auth.Status'
+        status_reason:
+          type: string
+        token_status:
+          $ref: '#/components/schemas/auth.AuthorizationStatus'
+    schemas.BindingResponse:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          $ref: '#/components/schemas/identity.BindingType'
+    schemas.CreateWorkerRequest:
+      type: object
+      required:
+      - id
+      properties:
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigRequest'
+        id:
+          type: string
+          maxLength: 100
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigCreateRequest'
+        type:
+          type: string
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.HTTPWorkerConfigRequest:
+      type: object
+      required:
+      - retry
+      - secret
+      - timeout
+      - uri
+      properties:
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secret:
+          type: string
+          maxLength: 100
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.HTTPWorkerConfigResponse:
+      type: object
+      properties:
+        retry:
+          type: integer
+        secret:
+          $ref: '#/components/schemas/schemas.SecretResponse'
+        timeout:
+          type: integer
+        uri:
+          type: string
+    schemas.HTTPWorkerConfigUpdate:
+      type: object
+      properties:
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secret:
+          type: string
+          maxLength: 100
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.HTTPWorkerTestConfig:
+      type: object
+      required:
+      - uri
+      properties:
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.Input:
+      type: object
+      properties:
+        parameters:
+          type: array
+          minItems: 0
+          items:
+            $ref: '#/components/schemas/schemas.Parameter'
+    schemas.MCPOAuth2ConfigCreateRequest:
+      type: object
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2048
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+        external_id:
+          type: string
+          maxLength: 100
+    schemas.MCPOAuth2ConfigResponse:
+      type: object
+      properties:
+        authorization_url:
+          type: string
+        client_id:
+          type: string
+        client_secret:
+          $ref: '#/components/schemas/schemas.SecretResponse'
+        external_id:
+          type: string
+        redirect_uri:
+          type: string
+        supported_scopes:
+          type: array
+          items:
+            type: string
+    schemas.MCPOAuth2ConfigUpdateRequest:
+      type: object
+      properties:
+        authorization_url:
+          type: string
+          maxLength: 2048
+        client_id:
+          type: string
+          maxLength: 1000
+        client_secret:
+          type: string
+          maxLength: 1000
+    schemas.MCPWorkerConfigCreateRequest:
+      type: object
+      required:
+      - retry
+      - timeout
+      - uri
+      properties:
+        headers:
+          $ref: '#/components/schemas/schemas.MCPWorkerHeadersCreateRequest'
+        oauth2:
+          $ref: '#/components/schemas/schemas.MCPOAuth2ConfigCreateRequest'
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secrets:
+          $ref: '#/components/schemas/schemas.MCPWorkerSecretsCreateRequest'
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.MCPWorkerConfigPatchRequest:
+      type: object
+      properties:
+        headers:
+          $ref: '#/components/schemas/schemas.MCPWorkerHeadersCreateRequest'
+        oauth2:
+          $ref: '#/components/schemas/schemas.MCPOAuth2ConfigUpdateRequest'
+        retry:
+          type: integer
+          maximum: 10
+          minimum: 0
+        secrets:
+          type: object
+          additionalProperties:
+            type: string
+        timeout:
+          type: integer
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.MCPWorkerConfigResponse:
+      type: object
+      properties:
+        external_id:
+          type: string
+        headers:
+          $ref: '#/components/schemas/schemas.MCPWorkerHeadersResponse'
+        oauth2:
+          $ref: '#/components/schemas/schemas.MCPOAuth2ConfigResponse'
+        redirect_uri:
+          type: string
+        retry:
+          type: integer
+        secrets:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/schemas.SecretResponse'
+        timeout:
+          type: integer
+        uri:
+          type: string
+    schemas.MCPWorkerHeadersCreateRequest:
+      type: object
+      additionalProperties:
+        type: string
+    schemas.MCPWorkerHeadersResponse:
+      type: object
+      additionalProperties:
+        type: string
+    schemas.MCPWorkerSecretsCreateRequest:
+      type: object
+      additionalProperties:
+        type: string
+    schemas.MCPWorkerTestConfig:
+      type: object
+      required:
+      - uri
+      properties:
+        uri:
+          type: string
+          maxLength: 2048
+    schemas.OAuth2AuthorizationRequirement:
+      type: object
+      properties:
+        scopes:
+          type: array
+          items:
+            type: string
+    schemas.OAuth2AuthorizationRequirementResponse:
+      type: object
+      properties:
+        met:
+          type: boolean
+    schemas.OffsetPage-schemas_ToolResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.ToolResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.OffsetPage-schemas_WorkerResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.WorkerResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.Output:
+      type: object
+      properties:
+        available_modes:
+          type: array
+          items:
+            type: string
+        description:
+          type: string
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
+    schemas.Parameter:
+      type: object
+      required:
+      - name
+      - value_schema
+      properties:
+        description:
+          type: string
+        inferrable:
+          type: boolean
+          default: true
+        name:
+          type: string
+        required:
+          type: boolean
+        value_schema:
+          $ref: '#/components/schemas/schemas.ValueSchema'
+    schemas.Requirements:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.AuthorizationRequirement'
+        met:
+          type: boolean
+          default: false
+        secrets:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.SecretRequirement'
+    schemas.SecretRequirement:
+      type: object
+      required:
+      - key
+      properties:
+        key:
+          type: string
+        met:
+          type: boolean
+          default: false
+        status_reason:
+          type: string
+    schemas.SecretResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/identity.BindingType'
+        editable:
+          type: boolean
+        exists:
+          type: boolean
+        value:
+          type: string
+    schemas.ServerInfoResponse:
+      type: object
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        version:
+          type: string
+    schemas.ToolResponse:
+      type: object
+      required:
+      - fully_qualified_name
+      - input
+      - name
+      - qualified_name
+      - toolkit
+      properties:
+        description:
+          type: string
+        formatted_schema:
+          type: object
+          additionalProperties: {}
+        fully_qualified_name:
+          type: string
+        input:
+          $ref: '#/components/schemas/schemas.Input'
+        metadata:
+          $ref: '#/components/schemas/tool.ToolMetadata'
+        name:
+          type: string
+        output:
+          $ref: '#/components/schemas/schemas.Output'
+        qualified_name:
+          type: string
+        requirements:
+          $ref: '#/components/schemas/schemas.Requirements'
+        toolkit:
+          $ref: '#/components/schemas/schemas.ToolkitResponse'
+    schemas.ToolkitResponse:
+      type: object
+      required:
+      - name
+      properties:
+        description:
+          type: string
+        name:
+          type: string
+        version:
+          type: string
+    schemas.UpdateWorkerRequest:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigUpdate'
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigPatchRequest'
+    schemas.ValueSchema:
+      type: object
+      required:
+      - val_type
+      properties:
+        enum:
+          type: array
+          items:
+            type: string
+        inner_val_type:
+          type: string
+        val_type:
+          type: string
+    schemas.WorkerAuthorizationRequirementResponse:
+      type: object
+      properties:
+        met:
+          type: boolean
+        oauth2:
+          $ref: '#/components/schemas/schemas.OAuth2AuthorizationRequirementResponse'
+    schemas.WorkerAuthorizeResponse:
+      type: object
+      required:
+      - scopes
+      - status
+      - user_id
+      - worker_id
+      properties:
+        next_uri:
+          type: string
+        scopes:
+          type: array
+          items:
+            type: string
+        status:
+          type: string
+        url:
+          type: string
+        user_id:
+          type: string
+        worker_id:
+          type: string
+    schemas.WorkerHealthResponse:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+        healthy:
+          type: boolean
+        id:
+          type: string
+        message:
+          type: string
+    schemas.WorkerRequirementsResponse:
+      type: object
+      properties:
+        authorization:
+          $ref: '#/components/schemas/schemas.WorkerAuthorizationRequirementResponse'
+        met:
+          type: boolean
+    schemas.WorkerResponse:
+      type: object
+      properties:
+        binding:
+          $ref: '#/components/schemas/schemas.BindingResponse'
+        enabled:
+          type: boolean
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerConfigResponse'
+        id:
+          type: string
+        managed:
+          type: boolean
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerConfigResponse'
+        requirements:
+          $ref: '#/components/schemas/schemas.WorkerRequirementsResponse'
+        type:
+          $ref: '#/components/schemas/schemas.WorkerType'
+    schemas.WorkerTestRequest:
+      type: object
+      required:
+      - type
+      properties:
+        http:
+          $ref: '#/components/schemas/schemas.HTTPWorkerTestConfig'
+        mcp:
+          $ref: '#/components/schemas/schemas.MCPWorkerTestConfig'
+        type:
+          type: string
+    schemas.WorkerTestResponse:
+      type: object
+      properties:
+        message:
+          type: string
+        serverInfo:
+          $ref: '#/components/schemas/schemas.ServerInfoResponse'
+        success:
+          type: boolean
+    schemas.WorkerType:
+      type: string
+      enum:
+      - http
+      - mcp
+      - unknown
+      x-enum-varnames:
+      - WorkerTypeHTTP
+      - WorkerTypeMCP
+      - WorkerTypeUnknown
+    tool.Behavior:
+      type: object
+      properties:
+        destructive:
+          type: boolean
+        idempotent:
+          type: boolean
+        open_world:
+          type: boolean
+        operations:
+          type: array
+          items:
+            type: string
+        read_only:
+          type: boolean
+    tool.Classification:
+      type: object
+      properties:
+        service_domains:
+          type: array
+          items:
+            type: string
+    tool.ToolMetadata:
+      type: object
+      properties:
+        behavior:
+          $ref: '#/components/schemas/tool.Behavior'
+        classification:
+          $ref: '#/components/schemas/tool.Classification'
+        extras:
+          type: object
+          additionalProperties: {}

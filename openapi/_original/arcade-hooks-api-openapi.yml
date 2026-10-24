@@ -1,0 +1,512 @@
+openapi: 3.0.0
+info:
+  description: Manage lifecycle hooks that fire on tool authorization and execution events, including bulk hook updates.
+  title: Arcade Hooks API
+  contact:
+    name: Arcade
+    url: https://arcade.dev
+    email: contact@arcade.dev
+  version: 0.1.0
+paths:
+  /v1/hooks:
+    get:
+      security:
+      - Bearer: []
+      description: Returns all hooks for the current binding with optional filtering
+      tags:
+      - Hooks
+      summary: List Hooks
+      operationId: hooks-list
+      parameters:
+      - description: Limit
+        name: limit
+        in: query
+        schema:
+          type: integer
+      - description: Offset
+        name: offset
+        in: query
+        schema:
+          type: integer
+      - description: Filter by hook point
+        name: hook_point
+        in: query
+        schema:
+          type: string
+      - description: Filter by plugin ID
+        name: plugin_id
+        in: query
+        schema:
+          type: string
+      - description: Filter by status
+        name: status
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.OffsetPage-schemas_HookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    post:
+      security:
+      - Bearer: []
+      description: Creates a new hook configuration
+      tags:
+      - Hooks
+      summary: Create a Hook
+      operationId: hooks-create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.CreateHookRequest'
+        description: Hook configuration
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.HookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/hooks/bulk:
+    patch:
+      security:
+      - Bearer: []
+      description: Creates or updates multiple hooks at once. The operation is transactional.
+      tags:
+      - Hooks
+      summary: Bulk Upsert Hooks
+      operationId: hooks-bulk-upsert
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.BulkUpsertHooksRequest'
+        description: Bulk hook configurations
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.BulkUpsertHooksResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+  /v1/hooks/{hook_id}:
+    get:
+      security:
+      - Bearer: []
+      description: Returns a single hook by ID
+      tags:
+      - Hooks
+      summary: Get a Hook
+      operationId: hooks-get
+      parameters:
+      - description: Hook ID
+        name: hook_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - description: Filter by binding type (tenant or project)
+        name: binding_type
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.HookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    delete:
+      security:
+      - Bearer: []
+      description: Deletes a hook by ID
+      tags:
+      - Hooks
+      summary: Delete a Hook
+      operationId: hooks-delete
+      parameters:
+      - description: Hook ID
+        name: hook_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+    patch:
+      security:
+      - Bearer: []
+      description: Updates an existing hook configuration
+      tags:
+      - Hooks
+      summary: Update a Hook
+      operationId: hooks-update
+      parameters:
+      - description: Hook ID
+        name: hook_id
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/schemas.PatchHookRequest'
+        description: Hook configuration to update
+        required: true
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.HookResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/schemas.Error'
+externalDocs:
+  description: Documentation
+  url: https://docs.arcade.dev
+servers:
+- url: https://api.arcade.dev
+components:
+  securitySchemes:
+    Bearer:
+      description: 'Enter your API key or API token in the format: Bearer <token>'
+      type: apiKey
+      name: Authorization
+      in: header
+  schemas:
+    plugins.FailureMode:
+      type: string
+      enum:
+      - fail_closed
+      - fail_open
+      x-enum-varnames:
+      - FailureModeClosed
+      - FailureModeOpen
+    plugins.HookPointStatus:
+      type: string
+      enum:
+      - inactive
+      - active
+      x-enum-varnames:
+      - HookPointStatusInactive
+      - HookPointStatusActive
+    plugins.Phase:
+      type: string
+      enum:
+      - before
+      - after
+      x-enum-varnames:
+      - PhaseBefore
+      - PhaseAfter
+    schemas.BulkHookConfig:
+      type: object
+      required:
+      - hook_point
+      - plugin_id
+      properties:
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+          enum:
+          - tool.access
+          - tool.pre
+          - tool.post
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+    schemas.BulkHookResult:
+      type: object
+      properties:
+        action:
+          type: string
+        error:
+          type: string
+        hook_id:
+          type: string
+        hook_point:
+          type: string
+        plugin_id:
+          type: string
+    schemas.BulkUpsertHooksRequest:
+      type: object
+      required:
+      - configs
+      properties:
+        configs:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.BulkHookConfig'
+    schemas.BulkUpsertHooksResponse:
+      type: object
+      properties:
+        failed:
+          type: integer
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.BulkHookResult'
+        success:
+          type: integer
+    schemas.CreateHookRequest:
+      type: object
+      required:
+      - failure_mode
+      - hook_point
+      - name
+      - phase
+      - plugin_id
+      properties:
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+          enum:
+          - tool.access
+          - tool.pre
+          - tool.post
+        name:
+          type: string
+          maxLength: 256
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+          maximum: 30000
+          minimum: 100
+    schemas.Error:
+      type: object
+      properties:
+        message:
+          type: string
+        name:
+          type: string
+    schemas.HookResponse:
+      type: object
+      properties:
+        cache_enabled:
+          type: boolean
+        cache_ttl_ms:
+          type: integer
+        created_at:
+          type: string
+        failure_mode:
+          $ref: '#/components/schemas/plugins.FailureMode'
+        hook_point:
+          type: string
+        id:
+          type: string
+        name:
+          type: string
+        phase:
+          $ref: '#/components/schemas/plugins.Phase'
+        plugin_id:
+          type: string
+        priority:
+          type: integer
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+        updated_at:
+          type: string
+        version:
+          type: integer
+    schemas.OffsetPage-schemas_HookResponse:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/schemas.HookResponse'
+        limit:
+          type: integer
+        offset:
+          type: integer
+        page_count:
+          type: integer
+        total_count:
+          type: integer
+    schemas.PatchHookRequest:
+      type: object
+      properties:
+        failure_mode:
+          enum:
+          - fail_closed
+          - fail_open
+          allOf:
+          - $ref: '#/components/schemas/plugins.FailureMode'
+        phase:
+          enum:
+          - before
+          - after
+          allOf:
+          - $ref: '#/components/schemas/plugins.Phase'
+        priority:
+          type: integer
+          maximum: 1000
+          minimum: 0
+        status:
+          enum:
+          - active
+          - inactive
+          allOf:
+          - $ref: '#/components/schemas/plugins.HookPointStatus'
+        timeout_ms:
+          type: integer
+          maximum: 30000
+          minimum: 100
