@@ -1,4 +1,4 @@
-# arcade-dev (arcade-dev)
+# Arcade.dev
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,258 +66,204 @@
 
 Arcade.dev (formerly Arcade AI) is the MCP runtime for production AI agents — a platform that lets agents safely take real-world actions across SaaS apps with per-user authorization, governed tool execution, and audit logging. The Arcade Engine exposes a Tools API for listing / authorizing / executing agent tools, an Authorization API that brokers OAuth and API-key grants across 40+ providers, an OpenAI-compatible LLM endpoint, Workers and MCP Gateways for routing, Hooks for governance, and an Admin API for control-plane configuration. Arcade ships with 7,000+ pre-built integrations across Google, Microsoft, Slack, GitHub, Salesforce, HubSpot, and more, plus an MCP server framework (arcade-mcp) and SDKs in Python, TypeScript, Go, Java/Kotlin, and .NET. Available as Arcade Cloud, VPC, on-prem, or air-gapped.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/arcade-dev/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/arcade-dev/refs/heads/main/apis.yml)
+**Areas:** Authorization · LLM · Plugins · Agents · MCP · AI Agents · Authentication · Tool Calling · Agent Infrastructure · Integration
 
-## Scope
+## Arcade.dev on APIs.io
 
-- **Position:** Producing
+Everything profiled for Arcade.dev is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/arcade-dev/](https://apis.io/providers/arcade-dev/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (8)
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+- [arcade-dev Admin API](https://apis.io/apis/arcade-dev/arcade-dev-admin-api/) — The Admin API from arcade-dev — 14 operation(s) for admin.
+- [arcade-dev Authorization API](https://apis.io/apis/arcade-dev/arcade-dev-authorization-api/) — The Authorization API from arcade-dev — 4 operation(s) for authorization.
+- [arcade-dev Gateways API](https://apis.io/apis/arcade-dev/arcade-dev-gateways-api/) — The Gateways API from arcade-dev — 3 operation(s) for gateways.
+- [arcade-dev Hooks API](https://apis.io/apis/arcade-dev/arcade-dev-hooks-api/) — The Hooks API from arcade-dev — 3 operation(s) for hooks.
+- [arcade-dev LLM API](https://apis.io/apis/arcade-dev/arcade-dev-llm-api/) — The LLM API from arcade-dev — 1 operation(s) for llm.
+- [arcade-dev Operations API](https://apis.io/apis/arcade-dev/arcade-dev-operations-api/) — The Operations API from arcade-dev — 3 operation(s) for operations.
+- [arcade-dev Plugins API](https://apis.io/apis/arcade-dev/arcade-dev-plugins-api/) — The Plugins API from arcade-dev — 2 operation(s) for plugins.
+- [arcade-dev Tools API](https://apis.io/apis/arcade-dev/arcade-dev-tools-api/) — The Tools API from arcade-dev — 9 operation(s) for tools.
 
-## APIs
+### Published properties
 
-### Arcade Tools API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-List, inspect, authorize, execute, and schedule Arcade tools. Tools are user-scoped agent actions addressed by fully qualified name (Toolkit.Name@version) and executed against a stable user_id with Arcade-managed authorization tokens.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.arcade.dev/references/api](https://docs.arcade.dev/references/api)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Arcade Dev Agentic Access](https://apis.io/agentic-access/arcade-dev/arcade-dev-agentic-access/)
 
-- Tools
-- Agents
-- AI
-- Execution
+#### JSON Schema (5)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://docs.arcade.dev/home/tools)
-- [OpenAPI](openapi/arcade-tools-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-tools-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-tools-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/arcade-tool-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/arcade-tool-execution-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/arcade-tool-structure.json)
-- [Example](examples/arcade-tools-list-example.json)
-- [Example](examples/arcade-tools-execute-example.json)
-- [Example](examples/arcade-tools-authorize-example.json)
+- [Arcade Authorization](https://apis.io/schemas/arcade-dev/arcade-authorization/)
+- [Arcade Hook](https://apis.io/schemas/arcade-dev/arcade-hook/)
+- [Arcade Tool](https://apis.io/schemas/arcade-dev/arcade-tool/)
+- [Arcade Tool Execution](https://apis.io/schemas/arcade-dev/arcade-tool-execution/)
+- [Arcade Worker](https://apis.io/schemas/arcade-dev/arcade-worker/)
 
-### Arcade Authorization API
+#### JSON Structure (3)
 
-Authorize end-users against 40+ identity providers (Google, Microsoft, Slack, GitHub, Salesforce, HubSpot, and more). Issue user-scoped grants, poll authorization status, and confirm users so agents can call tools as the end-user rather than a shared service account.
+Data models expressed in JSON Structure.
 
-- **Human URL:** [https://docs.arcade.dev/home/auth](https://docs.arcade.dev/home/auth)
+- [Arcade Authorization Structure](https://apis.io/json-structure/arcade-dev/arcade-authorization-structure/)
+- [Arcade Tool Structure](https://apis.io/json-structure/arcade-dev/arcade-tool-structure/)
+- [Arcade Worker Structure](https://apis.io/json-structure/arcade-dev/arcade-worker-structure/)
 
-#### Tags
+#### JSON-LD (1)
 
-- Authorization
-- OAuth
-- Identity
-- Agents
+Linked-data contexts for the provider's vocabulary.
 
-#### Properties
+- [Arcade Dev Context](https://apis.io/jsonld/arcade-dev/arcade-dev-context/)
 
-- [Documentation](https://docs.arcade.dev/home/auth)
-- [OpenAPI](openapi/arcade-auth-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-auth-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-auth-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/arcade-authorization-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/arcade-authorization-structure.json)
-- [Example](examples/arcade-auth-authorize-example.json)
-- [Example](examples/arcade-auth-status-example.json)
+#### Vocabulary (1)
 
-### Arcade LLM API
+The provider's domain terms, defined.
 
-OpenAI-compatible chat completions endpoint that lets agents call LLMs through Arcade with tools attached. The engine handles tool selection, end-user authorization, and tool execution so agents need only speak the OpenAI Chat Completions protocol.
+- [Arcade Dev Vocabulary](https://apis.io/vocabularies/arcade-dev/arcade-dev-vocabulary/)
 
-- **Human URL:** [https://docs.arcade.dev/home/chat-overview](https://docs.arcade.dev/home/chat-overview)
+#### Examples (11)
 
-#### Tags
+Example requests and responses.
 
-- LLM
-- AI
-- Chat
-- OpenAI Compatible
+- [Arcade Admin Secrets Set Example](https://apis.io/examples/arcade-dev/arcade-admin-secrets-set-example/)
+- [Arcade Auth Authorize Example](https://apis.io/examples/arcade-dev/arcade-auth-authorize-example/)
+- [Arcade Auth Status Example](https://apis.io/examples/arcade-dev/arcade-auth-status-example/)
+- [Arcade Gateways Create Example](https://apis.io/examples/arcade-dev/arcade-gateways-create-example/)
+- [Arcade Hooks Create Example](https://apis.io/examples/arcade-dev/arcade-hooks-create-example/)
+- [Arcade Llm Chat Completions Example](https://apis.io/examples/arcade-dev/arcade-llm-chat-completions-example/)
+- [Arcade Operations Health Example](https://apis.io/examples/arcade-dev/arcade-operations-health-example/)
+- [Arcade Tools Authorize Example](https://apis.io/examples/arcade-dev/arcade-tools-authorize-example/)
+- [Arcade Tools Execute Example](https://apis.io/examples/arcade-dev/arcade-tools-execute-example/)
+- [Arcade Tools List Example](https://apis.io/examples/arcade-dev/arcade-tools-list-example/)
+- [Arcade Workers Create Example](https://apis.io/examples/arcade-dev/arcade-workers-create-example/)
 
-#### Properties
+#### Collections (25)
 
-- [Documentation](https://docs.arcade.dev/home/chat-overview)
-- [OpenAPI](openapi/arcade-llm-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-llm-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-llm-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/arcade-llm-chat-completions-example.json)
+Postman and Open Collection request collections.
 
-### Arcade Workers API
+- [Arcade Admin API](https://apis.io/collections/arcade-dev/open-arcade-admin-api/)
+- [Arcade Authorization API](https://apis.io/collections/arcade-dev/open-arcade-auth-api/)
+- [Arcade Admin API](https://apis.io/collections/arcade-dev/open-arcade-dev-admin-api/)
+- [Arcade Admin Authorization API](https://apis.io/collections/arcade-dev/open-arcade-dev-authorization-api/)
+- [Arcade Admin Gateways API](https://apis.io/collections/arcade-dev/open-arcade-dev-gateways-api/)
+- [Arcade Admin Hooks API](https://apis.io/collections/arcade-dev/open-arcade-dev-hooks-api/)
+- [Arcade Admin LLM API](https://apis.io/collections/arcade-dev/open-arcade-dev-llm-api/)
+- [Arcade Admin Operations API](https://apis.io/collections/arcade-dev/open-arcade-dev-operations-api/)
+- [Arcade Admin Plugins API](https://apis.io/collections/arcade-dev/open-arcade-dev-plugins-api/)
+- [Arcade Admin Tools API](https://apis.io/collections/arcade-dev/open-arcade-dev-tools-api/)
+- [Arcade Gateways API](https://apis.io/collections/arcade-dev/open-arcade-gateways-api/)
+- [Arcade Hooks API](https://apis.io/collections/arcade-dev/open-arcade-hooks-api/)
+- [Arcade LLM API](https://apis.io/collections/arcade-dev/open-arcade-llm-api/)
+- [Arcade Operations API](https://apis.io/collections/arcade-dev/open-arcade-operations-api/)
+- [Arcade Plugins API](https://apis.io/collections/arcade-dev/open-arcade-plugins-api/)
+- [Arcade Tools API](https://apis.io/collections/arcade-dev/open-arcade-tools-api/)
+- [Arcade Workers API](https://apis.io/collections/arcade-dev/open-arcade-workers-api/)
+- [Arcade Admin API](https://apis.io/collections/arcade-dev/postman-arcade-dev-admin-api/)
+- [Arcade Admin Authorization API](https://apis.io/collections/arcade-dev/postman-arcade-dev-authorization-api/)
+- [Arcade Admin Gateways API](https://apis.io/collections/arcade-dev/postman-arcade-dev-gateways-api/)
+- [Arcade Admin Hooks API](https://apis.io/collections/arcade-dev/postman-arcade-dev-hooks-api/)
+- [Arcade Admin LLM API](https://apis.io/collections/arcade-dev/postman-arcade-dev-llm-api/)
+- [Arcade Admin Operations API](https://apis.io/collections/arcade-dev/postman-arcade-dev-operations-api/)
+- [Arcade Admin Plugins API](https://apis.io/collections/arcade-dev/postman-arcade-dev-plugins-api/)
+- [Arcade Admin Tools API](https://apis.io/collections/arcade-dev/postman-arcade-dev-tools-api/)
 
-Register, manage, health-check, and authorize workers that host Arcade toolkits or MCP servers behind the Arcade Engine. Self-hosted workers let customers keep tool execution (and end-user tokens) inside their own perimeter.
+#### Governance rules (2)
 
-- **Human URL:** [https://docs.arcade.dev/home/workers](https://docs.arcade.dev/home/workers)
+Spectral rulesets for the provider's contracts.
 
-#### Tags
+- [Arcade.dev — jsonschema rules](https://apis.io/rules/arcade-dev/arcade-dev-jsonschema-spectral-rules/)
+- [Arcade.dev API Rules](https://apis.io/rules/arcade-dev/arcade-dev-rules/)
 
-- Workers
-- MCP
-- Infrastructure
-- Agents
+#### Security (2)
 
-#### Properties
+Authentication, trust centre, and vulnerability disclosure.
 
-- [Documentation](https://docs.arcade.dev/home/workers)
-- [OpenAPI](openapi/arcade-workers-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-workers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-workers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/arcade-worker-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/arcade-worker-structure.json)
-- [Example](examples/arcade-workers-create-example.json)
+- [Arcade Dev Authentication](https://apis.io/security/arcade-dev/arcade-dev-authentication/)
+- [Arcade Dev Domain Security](https://apis.io/security/arcade-dev/arcade-dev-domain-security/)
 
-### Arcade Gateways API
+#### Plans and pricing (1)
 
-Create and manage MCP gateways scoped to organizations and projects. Gateways expose curated tool catalogs to MCP clients (Cursor, Claude Desktop, Claude Code, VS Code, Microsoft Copilot Studio, GitHub Copilot).
+Published plans, tiers and prices.
 
-- **Human URL:** [https://docs.arcade.dev/guides/mcp-gateways](https://docs.arcade.dev/guides/mcp-gateways)
+- [Arcade Dev Plans Pricing](https://apis.io/plans/arcade-dev/arcade-dev-plans-pricing/)
 
-#### Tags
+#### Rate limits (1)
 
-- Gateways
-- MCP
-- Agents
+Published request limits.
 
-#### Properties
+- [Arcade Dev Rate Limits](https://apis.io/rate-limits/arcade-dev/arcade-dev-rate-limits/)
 
-- [Documentation](https://docs.arcade.dev/guides/mcp-gateways)
-- [OpenAPI](openapi/arcade-gateways-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-gateways-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-gateways-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/arcade-gateways-create-example.json)
+#### FinOps (1)
 
-### Arcade Hooks API
+What the API costs to run, by operation.
 
-Manage lifecycle hooks that fire on tool authorization, tool execution, worker health, and audit events. Hooks are the primary integration point for SIEM forwarding, audit logging, and downstream governance pipelines.
+- [Arcade Dev Finops](https://apis.io/finops/arcade-dev/arcade-dev-finops/)
 
-- **Human URL:** [https://docs.arcade.dev/guides/audit-logs](https://docs.arcade.dev/guides/audit-logs)
+## Where to find this API
 
-#### Tags
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-- Hooks
-- Webhooks
-- Events
-- Agents
-
-#### Properties
-
-- [Documentation](https://docs.arcade.dev/guides/audit-logs)
-- [OpenAPI](openapi/arcade-hooks-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-hooks-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-hooks-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/arcade-hook-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Example](examples/arcade-hooks-create-example.json)
-
-### Arcade Admin API
-
-Administer Arcade auth providers, organization secrets, user connections, and session verification settings. The control plane behind tool authorization and end-user identity.
-
-- **Human URL:** [https://docs.arcade.dev/references/api](https://docs.arcade.dev/references/api)
-
-#### Tags
-
-- Administrative
-- Secrets
-- Identity
-- Agents
-
-#### Properties
-
-- [Documentation](https://docs.arcade.dev/home/auth-providers)
-- [OpenAPI](openapi/arcade-admin-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-admin-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-admin-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/arcade-admin-secrets-set-example.json)
-
-### Arcade Plugins API
-
-Manage plugins that extend the Arcade Engine with custom auth providers, transformers, and tool sources. Plugins let teams bring their own integrations behind the Arcade governance and auth layer.
-
-- **Human URL:** [https://docs.arcade.dev/references/api](https://docs.arcade.dev/references/api)
-
-#### Tags
-
-- Plugins
-- Agents
-- Extensibility
-
-#### Properties
-
-- [OpenAPI](openapi/arcade-plugins-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-plugins-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-plugins-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Arcade Operations API
-
-Operational endpoints exposing service health, engine runtime configuration, and the OpenAPI / swagger description of the Arcade Engine.
-
-- **Human URL:** [https://docs.arcade.dev/references/api](https://docs.arcade.dev/references/api)
-
-#### Tags
-
-- Operations
-- Health
-- Configuration
-
-#### Properties
-
-- [OpenAPI](openapi/arcade-operations-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/arcade-operations-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/arcade-operations-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Example](examples/arcade-operations-health-example.json)
-
-## Common Properties
-
-- [Portal](https://arcade.dev)
+- [Website](https://www.arcade.dev/)
 - [Documentation](https://docs.arcade.dev)
-- [Getting Started](https://docs.arcade.dev/home)
-- [Sign Up](https://api.arcade.dev/dashboard/auth/login)
+- [Getting started](https://docs.arcade.dev/home)
 - [Pricing](https://arcade.dev/pricing)
-- [Blog](https://arcade.dev/blog)
 - [Changelog](https://docs.arcade.dev/home/release-notes)
-- [GitHub Organization](https://github.com/ArcadeAI)
-- [SDK](https://github.com/ArcadeAI/arcade-py)
-- [SDK](https://github.com/ArcadeAI/arcade-js)
-- [SDK](https://github.com/ArcadeAI/arcade-go)
-- [SDK](https://github.com/ArcadeAI/arcade-java)
-- [SDK](https://github.com/ArcadeAI/arcade-dotnet)
-- [SDK](https://github.com/ArcadeAI/arcade-mcp)
-- [Code Examples](https://github.com/ArcadeAI/agent-templates)
-- [Tool](https://github.com/ArcadeAI/blueprint-mcp)
-- [Tool](https://github.com/ArcadeAI/agent-library)
-- [Code Examples](https://github.com/ArcadeAI/safeword)
-- [Documentation](https://github.com/ArcadeAI/docs)
-- [Documentation](https://modelcontextprotocol.io)
-- [Documentation](https://docs.arcade.dev/references/api)
-- [SDK](https://docs.arcade.dev/home/install/cli)
-- [Documentation](https://docs.arcade.dev/home/auth-providers)
-- [Documentation](https://docs.arcade.dev/home/tools)
-- [Documentation](https://docs.arcade.dev/home/build-tools)
-- [Documentation](https://docs.arcade.dev/guides/mcp-gateways)
-- [Documentation](https://docs.arcade.dev/guides/audit-logs)
-- [Documentation](https://docs.arcade.dev/guides/contextual-access)
-- [Documentation](https://docs.arcade.dev/guides/deployment)
-- [Documentation](https://docs.arcade.dev/home/security)
-- [Documentation](https://arcade.dev/registry)
-- [Forum](https://discord.gg/arcadedev)
-- [X (Twitter)](https://x.com/TryArcade)
-- [Plans](plans/arcade-dev-plans-pricing.yml)
-- [Rate Limits](rate-limits/arcade-dev-rate-limits.yml)
-- [Fin Ops](finops/arcade-dev-finops.yml)
-- [Spectral Rules](rules/arcade-dev-rules.yml)
-- [JSON-LD](json-ld/arcade-dev-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/arcade-dev-vocabulary.yml)
-- [Features](undefined)
+- [Blog](https://arcade.dev/blog)
+- [GitHub](https://github.com/ArcadeAI)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 58.7** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 71.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 67.9 |
+| Access clarity | 63.2 |
+
+**Agent readiness 27.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | partial |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/arcade-dev/](https://apis.io/providers/arcade-dev/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Arcade.dev: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/arcade-dev/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
